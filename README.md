@@ -1,38 +1,65 @@
 <img src="thumbnail.png" alt="thumbnail" width="300"/>
 
-# (Replace_with_your_title) Cookbook
+# Great Circle Cookbook
 
 [![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
 
-This Project Pythia Cookbook covers ... (replace `...` with the main subject of your cookbook ... e.g., _working with radar data in Python_)
+This Project Pythia Cookbook covers the mathematics of working with Great Circles
 
 ## Motivation
 
-(Add a few sentences stating why this cookbook will be useful. What skills will you, "the chef", gain once you have reached the end of the cookbook?)
+A great circle is the largest circle that can be drawn onto a sphere (like the Earth) that is the same diameter of the sphere. Great Circle arcs connect two positions on the curved surface of a planet like Earth and are commonly used for navigation that relies on "as-the crow flies" directions like planes, ships, and satellites
+
+<p align="center">
+<img src="https://mathworld.wolfram.com/images/eps-svg/SmallGreatCircles_700.svg"/>
+</p>
+
+_Image Source: [Wolfram MathWorld](https://mathworld.wolfram.com/GreatCircle.html)_
 
 ## Authors
 
-[First Author](@first-author), [Second Author](@second-author), etc. _Acknowledge primary content authors here_
+[Cora Schneck](https://github.com/cyschneck)
 
 ### Contributors
 
-<a href="https://github.com/ProjectPythia/cookbook-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ProjectPythia/cookbook-template" />
+<a href="https://github.com/ProjectPythia/great-circle-cookbook/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ProjectPythia/great-circle-cookbook" />
 </a>
 
 ## Structure
 
-(State one or more sections that will comprise the notebook. E.g., _This cookbook is broken up into two main sections - "Foundations" and "Example Workflows."_ Then, describe each section below.)
+This cookbook is broken into two main sections:
+- Foundations and Terminology
+- Working with Great Circles
 
-### Section 1 ( Replace with the title of this section, e.g. "Foundations" )
+Where avaiable, this cookbook will demonstrate how to determine the features of a great circle with both existing open-source Python packages and through spherical trigonometry and mathematics
 
-(Add content for this section, e.g., "The foundational content includes ... ")
+### Foundations and Terminology
 
-### Section 2 ( Replace with the title of this section, e.g. "Example workflows" )
+- "Great Circle Terminology": Breakdown of terminology important for working with and understanding great circles including WGS-84
+- "Coordinate Systems": Understanding and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Geodesic (Latitude/Longitude)
+- "Geodesic and Python": General overview of powerful open-source Python packages for working with geodesic data like `pyproj` and `geopy`
 
-(Add content for this section, e.g., "Example workflows include ... ")
+Each section will make use of plotting to visually demonstrate concepts with `matplotlib` and `cartopy`
+
+### Working with Great Circles
+- Generating a great circle arc and path
+- Midpoint (and additional intermediate points) of a great circle arc
+- Length of a great circle arc (the distance between two points)
+- Bearing of a great circle arc
+- Compare great circle arc to rhumb line
+- Determine when a great circle path crosses parallels
+- Determine if a point lies on a great circle arc and path (with and without tolerances)
+- Determine the distance of a point to a great circle arc with error analysis
+- Determine the maximum and minimum latitude coordinates along a great circle path
+- Find the intersection of two great circle arcs (if it exists)
+- Find the intersection of two great circle paths (always exists)
+- Calculate the acute and obtuse angle of two great circle paths
+- Calculate the directed angle of two great circle paths based on an intersection point
+- Working with Spherical Triangles formed by great circle arcs
+- Indiana Jones and the Great Circle
 
 ## Running the Notebooks
 
@@ -59,22 +86,20 @@ Jupyter](https://foundations.projectpythia.org/foundations/getting-started-jupyt
 
 If you are interested in running this material locally on your computer, you will need to follow this workflow:
 
-(Replace "cookbook-example" with the title of your cookbooks)
-
-1. Clone the `https://github.com/ProjectPythia/cookbook-example` repository:
+1. Clone the `https://github.com/ProjectPythia/great-circle-cookbook` repository:
 
    ```bash
-    git clone https://github.com/ProjectPythia/cookbook-example.git
+    git clone https://github.com/ProjectPythia/great-circle-cookbook.git
    ```
 
-1. Move into the `cookbook-example` directory
+1. Move into the `great-circle-cookbook` directory
    ```bash
-   cd cookbook-example
+   cd great-circle-cookbook
    ```
 1. Create and activate your conda environment from the `environment.yml` file
    ```bash
    conda env create -f environment.yml
-   conda activate cookbook-example
+   conda activate cookbook-gc
    ```
 1. Move into the `notebooks` directory and start up Jupyterlab
    ```bash
