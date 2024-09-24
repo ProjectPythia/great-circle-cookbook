@@ -45,21 +45,34 @@ Where avaiable, this cookbook will demonstrate how to determine the features of 
 Each section will make use of plotting to visually demonstrate concepts with `matplotlib` and `cartopy`
 
 ### Working with Great Circles
+
+1. Great Circle Arcs and Paths
 - Generating a great circle arc and path
 - Midpoint (and additional intermediate points) of a great circle arc
 - Length of a great circle arc (the distance between two points)
 - Bearing of a great circle arc
 - Compare great circle arc to rhumb line
-- Determine when a great circle path crosses parallels
+
+2. Great Circles and a Point
+- Determine the distance of a point to a great circle arc
+- Determine the distance of a point to a great circle path
 - Determine if a point lies on a great circle arc and path (with and without tolerances)
-- Determine the distance of a point to a great circle arc with error analysis
+
+3. Great Circles and Parallels
 - Determine the maximum and minimum latitude coordinates along a great circle path
+- Determine when a great circle path crosses parallels
+
+4. Intersections of Great Circles
 - Find the intersection of two great circle arcs (if it exists)
 - Find the intersection of two great circle paths (always exists)
+
+5. Angles and Great Cirlces
 - Calculate the acute and obtuse angle of two great circle paths
 - Calculate the directed angle of two great circle paths based on an intersection point
 - Working with Spherical Triangles formed by great circle arcs
-- Indiana Jones and the Great Circle
+
+6. Indiana Jones and the Great Circle
+- Working Example
 
 ## Running the Notebooks
 
