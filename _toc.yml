@@ -4,6 +4,12 @@ parts:
   - caption: Preamble
     chapters:
       - file: notebooks/how-to-cite
-  - caption: Introduction
+  - caption: Foundations
     chapters:
-      - file: notebooks/notebook-template
+      - file: notebooks/foundations/coordinates
+      - file: notebooks/foundations/terminology
+  - caption: Tutorials
+    chapters:
+      - file: notebooks/tutorials/arc_path
+      - file: notebooks/tutorials/arc_to_point
+      - file: notebooks/tutorials/parallels_max_min
