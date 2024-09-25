@@ -71,6 +71,8 @@
                 gtag('config', 'G-T52X8HNYE8');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/tutorials/arc_to_point';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -370,8 +372,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../foundations/coordinates.html">Coordinate Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../foundations/terminology.html">Great Circle Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/coordinates.html">Coordinate Types</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current nav bd-sidenav">
@@ -417,6 +419,7 @@
 <ol class="arabic simple">
 <li><p>Determine the distance of a point to a great circle arc</p></li>
 <li><p>Determine the distance of a point to a great circle path</p></li>
+<li><p>Intermediate points along an arc/path</p></li>
 <li><p>Determine if a point lies on a great circle arc and path (with/without tolerances)</p></li>
 </ol>
 </section>
@@ -456,6 +459,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>
+<span class="kn">import</span> <span class="nn">geopy.distance</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">cartopy</span> <span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span><span class="p">,</span> <span class="n">feature</span> <span class="k">as</span> <span class="n">cfeature</span>
 </pre></div>
 </div>
 </div>
@@ -530,9 +540,9 @@
       <td>6378137.0</td>
       <td>-1.165054</td>
       <td>1.250631</td>
-      <td>-0.872119</td>
-      <td>0.374643</td>
-      <td>0.314723</td>
+      <td>-5.562495e+06</td>
+      <td>2.389526e+06</td>
+      <td>2.007347e+06</td>
     </tr>
     <tr>
       <th>boulder</th>
@@ -545,9 +555,9 @@
       <td>6378137.0</td>
       <td>1.304276</td>
       <td>0.872403</td>
-      <td>-0.738835</td>
-      <td>-0.201714</td>
-      <td>0.642988</td>
+      <td>-4.712394e+06</td>
+      <td>-1.286558e+06</td>
+      <td>4.101066e+06</td>
     </tr>
     <tr>
       <th>boston</th>
@@ -560,9 +570,9 @@
       <td>6378137.0</td>
       <td>-1.240212</td>
       <td>0.831473</td>
-      <td>-0.698914</td>
-      <td>0.239852</td>
-      <td>0.673788</td>
+      <td>-4.457769e+06</td>
+      <td>1.529809e+06</td>
+      <td>4.297512e+06</td>
     </tr>
     <tr>
       <th>red woods</th>
@@ -575,9 +585,9 @@
       <td>6378137.0</td>
       <td>0.976657</td>
       <td>0.848200</td>
-      <td>-0.621549</td>
-      <td>-0.419898</td>
-      <td>0.661334</td>
+      <td>-3.964322e+06</td>
+      <td>-2.678169e+06</td>
+      <td>4.218080e+06</td>
     </tr>
     <tr>
       <th>houston</th>
@@ -590,9 +600,9 @@
       <td>6378137.0</td>
       <td>1.481816</td>
       <td>1.055020</td>
-      <td>-0.866469</td>
-      <td>-0.077303</td>
-      <td>0.493210</td>
+      <td>-5.526456e+06</td>
+      <td>-4.930480e+05</td>
+      <td>3.145762e+06</td>
     </tr>
   </tbody>
 </table>
@@ -601,6 +611,14 @@
 </section>
 <section id="determine-the-distance-of-a-point-to-a-great-circle-arc">
 <h2>Determine the distance of a point to a great circle arc<a class="headerlink" href="#determine-the-distance-of-a-point-to-a-great-circle-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
+<span class="n">earth_radius</span> <span class="o">=</span> <span class="mi">6378137</span>  <span class="c1"># meters</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>Cross track distance: angular distance from point P to great circle path</p></li>
 <li><p>Along track distance: angular distance along the great circle path from A to B before hitting a point that is closest to point P</p></li>
@@ -609,21 +627,18 @@
 <section id="cross-track-distance">
 <h3>Cross Track Distance<a class="headerlink" href="#cross-track-distance" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Distance of a point to a great circle arc</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dxt = asin( sin(δ13) ⋅ sin(θ13−θ12) ) * R
-</pre></div>
-</div>
+<div class="math notranslate nohighlight">
+\[dxt = asin( sin(δ13) ⋅ sin(θ13 − θ12) ) * R\]</div>
 <ul class="simple">
 <li><p>δ13 (delta_13) is (angular) distance from start point to third point</p></li>
 <li><p>θ13 (theta_13) is (initial) bearing from start point to third point</p></li>
 <li><p>θ12 (theta_12) is (initial) bearing from start point to end point</p></li>
 <li><p>R is the earth’s radius</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d_xt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta_13</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_13</span> <span class="o">-</span> <span class="n">theta_12</span><span class="p">))</span> <span class="o">*</span> <span class="n">R</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">XTD</span> <span class="o">=</span><span class="n">asin</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">dist_AD</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">crs_AD</span><span class="o">-</span><span class="n">crs_AB</span><span class="p">))</span>
-</pre></div>
-</div>
+<div class="math notranslate nohighlight">
+\[d_xt = np.arcsin(np.sin(delta_13)*np.sin(theta_13 - theta_12)) * R\]</div>
+<div class="math notranslate nohighlight">
+\[XTD =asin(sin(dist_AD)*sin(crs_AD-crs_AB))\]</div>
 <blockquote>
 <div><p>positive XTD means right of course, negative means left</p>
 </div></blockquote>
@@ -631,50 +646,6 @@
 <div><p>If the point A is the N. or S. Pole replace crs_AD-crs_AB with
 lon_D-lon_B or lon_B-lon_D, respectively</p>
 </div></blockquote>
-</section>
-<section id="along-track-distance">
-<h3>Along Track Distance<a class="headerlink" href="#along-track-distance" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span> <span class="n">cos</span><span class="p">(</span><span class="n">δ13</span><span class="p">)</span> <span class="o">/</span> <span class="n">cos</span><span class="p">(</span><span class="n">δxt</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="n">R</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>δ13 (delta_13) is (angular) distance from start point to third point</p></li>
-<li><p>δxt (delta_xt) is (angular) cross-track distance</p></li>
-<li><p>R is the earth’s radius</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d_at</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">delta_13</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">d_xt</span><span class="o">/</span><span class="n">R</span><span class="p">))</span> <span class="o">*</span> <span class="n">R</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ATD</span><span class="o">=</span><span class="n">acos</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">dist_AD</span><span class="p">)</span><span class="o">/</span><span class="n">cos</span><span class="p">(</span><span class="n">XTD</span><span class="p">))</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>For very short distances (is less susceptible to rounding error):</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ATD</span><span class="o">=</span><span class="n">asin</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">dist_AD</span><span class="p">))</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">XTD</span><span class="p">))</span><span class="o">^</span><span class="mi">2</span> <span class="p">)</span><span class="o">/</span><span class="n">cos</span><span class="p">(</span><span class="n">XTD</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>References:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://edwilliams.org/avform147.htm">Aviation Formulary V1.47</a></p></li>
-<li><p><a class="reference external" href="https://www.movable-type.co.uk/scripts/latlong.html">Moveable Type Script</a></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="kn">import</span> <span class="nn">geopy.distance</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">cartopy</span> <span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span><span class="p">,</span> <span class="n">feature</span> <span class="k">as</span> <span class="n">cfeature</span>
-
-<span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>
-<span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
-<span class="n">earth_radius</span> <span class="o">=</span> <span class="mi">6378137</span>  <span class="c1"># meters</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cross_track_distance</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -694,6 +665,25 @@ lon_D-lon_B or lon_B-lon_D, respectively</p>
 </div>
 </div>
 </div>
+</section>
+<section id="along-track-distance">
+<h3>Along Track Distance<a class="headerlink" href="#along-track-distance" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="math notranslate nohighlight">
+\[dat = acos(\frac{cos(δ13)}{cos(δxt)}) * R\]</div>
+<ul class="simple">
+<li><p>δ13 (delta_13) is (angular) distance from start point to third point</p></li>
+<li><p>δxt (delta_xt) is (angular) cross-track distance</p></li>
+<li><p>R is the earth’s radius</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[d_at = np.arccos(\frac{np.cos(delta_13)}{np.cos(d_xt/R)} * R\]</div>
+<div class="math notranslate nohighlight">
+\[ATD=acos(\frac{cos(dist_AD)}{cos(XTD)})\]</div>
+<blockquote>
+<div><p>For very short distances (is less susceptible to rounding error):</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[ATD=asin(\sqrt{\frac{sin(dist_AD))^2 - (sin(XTD))^2 )}{cos(XTD)}}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">along_track_distance</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -710,6 +700,9 @@ lon_D-lon_B or lon_B-lon_D, respectively</p>
 </div>
 </div>
 </div>
+</section>
+<section id="generate-points-at-intermediate-points-along-an-arc-path">
+<h3>Generate Points At Intermediate Points along an Arc/Path<a class="headerlink" href="#generate-points-at-intermediate-points-along-an-arc-path" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Distance point along great circle path</span>
@@ -902,6 +895,10 @@ Closest Point To Point Along Great Circle Path:
 </section>
 <section id="resources-and-references">
 <h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://edwilliams.org/avform147.htm">Aviation Formulary V1.47</a></p></li>
+<li><p><a class="reference external" href="https://www.movable-type.co.uk/scripts/latlong.html">Moveable Type Script</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -975,6 +972,7 @@ Closest Point To Point Along Great Circle Path:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-distance-of-a-point-to-a-great-circle-arc">Determine the distance of a point to a great circle arc</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-track-distance">Cross Track Distance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#along-track-distance">Along Track Distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-points-at-intermediate-points-along-an-arc-path">Generate Points At Intermediate Points along an Arc/Path</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
