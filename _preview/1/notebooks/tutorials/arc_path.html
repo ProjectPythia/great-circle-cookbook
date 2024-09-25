@@ -75,6 +75,8 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Great Circles and a Point" href="arc_to_point.html" />
+    <link rel="prev" title="Great Circle Terminology" href="../foundations/terminology.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
     <meta name="docbuild:last-update" content="25 September 2024"/>
@@ -232,8 +234,6 @@
         
         
         
-          
-        
         <div class="bd-sidebar-primary bd-sidebar">
           
 
@@ -368,9 +368,16 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../notebook-template.html">Project Pythia Notebook Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/coordinates.html">Coordinate Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/terminology.html">Great Circle Terminology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Great Circle Arcs and Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arc_to_point.html">Great Circles and a Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallels_max_min.html">Great Circles and Parallels</a></li>
 </ul>
 
     </div>
@@ -459,7 +466,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>        <span class="c1"># working with arrays, vectors, cross/dot products, and radians</span>
 
 <span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>   <span class="c1"># working with the Earth as an ellipsod (WGS-84)</span>
-<span class="kn">import</span> <span class="nn">geopy.distance</span>     <span class="c1"># working wtih the Earth as an ellipsod</span>
+<span class="kn">import</span> <span class="nn">geopy.distance</span>     <span class="c1"># working with the Earth as an ellipsod</span>
 </pre></div>
 </div>
 </div>
@@ -735,13 +742,13 @@
                                      <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                      <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;foward bearing between coordinates = </span><span class="si">{</span><span class="n">fwd_bearing</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;forward bearing between coordinates = </span><span class="si">{</span><span class="n">fwd_bearing</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;reverse bearing between coordinates = </span><span class="si">{</span><span class="n">rvs_bearing</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>foward bearing between coordinates = 73.51048829569022 Degrees
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>forward bearing between coordinates = 73.51048829569022 Degrees
 reverse bearing between coordinates = -83.57035585674933 Degrees
 </pre></div>
 </div>
@@ -833,12 +840,12 @@ reverse bearing between coordinates = -83.57035585674933 Degrees
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_total_points</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># total points (n points)</span>
 <span class="n">distance_between_points_meter</span> <span class="o">=</span> <span class="n">distance_meter</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_total_points</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Each point will be seperated by </span><span class="si">{</span><span class="n">distance_between_points_meter</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">distance_between_points_meter</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Each point will be separated by </span><span class="si">{</span><span class="n">distance_between_points_meter</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">distance_between_points_meter</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Each point will be seperated by 260236.13453768377 meters (260.23613453768377 km)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Each point will be separated by 260236.13453768377 meters (260.23613453768377 km)
 </pre></div>
 </div>
 </div>
@@ -895,12 +902,12 @@ reverse bearing between coordinates = -83.57035585674933 Degrees
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_between_points_meter</span> <span class="o">=</span> <span class="mi">112000</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Each point will be seperated by </span><span class="si">{</span><span class="n">distance_between_points_meter</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">distance_between_points_meter</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Each point will be separated by </span><span class="si">{</span><span class="n">distance_between_points_meter</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">distance_between_points_meter</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Each point will be seperated by 112000 meters (112.0 km)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Each point will be separated by 112000 meters (112.0 km)
 </pre></div>
 </div>
 </div>
@@ -1183,6 +1190,24 @@ reverse bearing between coordinates = -83.57035585674933 Degrees
                   <footer class="prev-next-footer">
                     
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../foundations/terminology.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Great Circle Terminology</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="arc_to_point.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Great Circles and a Point</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                   </footer>
                 

@@ -34,7 +34,7 @@ This cookbook is broken into two main sections:
 - Foundations and Terminology
 - Working with Great Circles
 
-Where avaiable, this cookbook will demonstrate how to determine the features of a great circle with both existing open-source Python packages and through spherical trigonometry and mathematics
+Where available, this cookbook will demonstrate how to determine the features of a great circle with both existing open-source Python packages and through spherical trigonometry and mathematics
 
 ### Foundations and Terminology
 
@@ -66,7 +66,7 @@ Each section will make use of plotting to visually demonstrate concepts with `ma
 - Find the intersection of two great circle arcs (if it exists)
 - Find the intersection of two great circle paths (always exists)
 
-5. **Angles and Great Cirlces**
+5. **Angles and Great Circles**
 - Calculate the acute and obtuse angle of two great circle paths
 - Calculate the directed angle of two great circle paths based on an intersection point
 - Working with Spherical Triangles formed by great circle arcs

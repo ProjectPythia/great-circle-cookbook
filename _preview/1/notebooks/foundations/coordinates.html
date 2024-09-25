@@ -75,6 +75,8 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Great Circle Terminology" href="terminology.html" />
+    <link rel="prev" title="How to Cite This Cookbook" href="../how-to-cite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
     <meta name="docbuild:last-update" content="25 September 2024"/>
@@ -232,8 +234,6 @@
         
         
         
-          
-        
         <div class="bd-sidebar-primary bd-sidebar">
           
 
@@ -368,9 +368,16 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Coordinate Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminology.html">Great Circle Terminology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../notebook-template.html">Project Pythia Notebook Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/arc_path.html">Great Circle Arcs and Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/arc_to_point.html">Great Circles and a Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallels_max_min.html">Great Circles and Parallels</a></li>
 </ul>
 
     </div>
@@ -456,7 +463,7 @@
 </section>
 <section id="cartesian-coordinates">
 <h3>Cartesian Coordinates<a class="headerlink" href="#cartesian-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Cartesian coordinates describe points in space based on perpendicular axis lines that meet at a singlle point of orign, where any point’s position is described based on the distance to the orgin along xyz axis</p>
+<p>Cartesian coordinates describe points in space based on perpendicular axis lines that meet at a singlle point of origin, where any point’s position is described based on the distance to the origin along xyz axis</p>
 <p><strong>Geodesic to Cartesian Coordinates</strong></p>
 <p>Assuming the earth’s radius is 6378137 meters</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
@@ -467,7 +474,7 @@
 </section>
 <section id="spherical-coordinates">
 <h3>Spherical Coordinates<a class="headerlink" href="#spherical-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Spherical coordinates describe points in space based on three values: radial distance (rho, r) along the radial line between point and the origin, polar angle (theta, θ) between the radial line and the polar axis, and azimuth angle (phi, φ) which is the angle of rotation of the radial line around the polar axis. With a fixed radius, the 3-point coordinates (r, θ, φ) provide a coordiante along a sphere</p>
+<p>Spherical coordinates describe points in space based on three values: radial distance (rho, r) along the radial line between point and the origin, polar angle (theta, θ) between the radial line and the polar axis, and azimuth angle (phi, φ) which is the angle of rotation of the radial line around the polar axis. With a fixed radius, the 3-point coordinates (r, θ, φ) provide a coordinate along a sphere</p>
 <ul class="simple">
 <li><p>Radial distance: distance from center to surface of sphere</p></li>
 <li><p>Polar angle: angle between radial line and polar axis</p></li>
@@ -1198,6 +1205,24 @@
                   <footer class="prev-next-footer">
                     
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../how-to-cite.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">How to Cite This Cookbook</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="terminology.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Great Circle Terminology</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                   </footer>
                 
