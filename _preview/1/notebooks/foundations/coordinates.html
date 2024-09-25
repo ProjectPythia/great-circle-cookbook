@@ -408,17 +408,13 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>If you have an introductory paragraph, lead with it here! Keep it short and tied to your material, then be sure to continue into the required list of topics below,</p>
 <ol class="arabic simple">
-<li><p>This is a numbered list of the specific topics</p></li>
-<li><p>These should map approximately to your main sections of content</p></li>
-<li><p>Or each second-level, <code class="docutils literal notranslate"><span class="pre">##</span></code>, header in your notebook</p></li>
-<li><p>Keep the size and scope of your notebook in check</p></li>
-<li><p>And be sure to let the reader know up front the important concepts they’ll be leaving with</p></li>
+<li><p>Types of Coordinates</p></li>
+<li><p>Convert Coordinates to All Coordinate Types</p></li>
+<li><p>Plot Coordinates on a World Map</p></li>
 </ol>
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>This section was inspired by <a class="reference external" href="https://github.com/alan-turing-institute/the-turing-way/blob/master/book/templates/chapter-template/chapter-landing-page.md">this template</a> of the wonderful <a class="reference external" href="https://the-turing-way.netlify.app">The Turing Way</a> Jupyter Book.</p>
-<p>Following your overview, tell your reader what concepts, packages, or other background information they’ll <strong>need</strong> before learning your material. Tie this explicitly with links to other pages here in Foundations or to relevant external resources. Remove this body text, then populate the Markdown table, denoted in this cell with <code class="docutils literal notranslate"><span class="pre">|</span></code> vertical brackets, below, and fill out the information following. In this table, lay out prerequisite concepts by explicitly linking to other Foundations material or external resources, or describe generally helpful concepts.</p>
 <p>Label the importance of each concept explicitly as <strong>helpful/necessary</strong>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -428,41 +424,40 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Numpy</a></p></td>
 <td><p>Necessary</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/data-formats/netcdf-cf.html">Understanding of NetCDF</a></p></td>
-<td><p>Helpful</p></td>
-<td><p>Familiarity with metadata structure</p></td>
-</tr>
-<tr class="row-even"><td><p>Project management</p></td>
-<td><p>Helpful</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Pandas</a></p></td>
+<td><p>Necessary</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Will be used for plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Will be used for plotting</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <ul class="simple">
-<li><p><strong>Time to learn</strong>: estimate in minutes. For a rough idea, use 5 mins per subsection, 10 if longer; add these up for a total. Safer to round up and overestimate.</p></li>
-<li><p><strong>System requirements</strong>:</p>
-<ul>
-<li><p>Populate with any system, version, or non-Python software requirements if necessary</p></li>
-<li><p>Otherwise use the concepts table above and the Imports section below to describe required packages as necessary</p></li>
-<li><p>If no extra requirements, remove the <strong>System requirements</strong> point altogether</p></li>
-</ul>
-</li>
+<li><p><strong>Time to learn</strong>: 20 minutes</p></li>
 </ul>
 </section>
 <hr class="docutils" />
+<section id="types-of-coordinates">
+<h2>Types of Coordinates<a class="headerlink" href="#types-of-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="geodesic-coordinates">
-<h2>Geodesic Coordinates<a class="headerlink" href="#geodesic-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<h3>Geodesic Coordinates<a class="headerlink" href="#geodesic-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>TODO</p>
 </section>
 <section id="cartesian-coordinates">
-<h2>Cartesian Coordinates<a class="headerlink" href="#cartesian-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<h3>Cartesian Coordinates<a class="headerlink" href="#cartesian-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Cartesian coordinates describe points in space based on perpendicular axis lines that meet at a singlle point of orign, where any point’s position is described based on the distance to the orgin along xyz axis</p>
-<section id="geodesic-to-cartesian-coordinates">
-<h3>Geodesic to Cartesian Coordinates<a class="headerlink" href="#geodesic-to-cartesian-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p><strong>Geodesic to Cartesian Coordinates</strong></p>
 <p>Assuming the earth’s radius is 6378137 meters</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
@@ -470,9 +465,8 @@
 </pre></div>
 </div>
 </section>
-</section>
 <section id="spherical-coordinates">
-<h2>Spherical Coordinates<a class="headerlink" href="#spherical-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<h3>Spherical Coordinates<a class="headerlink" href="#spherical-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Spherical coordinates describe points in space based on three values: radial distance (rho, r) along the radial line between point and the origin, polar angle (theta, θ) between the radial line and the polar axis, and azimuth angle (phi, φ) which is the angle of rotation of the radial line around the polar axis. With a fixed radius, the 3-point coordinates (r, θ, φ) provide a coordiante along a sphere</p>
 <ul class="simple">
 <li><p>Radial distance: distance from center to surface of sphere</p></li>
@@ -484,8 +478,10 @@
 </p>
 <p>Image Source: <a class="reference external" href="https://simple.wikipedia.org/wiki/Spherical_coordinate_system">Wikipedia - Spherical Coordinate System</a></p>
 </section>
+</section>
 <section id="polar-coordinates">
 <h2>Polar Coordinates<a class="headerlink" href="#polar-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>TODO</p>
 </section>
 <section id="convert-coordinates-to-all-coordinate-types">
 <h2>Convert Coordinates to All Coordinate Types<a class="headerlink" href="#convert-coordinates-to-all-coordinate-types" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -1061,8 +1057,10 @@
 </div>
 </section>
 </section>
-<section id="plot-points-on-map">
-<h2>Plot Points on Map<a class="headerlink" href="#plot-points-on-map" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<section id="plot-coordinates-on-a-world-map">
+<h2>Plot Coordinates on a World Map<a class="headerlink" href="#plot-coordinates-on-a-world-map" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<section id="imports">
+<h3>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1071,6 +1069,9 @@
 </div>
 </div>
 </div>
+</section>
+<section id="world-map">
+<h3>World Map<a class="headerlink" href="#world-map" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up world map plot</span>
@@ -1109,6 +1110,9 @@
 <img alt="../../_images/afc4ef818e465ecaf4ed58a1656062c86fe9bd3ede360e0d8f191d7d828ff4d4.png" src="../../_images/afc4ef818e465ecaf4ed58a1656062c86fe9bd3ede360e0d8f191d7d828ff4d4.png" />
 </div>
 </div>
+</section>
+<section id="united-states-map">
+<h3>United States Map<a class="headerlink" href="#united-states-map" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up United States map plot</span>
@@ -1148,26 +1152,19 @@
 </div>
 </div>
 </section>
+</section>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Add one final <code class="docutils literal notranslate"><span class="pre">---</span></code> marking the end of your body of content, and then conclude with a brief single paragraph summarizing at a high level the key pieces that were learned and how they tied to your objectives. Look to reiterate what the most important takeaways were.</p>
+<p>Coordinates on the Earth are measured in many different types of coordinate systems: Geodesic (latitude/longitude), cartesian, spherical, and polar. These coordinates will make future calculations simpler by converting a 2D coordinate like latitude/longitude into a 3D space that can be used for vector calculations</p>
+<p>In Python, coordinates can be mapped on to a world map via Matploblib and Cartopy</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Let Jupyter book tie this to the next (sequential) piece of content that people could move on to down below and in the sidebar. However, if this page uniquely enables your reader to tackle other nonsequential concepts throughout this book, or even external content, link to it here!</p>
+<p>Great Circle arcs and paths</p>
 </section>
 </section>
 <section id="resources-and-references">
 <h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Finally, be rigorous in your citations and references as necessary. Give credit where credit is due. Also, feel free to link to relevant external material, further reading, documentation, etc. Then you’re done! Give yourself a quick review, a high five, and send us a pull request. A few final notes:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Kernel</span> <span class="pre">&gt;</span> <span class="pre">Restart</span> <span class="pre">Kernel</span> <span class="pre">and</span> <span class="pre">Run</span> <span class="pre">All</span> <span class="pre">Cells...</span></code> to confirm that your notebook will cleanly run from start to finish</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kernel</span> <span class="pre">&gt;</span> <span class="pre">Restart</span> <span class="pre">Kernel</span> <span class="pre">and</span> <span class="pre">Clear</span> <span class="pre">All</span> <span class="pre">Outputs...</span></code> before committing your notebook, our machines will do the heavy lifting</p></li>
-<li><p>Take credit! Provide author contact information if you’d like; if so, consider adding information here at the bottom of your notebook</p></li>
-<li><p>Give credit! Attribute appropriate authorship for referenced code, information, images, etc.</p></li>
-<li><p>Only include what you’re legally allowed: <strong>no copyright infringement or plagiarism</strong></p></li>
-</ul>
-<p>Thank you for your contribution!</p>
 </section>
 </section>
 
@@ -1220,19 +1217,24 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geodesic-coordinates">Geodesic Coordinates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-coordinates">Cartesian Coordinates</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geodesic-to-cartesian-coordinates">Geodesic to Cartesian Coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-coordinates">Types of Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geodesic-coordinates">Geodesic Coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-coordinates">Cartesian Coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical Coordinates</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical Coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-coordinates">Polar Coordinates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-coordinates-to-all-coordinate-types">Convert Coordinates to All Coordinate Types</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-coordinates-of-cities">Display Coordinates of Cities</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-columns-for-additional-coordinate-types">Add Columns for Additional Coordinate Types</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-points-on-map">Plot Points on Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-coordinates-on-a-world-map">Plot Coordinates on a World Map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#world-map">World Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#united-states-map">United States Map</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
 </ul>
