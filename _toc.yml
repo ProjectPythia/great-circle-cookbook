@@ -6,8 +6,8 @@ parts:
       - file: notebooks/how-to-cite
   - caption: Foundations
     chapters:
-      - file: notebooks/foundations/coordinates
       - file: notebooks/foundations/terminology
+      - file: notebooks/foundations/coordinates
   - caption: Tutorials
     chapters:
       - file: notebooks/tutorials/arc_path
