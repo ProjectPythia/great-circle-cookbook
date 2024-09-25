@@ -46,32 +46,32 @@ Each section will make use of plotting to visually demonstrate concepts with `ma
 
 ### Working with Great Circles
 
-1. Great Circle Arcs and Paths
+1. **Great Circle Arcs and Paths**
 - Generating a great circle arc and path
 - Midpoint (and additional intermediate points) of a great circle arc
 - Length of a great circle arc (the distance between two points)
 - Bearing of a great circle arc
 - Compare great circle arc to rhumb line
 
-2. Great Circles and a Point
+2. **Great Circles and a Point**
 - Determine the distance of a point to a great circle arc
 - Determine the distance of a point to a great circle path
 - Determine if a point lies on a great circle arc and path (with and without tolerances)
 
-3. Great Circles and Parallels
+3. **Great Circles and Parallels**
 - Determine the maximum and minimum latitude coordinates along a great circle path
 - Determine when a great circle path crosses parallels
 
-4. Intersections of Great Circles
+4. **Intersections of Great Circles**
 - Find the intersection of two great circle arcs (if it exists)
 - Find the intersection of two great circle paths (always exists)
 
-5. Angles and Great Cirlces
+5. **Angles and Great Cirlces**
 - Calculate the acute and obtuse angle of two great circle paths
 - Calculate the directed angle of two great circle paths based on an intersection point
 - Working with Spherical Triangles formed by great circle arcs
 
-6. Indiana Jones and the Great Circle
+6. **Indiana Jones and the Great Circle**
 - Working Example
 
 ## Running the Notebooks
