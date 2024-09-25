@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Great Circle Arc and Path &#8212; Project Pythia Cookbook Template</title>
+    <title>Great Circle Arcs and Path &#8212; Project Pythia Cookbook Template</title>
   
   
   
@@ -71,15 +71,13 @@
                 gtag('config', 'G-T52X8HNYE8');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/tutorials/great_circle_arc_path';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="23 September 2024"/>
+    <meta name="docbuild:last-update" content="25 September 2024"/>
   </head>
   
   
@@ -403,12 +401,12 @@
                   <article class="bd-article">
                     
   <p><img alt="Indiana Jones Plane Flying Gif" src="https://j.gifs.com/vO2k6P.gif" /></img></p>
-<section class="tex2jax_ignore mathjax_ignore" id="great-circle-arc-and-path">
-<h1>Great Circle Arc and Path<a class="headerlink" href="#great-circle-arc-and-path" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="great-circle-arcs-and-path">
+<h1>Great Circle Arcs and Path<a class="headerlink" href="#great-circle-arcs-and-path" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>If you have an introductory paragraph, lead with it here! Keep it short and tied to your material, then be sure to continue into the required list of topics below,</p>
+<p>Great circles are circles that circumnavigate the globe</p>
 <ol class="arabic simple">
 <li><p>Determine the Length/Distance of a Great Circle Arc</p></li>
 <li><p>Determine the Bearing of a Great Circle Arc</p></li>
@@ -420,9 +418,6 @@
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>This section was inspired by <a class="reference external" href="https://github.com/alan-turing-institute/the-turing-way/blob/master/book/templates/chapter-template/chapter-landing-page.md">this template</a> of the wonderful <a class="reference external" href="https://the-turing-way.netlify.app">The Turing Way</a> Jupyter Book.</p>
-<p>Following your overview, tell your reader what concepts, packages, or other background information they’ll <strong>need</strong> before learning your material. Tie this explicitly with links to other pages here in Foundations or to relevant external resources. Remove this body text, then populate the Markdown table, denoted in this cell with <code class="docutils literal notranslate"><span class="pre">|</span></code> vertical brackets, below, and fill out the information following. In this table, lay out prerequisite concepts by explicitly linking to other Foundations material or external resources, or describe generally helpful concepts.</p>
-<p>Label the importance of each concept explicitly as <strong>helpful/necessary</strong>.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Concepts</p></th>
@@ -431,46 +426,39 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Numpy</a></p></td>
 <td><p>Necessary</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/data-formats/netcdf-cf.html">Understanding of NetCDF</a></p></td>
-<td><p>Helpful</p></td>
-<td><p>Familiarity with metadata structure</p></td>
-</tr>
-<tr class="row-even"><td><p>Project management</p></td>
-<td><p>Helpful</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Pandas</a></p></td>
+<td><p>Necessary</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Will be used for plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Will be used for plotting</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <ul class="simple">
-<li><p><strong>Time to learn</strong>: estimate in minutes. For a rough idea, use 5 mins per subsection, 10 if longer; add these up for a total. Safer to round up and overestimate.</p></li>
-<li><p><strong>System requirements</strong>:</p>
-<ul>
-<li><p>Populate with any system, version, or non-Python software requirements if necessary</p></li>
-<li><p>Otherwise use the concepts table above and the Imports section below to describe required packages as necessary</p></li>
-<li><p>If no extra requirements, remove the <strong>System requirements</strong> point altogether</p></li>
-</ul>
-</li>
+<li><p><strong>Time to learn</strong>: 40 minutes</p></li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Begin your body of content with another <code class="docutils literal notranslate"><span class="pre">---</span></code> divider before continuing into this section, then remove this body text and populate the following code cell with all necessary Python imports <strong>up-front</strong>:</p>
-<p>as well <span class="math notranslate nohighlight">\(m = a * t / h\)</span> text! Similarly, you have access to other <span class="math notranslate nohighlight">\(\LaTeX\)</span> equation <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Typesetting%20Equations.html"><strong>functionality</strong></a> via MathJax (demo below from link),</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e8c80c7c-e2a2-41ae-8ef7-93058fd19286">
-<span class="eqno">()<a class="headerlink" href="#equation-e8c80c7c-e2a2-41ae-8ef7-93058fd19286" title="Permalink to this equation"><i class="fas fa-link"></i></a></span>\[\begin{align}
-\dot{x} &amp; = \sigma(y-x) \\
-\dot{y} &amp; = \rho x - y - xz \\
-\dot{z} &amp; = -\beta z + xy
-\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>       <span class="c1"># reading in data for location information from text file</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>        <span class="c1"># working with arrays, vectors, cross/dot products, and radians</span>
+
+<span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>   <span class="c1"># working with the Earth as an ellipsod (WGS-84)</span>
+<span class="kn">import</span> <span class="nn">geopy.distance</span>     <span class="c1"># working wtih the Earth as an ellipsod</span>
 </pre></div>
 </div>
 </div>
@@ -616,8 +604,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">pyproj</span></code> accounts for different ellipsoids like <code class="docutils literal notranslate"><span class="pre">WGS-84</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>
-<span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -775,9 +762,7 @@ reverse bearing between coordinates = -83.57035585674933 Degrees
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopy.distance</span>
-
-<span class="k">def</span> <span class="nf">interpolate_points_along_gc</span><span class="p">(</span><span class="n">lat_start</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">interpolate_points_along_gc</span><span class="p">(</span><span class="n">lat_start</span><span class="p">,</span>
                                 <span class="n">lon_start</span><span class="p">,</span>
                                 <span class="n">lat_end</span><span class="p">,</span>
                                 <span class="n">lon_end</span><span class="p">,</span>
@@ -985,13 +970,6 @@ reverse bearing between coordinates = -83.57035585674933 Degrees
 <section id="generate-a-great-circle-path">
 <h3>Generate a Great Circle Path<a class="headerlink" href="#generate-a-great-circle-path" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Get points on the Great Cricle defined by two points</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
@@ -1501,7 +1479,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 23 September 2024.
+  Last updated on 25 September 2024.
   <br/>
 </p>
   </div>
@@ -1555,7 +1533,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 23 September 2024.
+          Last updated on 25 September 2024.
         </p>
       </div>
     </div>
