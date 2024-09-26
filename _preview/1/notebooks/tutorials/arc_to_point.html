@@ -419,7 +419,6 @@
 <ol class="arabic simple">
 <li><p>Determine the distance of a point to a great circle arc</p></li>
 <li><p>Determine the distance of a point to a great circle path</p></li>
-<li><p>Intermediate points along an arc/path</p></li>
 <li><p>Determine if a point lies on a great circle arc and path (with/without tolerances)</p></li>
 </ol>
 </section>
@@ -824,32 +823,32 @@ lon_D-lon_B or lon_B-lon_D, respectively</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct_distance</span> <span class="o">=</span> <span class="n">cross_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct_distance</span> <span class="o">=</span> <span class="n">cross_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">ct_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">ct_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)&quot;</span><span class="p">)</span>
 
-<span class="n">at_distance</span> <span class="o">=</span> <span class="n">along_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">)</span>
+<span class="n">at_distance</span> <span class="o">=</span> <span class="n">along_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Along Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">at_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">at_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="n">closest_point</span> <span class="o">=</span> <span class="n">point_along_path</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">at_distance</span><span class="p">)</span>
+<span class="n">closest_point</span> <span class="o">=</span> <span class="n">point_along_path</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="n">at_distance</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closest Point To Point Along Great Circle Path:</span><span class="se">\n</span><span class="si">{</span><span class="n">closest_point</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
 
-<span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span>
-                 <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;houston&quot;</span><span class="p">,</span> 
+<span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;greenwich&quot;</span><span class="p">,</span>
+                 <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> 
                  <span class="n">closest_point</span><span class="o">=</span><span class="n">closest_point</span><span class="p">,</span> <span class="n">cross_track_distance</span><span class="o">=</span><span class="n">ct_distance</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross Track Distance: 
-1341307.177613134 meters (1341.307177613134 km)
+1524404.292850109 meters (1524.404292850109 km)
 Along Track Distance: 
-643895.2891543384 meters (643.8952891543385 km)
+2446670.633222115 meters (2446.670633222115 km)
 
 Closest Point To Point Along Great Circle Path:
-(41.42753202293845, -97.8762203127258)
+(54.55029102855308, -80.58076564323979)
 </pre></div>
 </div>
-<img alt="../../_images/c839b77585fb99a02381a22037c6ce6437513bf7c43df2394b3b2ad9aa4479e9.png" src="../../_images/c839b77585fb99a02381a22037c6ce6437513bf7c43df2394b3b2ad9aa4479e9.png" />
+<img alt="../../_images/d3fc0c2abce323690a3b858523925eab3b4ebe655073f59a9b0160e5029743f8.png" src="../../_images/d3fc0c2abce323690a3b858523925eab3b4ebe655073f59a9b0160e5029743f8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -880,6 +879,101 @@ Closest Point To Point Along Great Circle Path:
 </pre></div>
 </div>
 <img alt="../../_images/4c7a18317f1c7b741a90f8109f3a2eb082bd8dfe9c7891c295aa3d7fcfefcbc6.png" src="../../_images/4c7a18317f1c7b741a90f8109f3a2eb082bd8dfe9c7891c295aa3d7fcfefcbc6.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="determine-if-a-point-lies-on-a-great-circle-arc-and-path-with-without-tolerances">
+<h2>Determine if a point lies on a great circle arc and path (with/without tolerances)<a class="headerlink" href="#determine-if-a-point-lies-on-a-great-circle-arc-and-path-with-without-tolerances" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">determine_latitude_from_longitude</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                      <span class="n">check_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># tolerance in meters</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">check_lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">check_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">check_lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">check_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Verify not meridian (longitude passes through the poles)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lon1</span> <span class="o">-</span> <span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid inputs: start/end points are meridians&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    
+    <span class="c1"># verify not anitpodal (diametrically opposite, points)</span>
+    <span class="k">if</span> <span class="n">lat1</span> <span class="o">+</span> <span class="n">lat2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lon1</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid inputs: start/end points are antipodal&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="c1"># acccount for tolerance based on cross-track distance from arc</span>
+    <span class="n">ct_distance</span> <span class="o">=</span> <span class="n">cross_track_distance</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">,</span> <span class="n">check_point</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross-Track Distance = </span><span class="si">{</span><span class="n">ct_distance</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ct_distance</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tolerance</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># determine expected latitude</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">check_lon</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">check_lon</span><span class="o">-</span><span class="n">lon1</span><span class="p">)</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lon1</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span>
+    <span class="n">new_lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">num</span><span class="o">/</span><span class="n">den</span><span class="p">)</span>
+    <span class="n">expected_lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">new_lat</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">check_lat</span> <span class="o">==</span> <span class="n">expected_lat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="check-if-a-point-lies-on-a-great-circle-arc">
+<h3>Check if a point lies on a great circle arc<a class="headerlink" href="#check-if-a-point-lies-on-a-great-circle-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">determine_latitude_from_longitude</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-Track Distance = 0.0 meters
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">determine_latitude_from_longitude</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-Track Distance = 1524404.292850109 meters
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.False_
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># increase tolerance to capture point</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tolerance = 0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">determine_latitude_from_longitude</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">tolerance &gt;= cross-track distance&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">determine_latitude_from_longitude</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">1341308</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tolerance = 0
+Cross-Track Distance = 1341307.177613134 meters
+False
+
+tolerance &gt;= cross-track distance
+Cross-Track Distance = 1341307.177613134 meters
+True
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -973,6 +1067,10 @@ Closest Point To Point Along Great Circle Path:
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-track-distance">Cross Track Distance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#along-track-distance">Along Track Distance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-points-at-intermediate-points-along-an-arc-path">Generate Points At Intermediate Points along an Arc/Path</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-a-point-lies-on-a-great-circle-arc-and-path-with-without-tolerances">Determine if a point lies on a great circle arc and path (with/without tolerances)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-if-a-point-lies-on-a-great-circle-arc">Check if a point lies on a great circle arc</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
