@@ -605,8 +605,8 @@
 </section>
 <section id="distance-between-points-on-a-great-circle-arc">
 <h2>Distance Between Points on a Great Circle Arc<a class="headerlink" href="#distance-between-points-on-a-great-circle-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<section id="determine-distance-mathematically">
-<h3>Determine Distance Mathematically<a class="headerlink" href="#determine-distance-mathematically" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="determine-distance-mathematically-via-unit-sphere">
+<h3>Determine Distance Mathematically via Unit Sphere<a class="headerlink" href="#determine-distance-mathematically-via-unit-sphere" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Distance between point A (latA, lonA) and point B (latB, lonB)</p>
 <div class="math notranslate nohighlight">
 \[d=acos(sin(latA)*sin(latB)+cos(latA)*cos(latB)*cos(lonA-lonB))\]</div>
@@ -753,18 +753,18 @@
                                      <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                      <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between coordinates (geodesic)             = </span><span class="si">{</span><span class="n">distance_meter</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
-<span class="n">distance_mathematically_default</span> <span class="o">=</span> <span class="n">distance_between_points_default</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between coordinates (mathematically)       = </span><span class="si">{</span><span class="n">distance_mathematically_default</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
-<span class="n">distance_mathematically_small</span> <span class="o">=</span> <span class="n">distance_between_points_small</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between coordinates (mathematically small) = </span><span class="si">{</span><span class="n">distance_mathematically_small</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between coordinates (geodesic)    = </span><span class="si">{</span><span class="n">distance_meter</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+<span class="n">distance_unit_sphere_default</span> <span class="o">=</span> <span class="n">distance_between_points_default</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between coordinates (unit sphere) = </span><span class="si">{</span><span class="n">distance_unit_sphere_default</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+<span class="n">distance_unit_sphere_small</span> <span class="o">=</span> <span class="n">distance_between_points_small</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between coordinates (unit sphere) = </span><span class="si">{</span><span class="n">distance_unit_sphere_small</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance between coordinates (geodesic)             = 2862.5974799145215 km
-Distance between coordinates (mathematically)       = 2858.532213639344 km
-Distance between coordinates (mathematically small) = 2858.5322136393447 km
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance between coordinates (geodesic)    = 2862.5974799145215 km
+Distance between coordinates (unit sphere) = 2858.532213639344 km
+Distance between coordinates (unit sphere) = 2858.5322136393447 km
 </pre></div>
 </div>
 </div>
@@ -774,8 +774,8 @@ Distance between coordinates (mathematically small) = 2858.5322136393447 km
 </section>
 <section id="determine-the-bearing-of-a-great-circle-arc">
 <h2>Determine the Bearing of a Great Circle Arc<a class="headerlink" href="#determine-the-bearing-of-a-great-circle-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<section id="determine-the-bearing-mathematically">
-<h3>Determine the Bearing Mathematically<a class="headerlink" href="#determine-the-bearing-mathematically" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="determine-the-bearing-mathematically-via-unit-sphere">
+<h3>Determine the Bearing Mathematically via Unit Sphere<a class="headerlink" href="#determine-the-bearing-mathematically-via-unit-sphere" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Bearing between point A (latA, lonA) and point B (latB, lonB)</p>
 <div class="math notranslate nohighlight">
 \[x = cos(latA) * sin(latB) - sin(latA) * cos(latB) * cos(lonB - lonA)\]</div>
@@ -813,15 +813,15 @@ Distance between coordinates (mathematically small) = 2858.5322136393447 km
                                      <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                      <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;forward bearing between coordinates                  = </span><span class="si">{</span><span class="n">fwd_bearing</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;forward bearing between coordinates               = </span><span class="si">{</span><span class="n">fwd_bearing</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
 <span class="n">bearing_math</span> <span class="o">=</span> <span class="n">bearing_between_points</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;forward bearing between coordinates (mathematically) = </span><span class="si">{</span><span class="n">bearing_math</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;forward bearing between coordinates (unit sphere) = </span><span class="si">{</span><span class="n">bearing_math</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>forward bearing between coordinates                  = 73.51048829569022 Degrees
-forward bearing between coordinates (mathematically) = 73.49180375272644 Degrees
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>forward bearing between coordinates               = 73.51048829569022 Degrees
+forward bearing between coordinates (unit sphere) = 73.49180375272644 Degrees
 </pre></div>
 </div>
 </div>
@@ -830,8 +830,8 @@ forward bearing between coordinates (mathematically) = 73.49180375272644 Degrees
 </section>
 <section id="generating-a-great-circle-arc-with-intermediates-points">
 <h2>Generating a Great Circle Arc with Intermediates Points<a class="headerlink" href="#generating-a-great-circle-arc-with-intermediates-points" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<section id="determine-intermediate-points-mathemetically">
-<h3>Determine Intermediate Points Mathemetically<a class="headerlink" href="#determine-intermediate-points-mathemetically" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="determine-intermediate-points-mathemetically-via-unit-sphere">
+<h3>Determine Intermediate Points Mathemetically via Unit Sphere<a class="headerlink" href="#determine-intermediate-points-mathemetically-via-unit-sphere" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Determine the points (lat, lon) a given fraction of a <a class="reference internal" href="#Determine-Distance-Mathematically"><span class="xref myst">distance (d)</span></a> between a starting points A (latA, lonA) and the final point B (latB, lonB) where f is a fraction along the great circle arc. <code class="docutils literal notranslate"><span class="pre">f=0</span></code> is point A and <code class="docutils literal notranslate"><span class="pre">f=1</span></code> is point B</p>
 <blockquote>
 <div><p>Note: The points cannot be antipodal because the path is undefined</p>
@@ -1177,11 +1177,11 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_mathematically_default</span> <span class="o">=</span> <span class="n">distance_between_points_default</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
-<span class="n">intermediate_math</span> <span class="o">=</span> <span class="n">calculate_intermediate_pts</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span>
-                                               <span class="n">fraction</span><span class="p">,</span> <span class="n">distance_mathematically_default</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">intermediate_math</span><span class="p">)</span><span class="si">}</span><span class="s2"> Total Points&quot;</span><span class="p">)</span>
-<span class="n">intermediate_math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_unit_sphere_default</span> <span class="o">=</span> <span class="n">distance_between_points_default</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
+<span class="n">intermediate_unit_sphere</span> <span class="o">=</span> <span class="n">calculate_intermediate_pts</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span>
+                                               <span class="n">fraction</span><span class="p">,</span> <span class="n">distance_unit_sphere_default</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">intermediate_unit_sphere</span><span class="p">)</span><span class="si">}</span><span class="s2"> Total Points&quot;</span><span class="p">)</span>
+<span class="n">intermediate_unit_sphere</span>
 </pre></div>
 </div>
 </div>
@@ -1206,13 +1206,13 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">lst_of_coords</span><span class="o">=</span><span class="n">intermediate_math</span><span class="p">,</span>
-                <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(Mathematically) Interpolate on Fraction </span><span class="si">{</span><span class="n">fraction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">lst_of_coords</span><span class="o">=</span><span class="n">intermediate_unit_sphere</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(Unit Sphere) Interpolate on Fraction </span><span class="si">{</span><span class="n">fraction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/53e7bbe825fe8a07232e52c27e8a199426e4340ac0e20f0f19bcef2caee7182a.png" src="../../_images/53e7bbe825fe8a07232e52c27e8a199426e4340ac0e20f0f19bcef2caee7182a.png" />
+<img alt="../../_images/e5f2c144096a2a715aead30f0f16ea1556d04db5f7dccfb2012b080ac22e3328.png" src="../../_images/e5f2c144096a2a715aead30f0f16ea1556d04db5f7dccfb2012b080ac22e3328.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1220,24 +1220,24 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare math and geodesic outputs</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intermediate_geodesic</span><span class="p">)):</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">distance_m</span> <span class="o">=</span> <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">intermediate_geodesic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">intermediate_geodesic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
-                                   <span class="n">intermediate_math</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">intermediate_math</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                                   <span class="n">intermediate_unit_sphere</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">intermediate_unit_sphere</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">distance_m</span><span class="p">):</span> <span class="n">distance_m</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between geodesic/mathematically defined point </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">distance_m</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between geodesic/unit sphere defined point </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">distance_m</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance between geodesic/mathematically defined point 0: 0 meters
-Distance between geodesic/mathematically defined point 1: 0 meters
-Distance between geodesic/mathematically defined point 2: 0 meters
-Distance between geodesic/mathematically defined point 3: 0 meters
-Distance between geodesic/mathematically defined point 4: 0 meters
-Distance between geodesic/mathematically defined point 5: 132.55154860348821 meters
-Distance between geodesic/mathematically defined point 6: 136.26443374199349 meters
-Distance between geodesic/mathematically defined point 7: 132.0972186842191 meters
-Distance between geodesic/mathematically defined point 8: 112.95654352480192 meters
-Distance between geodesic/mathematically defined point 9: 71.29186326482345 meters
-Distance between geodesic/mathematically defined point 10: 0.0 meters
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance between geodesic/unit sphere defined point 0: 0 meters
+Distance between geodesic/unit sphere defined point 1: 0 meters
+Distance between geodesic/unit sphere defined point 2: 0 meters
+Distance between geodesic/unit sphere defined point 3: 0 meters
+Distance between geodesic/unit sphere defined point 4: 0 meters
+Distance between geodesic/unit sphere defined point 5: 132.55154860348821 meters
+Distance between geodesic/unit sphere defined point 6: 136.26443374199349 meters
+Distance between geodesic/unit sphere defined point 7: 132.0972186842191 meters
+Distance between geodesic/unit sphere defined point 8: 112.95654352480192 meters
+Distance between geodesic/unit sphere defined point 9: 71.29186326482345 meters
+Distance between geodesic/unit sphere defined point 10: 0.0 meters
 </pre></div>
 </div>
 </div>
@@ -1275,12 +1275,12 @@ Midpoint = (42.48025434160511, -88.4793263654725)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_mathematically_default</span> <span class="o">=</span> <span class="n">distance_between_points_default</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
-<span class="n">intermediate_math</span> <span class="o">=</span> <span class="n">calculate_intermediate_pts</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span>
-                                               <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">distance_mathematically_default</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">intermediate_math</span><span class="p">)</span><span class="si">}</span><span class="s2"> Total Points&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">intermediate_math</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Midpoint = </span><span class="si">{</span><span class="n">intermediate_math</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance_unit_sphere_default</span> <span class="o">=</span> <span class="n">distance_between_points_default</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
+<span class="n">intermediate_unit_sphere</span> <span class="o">=</span> <span class="n">calculate_intermediate_pts</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span>
+                                               <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">distance_unit_sphere_default</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">intermediate_unit_sphere</span><span class="p">)</span><span class="si">}</span><span class="s2"> Total Points&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">intermediate_unit_sphere</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Midpoint = </span><span class="si">{</span><span class="n">intermediate_unit_sphere</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1294,15 +1294,15 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare geodesic and math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare geodesic and unit sphere</span>
 <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">distance_m</span> <span class="o">=</span> <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">intermediate_geodesic</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">intermediate_geodesic</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
-                                   <span class="n">intermediate_math</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">intermediate_math</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between geodesic/mathematically defined midpoint = </span><span class="si">{</span><span class="n">distance_m</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+                                   <span class="n">intermediate_unit_sphere</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">intermediate_unit_sphere</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between geodesic/unint sphere defined midpoint = </span><span class="si">{</span><span class="n">distance_m</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance between geodesic/mathematically defined midpoint = 132.55154860505925 meters
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance between geodesic/unint sphere defined midpoint = 132.55154860505925 meters
 </pre></div>
 </div>
 </div>
@@ -1314,7 +1314,7 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
-<span class="k">def</span> <span class="nf">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_longitude_lst</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1341,8 +1341,8 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
     <span class="c1"># generate n total number of longitude points along the great circle</span>
     <span class="c1"># https://github.com/rspatial/geosphere/blob/master/R/greatCircle.R#L18C3-L18C7</span>
     <span class="n">gc_lon_lst</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">lon</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_longitude_lst</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">new_lon</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon</span>  <span class="o">*</span> <span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="n">n_longitude_lst</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">lon</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">new_lon</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon</span>  <span class="o">*</span> <span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="n">number_of_lon_pts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span><span class="p">)</span>
         <span class="n">gc_lon_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">new_lon</span><span class="p">))</span>
 
     <span class="c1"># Intermediate points on a great circle: https://edwilliams.org/avform147.htm&quot;</span>
@@ -1426,14 +1426,14 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_pt</span> <span class="o">=</span> <span class="s2">&quot;boulder&quot;</span>
 <span class="n">end_pt</span> <span class="o">=</span> <span class="s2">&quot;boston&quot;</span>
 <span class="n">n_pts</span> <span class="o">=</span> <span class="mi">360</span>
-<span class="n">lat_lon_pts</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_pt</span><span class="p">,</span> <span class="n">end_pt</span><span class="p">,</span> <span class="n">n_longitude_lst</span><span class="o">=</span><span class="n">n_pts</span><span class="p">)</span>
+<span class="n">lat_lon_pts</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_pt</span><span class="p">,</span> <span class="n">end_pt</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="n">n_pts</span><span class="p">)</span>
 <span class="n">plot_coordinate</span><span class="p">(</span><span class="n">lat_lon_pts</span><span class="p">,</span> <span class="n">start_pt</span><span class="p">,</span> <span class="n">end_pt</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;Plot Great Circle, made from the arc </span><span class="si">{</span><span class="n">start_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">, every </span><span class="si">{</span><span class="n">n_pts</span><span class="o">/</span><span class="mi">360</span><span class="si">}</span><span class="s2"> degree along the longitude&quot;</span><span class="p">)</span>
+                <span class="sa">f</span><span class="s2">&quot;Plot Great Circle, made from the arc </span><span class="si">{</span><span class="n">start_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/21881bdf4d780ccef60e98d0c82db450281a9568584f6a891132fb5c3bfaea33.png" src="../../_images/21881bdf4d780ccef60e98d0c82db450281a9568584f6a891132fb5c3bfaea33.png" />
+<img alt="../../_images/800b56e4e42027def134021519d98316626a8d9a456d798085a283595112eb92.png" src="../../_images/800b56e4e42027def134021519d98316626a8d9a456d798085a283595112eb92.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1441,29 +1441,29 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_pt</span> <span class="o">=</span> <span class="s2">&quot;arecibo&quot;</span>
 <span class="n">end_pt</span> <span class="o">=</span> <span class="s2">&quot;greenwich&quot;</span>
 <span class="n">n_pts</span> <span class="o">=</span> <span class="mi">360</span>
-<span class="n">lat_lon_pts</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_pt</span><span class="p">,</span> <span class="n">end_pt</span><span class="p">,</span> <span class="n">n_longitude_lst</span><span class="o">=</span><span class="n">n_pts</span><span class="p">)</span>
+<span class="n">lat_lon_pts</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_pt</span><span class="p">,</span> <span class="n">end_pt</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="n">n_pts</span><span class="p">)</span>
 <span class="n">plot_coordinate</span><span class="p">(</span><span class="n">lat_lon_pts</span><span class="p">,</span> <span class="n">start_pt</span><span class="p">,</span> <span class="n">end_pt</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;Plot Great Circle, made from the arc </span><span class="si">{</span><span class="n">start_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">, every </span><span class="si">{</span><span class="n">n_pts</span><span class="o">/</span><span class="mi">360</span><span class="si">}</span><span class="s2"> degree along the longitude&quot;</span><span class="p">)</span>
+                <span class="sa">f</span><span class="s2">&quot;Plot Great Circle, made from the arc </span><span class="si">{</span><span class="n">start_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3de6196f09a0309200e4be69f5716a539b1d20020e1f149730c98d9d77c30d55.png" src="../../_images/3de6196f09a0309200e4be69f5716a539b1d20020e1f149730c98d9d77c30d55.png" />
+<img alt="../../_images/4e7fc12cbf9d51fd4c79e7fb4fa020a75d617b3f92c252216e79578729d03eca.png" src="../../_images/4e7fc12cbf9d51fd4c79e7fb4fa020a75d617b3f92c252216e79578729d03eca.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_pt</span> <span class="o">=</span> <span class="s2">&quot;zambezi&quot;</span>
 <span class="n">end_pt</span> <span class="o">=</span> <span class="s2">&quot;svalbard&quot;</span>
-<span class="n">n_pts</span> <span class="o">=</span> <span class="mi">90</span>
-<span class="n">lat_lon_pts</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_pt</span><span class="p">,</span> <span class="n">end_pt</span><span class="p">,</span> <span class="n">n_longitude_lst</span><span class="o">=</span><span class="n">n_pts</span><span class="p">)</span>
+<span class="n">n_pts</span> <span class="o">=</span> <span class="mi">360</span>
+<span class="n">lat_lon_pts</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_pt</span><span class="p">,</span> <span class="n">end_pt</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="n">n_pts</span><span class="p">)</span>
 <span class="n">plot_coordinate</span><span class="p">(</span><span class="n">lat_lon_pts</span><span class="p">,</span> <span class="n">start_pt</span><span class="p">,</span> <span class="n">end_pt</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;Plot Great Circle, made from the arc </span><span class="si">{</span><span class="n">start_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">, every </span><span class="si">{</span><span class="n">n_pts</span><span class="o">/</span><span class="mi">360</span><span class="si">}</span><span class="s2"> degree along the longitude&quot;</span><span class="p">)</span>
+                <span class="sa">f</span><span class="s2">&quot;Plot Great Circle, made from the arc </span><span class="si">{</span><span class="n">start_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end_pt</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c2282640d530dc6958b2231c575f5ea630ab9ce4dd216b998b6c1741979f52f5.png" src="../../_images/c2282640d530dc6958b2231c575f5ea630ab9ce4dd216b998b6c1741979f52f5.png" />
+<img alt="../../_images/a8eece87567dd396b29cffd6a985775985da5fa6f4cf3fe6d06f4d5f1f477d53.png" src="../../_images/a8eece87567dd396b29cffd6a985775985da5fa6f4cf3fe6d06f4d5f1f477d53.png" />
 </div>
 </div>
 </section>
@@ -1550,17 +1550,17 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-between-points-on-a-great-circle-arc">Distance Between Points on a Great Circle Arc</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-mathematically">Determine Distance Mathematically</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-mathematically-via-unit-sphere">Determine Distance Mathematically via Unit Sphere</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-points-via-python-package-pyproj">Determine Distance Points via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-of-a-great-circle-arc">Determine the Bearing of a Great Circle Arc</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-mathematically">Determine the Bearing Mathematically</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-mathematically-via-unit-sphere">Determine the Bearing Mathematically via Unit Sphere</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-via-python-package-pyproj">Determine the Bearing via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-a-great-circle-arc-with-intermediates-points">Generating a Great Circle Arc with Intermediates Points</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-intermediate-points-mathemetically">Determine Intermediate Points Mathemetically</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-intermediate-points-mathemetically-via-unit-sphere">Determine Intermediate Points Mathemetically via Unit Sphere</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-intermediate-points-via-python-package-pyproj-and-geopy">Determine Intermediate Points via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code> and <code class="docutils literal notranslate"><span class="pre">geopy</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-arcs-as-points-on-a-world-map">Plot Arcs as Points on a World Map</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolate-with-n-total-equally-spaced-points">Interpolate with N Total Equally Spaced Points</a></li>
