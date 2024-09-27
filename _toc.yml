@@ -13,3 +13,4 @@ parts:
       - file: notebooks/tutorials/arc_path
       - file: notebooks/tutorials/arc_to_point
       - file: notebooks/tutorials/parallels_max_min
+      - file: notebooks/tutorials/path_intersection
