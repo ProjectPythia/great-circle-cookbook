@@ -81,7 +81,7 @@
     <link rel="prev" title="Coordinate Types" href="../foundations/coordinates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="26 September 2024"/>
+    <meta name="docbuild:last-update" content="27 September 2024"/>
   </head>
   
   
@@ -424,6 +424,7 @@
 <li><p>Determine the Midpoint of a Great Circle Arc</p></li>
 <li><p>Compare Great Circle Arc to Rhumb Line (TODO)</p></li>
 <li><p>Generate a Great Circle Path</p></li>
+<li><p>Antipodal point (TODO)</p></li>
 </ol>
 </section>
 <section id="prerequisites">
@@ -646,6 +647,18 @@
 </div>
 </div>
 </div>
+</section>
+<section id="haversine-todo">
+<h3>Haversine (TODO)<a class="headerlink" href="#haversine-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="vincenty-sphere-great-circle-distance-todo">
+<h3>Vincenty Sphere Great Circle Distance (TODO)<a class="headerlink" href="#vincenty-sphere-great-circle-distance-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="vincenty-ellipsoid-great-circle-distance-todo">
+<h3>Vincenty Ellipsoid Great Circle Distance (TODO)<a class="headerlink" href="#vincenty-ellipsoid-great-circle-distance-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+</section>
+<section id="meeus-great-circle-distance-todo">
+<h3>Meeus Great Circle Distance (TODO)<a class="headerlink" href="#meeus-great-circle-distance-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 </section>
 <section id="determine-distance-points-via-python-package-pyproj">
 <h3>Determine Distance Points via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code><a class="headerlink" href="#determine-distance-points-via-python-package-pyproj" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
@@ -1314,7 +1327,7 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
-<span class="k">def</span> <span class="nf">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="mi">360</span><span class="p">):</span>
     <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1329,7 +1342,6 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
         <span class="k">for</span> <span class="n">lat</span> <span class="ow">in</span> <span class="n">meridian_lat</span><span class="p">:</span>
             <span class="n">meridians</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lat</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">meridians</span>
-        
 
     <span class="c1"># verify not anitpodal (diametrically opposite, points)</span>
     <span class="k">if</span> <span class="n">lat1</span> <span class="o">+</span> <span class="n">lat2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lon1</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">:</span>
@@ -1467,6 +1479,85 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 </div>
 </div>
 </section>
+<section id="antipodal-point">
+<h2>Antipodal point<a class="headerlink" href="#antipodal-point" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Antipodal is the point on the globe that is on the exact opposite side of the Earth</p>
+<p>Antipodal latitude is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\text{antipodal latitude} = -1 * \text{latitude}\]</div>
+<p>Antipodal longitude is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\text{anitpodal longitude} = (\text{longitude} + 180) \text{ if longitude} \le 0\]</div>
+<div class="math notranslate nohighlight">
+\[\text{anitpodal longitude} = (\text{longitude} - 180) \text{ if longitude} \gt 0\]</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.antipodesmap.com/">Antipodes Map</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">antipodal</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">anti_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ref_lon</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">ref_lon</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">anti_lon</span> <span class="o">=</span> <span class="n">ref_lon</span> <span class="o">-</span> <span class="mi">180</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">anti_lon</span> <span class="o">=</span> <span class="n">ref_lon</span> <span class="o">+</span> <span class="mi">180</span>
+    <span class="c1">#if anti_lon &gt;= 180:</span>
+    <span class="c1">#    anti_lon = -1 * (anti_lon % 180)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">anti_lat</span><span class="p">,</span> <span class="n">anti_lon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_antipodal</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">lat1</span> <span class="o">+</span> <span class="n">lat2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lon1</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-40.015), np.float64(74.7295))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;svalbard&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-77.875), np.float64(-159.0248))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;cairo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-30.0444), np.float64(-148.7643))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -1551,6 +1642,10 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-between-points-on-a-great-circle-arc">Distance Between Points on a Great Circle Arc</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-mathematically-via-unit-sphere">Determine Distance Mathematically via Unit Sphere</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#haversine-todo">Haversine (TODO)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vincenty-sphere-great-circle-distance-todo">Vincenty Sphere Great Circle Distance (TODO)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vincenty-ellipsoid-great-circle-distance-todo">Vincenty Ellipsoid Great Circle Distance (TODO)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meeus-great-circle-distance-todo">Meeus Great Circle Distance (TODO)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-points-via-python-package-pyproj">Determine Distance Points via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code></a></li>
 </ul>
 </li>
@@ -1572,6 +1667,7 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-midpoint-of-a-great-circle-arc">Determine the Midpoint of a Great Circle Arc</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-great-circle-path">Generate a Great Circle Path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#antipodal-point">Antipodal point</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
 </ul>
@@ -1819,7 +1915,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 26 September 2024.
+  Last updated on 27 September 2024.
   <br/>
 </p>
   </div>
@@ -1873,7 +1969,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 26 September 2024.
+          Last updated on 27 September 2024.
         </p>
       </div>
     </div>
