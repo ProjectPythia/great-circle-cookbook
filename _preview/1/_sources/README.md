@@ -64,8 +64,8 @@ Each section will make use of plotting to visually demonstrate concepts with `ma
 - Determine when a great circle path crosses parallels
 
 4. **Intersections of Great Circles**
-- Find the intersection of two great circle arcs (if it exists)
 - Find the intersection of two great circle paths (always exists)
+- Find the intersection of two great circle arcs (if it exists)
 
 5. **Angles and Great Circles**
 - Calculate the acute and obtuse angle of two great circle paths
