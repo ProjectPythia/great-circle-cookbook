@@ -52,6 +52,7 @@ Each section will make use of plotting to visually demonstrate concepts with `ma
 - Length of a great circle arc (the distance between two points)
 - Bearing of a great circle arc
 - Compare great circle arc to rhumb line
+- Antipodal point
 
 2. **Great Circles and a Point**
 - Determine the distance of a point to a great circle arc
@@ -69,10 +70,18 @@ Each section will make use of plotting to visually demonstrate concepts with `ma
 5. **Angles and Great Circles**
 - Calculate the acute and obtuse angle of two great circle paths
 - Calculate the directed angle of two great circle paths based on an intersection point
+- Determine directed angle between great circle and intersection point
+- Determine clockwise/counterclockwise ordering of points on spherical polygon
 - Working with Spherical Triangles formed by great circle arcs
 
 6. **Indiana Jones and the Great Circle**
 - Working Example
+
+7. Spherical Areas
+- Permieter of spherical polygon
+- Area of quadrilateral patch on a unit sphere
+- Area of triangular patch
+- Mean center of spherical polygon
 
 ## Running the Notebooks
 
