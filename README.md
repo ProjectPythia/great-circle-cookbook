@@ -72,8 +72,9 @@ Each section will make use of plotting to visually demonstrate concepts with `ma
 - Calculate the directed angle of two great circle paths based on an intersection point
 - Working with Spherical Triangles formed by great circle arcs
 
-6. Spherical Polygons and Areas
+6. **Spherical Polygons and Areas**
 - Determine clockwise/counterclockwise ordering of points on spherical polygon
+- Determine if a given point is within a spherical polygon
 - Permieter of spherical polygon
 - Area of quadrilateral patch on a unit sphere
 - Area of triangular patch
