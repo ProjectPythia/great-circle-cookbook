@@ -422,8 +422,8 @@
 <p>Determine the calculations of a spherical polygons based on a unit sphere</p>
 <ol class="arabic simple">
 <li><p>Determine clockwise/counterclockwise ordering of points on spherical polygon</p></li>
-<li><p>Determine if a given point is within a spherical polygon</p></li>
 <li><p>Area and Permieter of quadrilateral patch on a unit sphere</p></li>
+<li><p>Determine if a given point is within a spherical polygon</p></li>
 <li><p>Mean center of spherical polygon (TODO)</p></li>
 </ol>
 </section>
@@ -469,7 +469,9 @@
 <span class="c1">#import numpy as np        # working with arrays, vectors, cross/dot products, and radians</span>
 
 <span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>   <span class="c1"># working with the Earth as an ellipsod (WGS-84)</span>
-<span class="c1">#import geopy.distance     # working with the Earth as an ellipsod</span>
+
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry.polygon</span> <span class="kn">import</span> <span class="n">Polygon</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                        <span class="c1"># plotting a graph</span>
 <span class="kn">from</span> <span class="nn">cartopy</span> <span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span><span class="p">,</span> <span class="n">feature</span> <span class="k">as</span> <span class="n">cfeature</span>   <span class="c1"># plotting a world map</span>
@@ -765,7 +767,7 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
     <span class="n">area</span><span class="p">,</span> <span class="n">perimeter</span> <span class="o">=</span> <span class="n">area_of_polygon_projection</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area = </span><span class="si">{</span><span class="n">area</span><span class="si">}</span><span class="s2"> km^2, Perimter = </span><span class="si">{</span><span class="n">perimeter</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Roughly </span><span class="si">{</span><span class="p">(</span><span class="n">area</span><span class="o">/</span><span class="mi">509600000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the Earth&#39;s Surface&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -777,12 +779,14 @@
                                              <span class="s2">&quot;arecibo&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perimeter = </span><span class="si">{</span><span class="n">perimeter</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area = </span><span class="si">{</span><span class="n">area</span><span class="si">}</span><span class="s2"> km^2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Roughly </span><span class="si">{</span><span class="p">(</span><span class="n">area</span><span class="o">/</span><span class="mi">509600000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the Earth&#39;s Surface&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Perimeter = 10171.738963248145 km
 Area = 5342585.6476998255 km^2
+Roughly 1.05% of the Earth&#39;s Surface
 </pre></div>
 </div>
 </div>
@@ -794,7 +798,7 @@ Area = 5342585.6476998255 km^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1fcdb28e3ae2cb02741404db4debeb8d6b057c4b1a13ea1e53f87d2bd8d69e9c.png" src="../../_images/1fcdb28e3ae2cb02741404db4debeb8d6b057c4b1a13ea1e53f87d2bd8d69e9c.png" />
+<img alt="../../_images/8221d282adb7962c8fa380022397c5a04002e94312ceb97ab6d512f71693854f.png" src="../../_images/8221d282adb7962c8fa380022397c5a04002e94312ceb97ab6d512f71693854f.png" />
 </div>
 </div>
 <section id="todo">
@@ -807,10 +811,97 @@ Area = 5342585.6476998255 km^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f6059318ddfaa4ee2dc4a6d19f72e34d995ac75261b78a31d2d8ae81c25dcd48.png" src="../../_images/f6059318ddfaa4ee2dc4a6d19f72e34d995ac75261b78a31d2d8ae81c25dcd48.png" />
+<img alt="../../_images/572cda1f21e0aed354df54f9b8d38174800944a270d8b3f502e3455f36c2af8a.png" src="../../_images/572cda1f21e0aed354df54f9b8d38174800944a270d8b3f502e3455f36c2af8a.png" />
 </div>
 </div>
 </section>
+</section>
+<section id="determine-if-a-given-point-is-within-a-spherical-polygon">
+<h2>Determine if a given point is within a spherical polygon<a class="headerlink" href="#determine-if-a-given-point-is-within-a-spherical-polygon" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polygon_contains_point</span><span class="p">(</span><span class="n">pt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polygon_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tolerance_m</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># tolerance in meters</span>
+    <span class="n">check_pt</span> <span class="o">=</span> <span class="n">Point</span><span class="p">((</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+                      <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">polygon_pts</span><span class="p">]</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">polygon_pts</span><span class="p">]</span>
+    <span class="n">lat_lon_coords</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">))</span>
+    <span class="n">polygon</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">lat_lon_coords</span><span class="p">)</span>
+    <span class="n">contained_by_polygon</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">check_pt</span><span class="p">)</span>
+    <span class="c1"># check boundary conditions</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">contained_by_polygon</span><span class="p">:</span>
+        <span class="n">contained_by_polygon</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">distance</span><span class="o">=</span><span class="n">tolerance_m</span><span class="o">/</span><span class="mi">110000</span><span class="p">)</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">check_pt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">contained_by_polygon</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polygon_contains_point</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;red woods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_polygon_pt</span><span class="p">(</span><span class="n">pt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polygon_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tolerance_m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                   <span class="n">lon_west</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">lon_east</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+                   <span class="n">lat_south</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">lat_north</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
+    <span class="c1"># Set up world map plot</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">projection_map</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">lon_west</span><span class="p">,</span> <span class="n">lon_east</span><span class="p">,</span> <span class="n">lat_south</span><span class="p">,</span> <span class="n">lat_north</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+   <span class="c1"># plot polygon points</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">polygon_pts</span><span class="p">]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">polygon_pts</span><span class="p">]</span> <span class="c1"># latitude</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="c1"># plot check point</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+
+    <span class="n">contains_pt</span> <span class="o">=</span> <span class="n">polygon_contains_point</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">polygon_pts</span><span class="p">,</span> <span class="n">tolerance_m</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Point contained within polygon (tolerance </span><span class="si">{</span><span class="n">tolerance_m</span><span class="si">}</span><span class="s2"> m) = </span><span class="si">{</span><span class="n">contains_pt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_polygon_pt</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;red woods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4cff3eda8537ac22a6e9bf4c0325b46ff98a3d94223db9fa9e26b04534b459ff.png" src="../../_images/4cff3eda8537ac22a6e9bf4c0325b46ff98a3d94223db9fa9e26b04534b459ff.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_polygon_pt</span><span class="p">(</span><span class="s2">&quot;cape canaveral&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;red woods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cc79bf1aad89d6bb334c9c093181cc65abe1901ef50e4506c4362f8f120acd4a.png" src="../../_images/cc79bf1aad89d6bb334c9c093181cc65abe1901ef50e4506c4362f8f120acd4a.png" />
+</div>
+</div>
 </section>
 <hr class="docutils" />
 <section id="summary">
@@ -893,6 +984,7 @@ Area = 5342585.6476998255 km^2
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-a-given-point-is-within-a-spherical-polygon">Determine if a given point is within a spherical polygon</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
 </ul>

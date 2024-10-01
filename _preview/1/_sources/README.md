@@ -74,10 +74,8 @@ Each section will make use of plotting to visually demonstrate concepts with `ma
 
 6. **Spherical Polygons and Areas**
 - Determine clockwise/counterclockwise ordering of points on spherical polygon
+- Area and Permieter of quadrilateral patch on a unit sphere
 - Determine if a given point is within a spherical polygon
-- Permieter of spherical polygon
-- Area of quadrilateral patch on a unit sphere
-- Area of triangular patch
 - Mean center of spherical polygon
 
 7. **Indiana Jones and the Great Circle**
