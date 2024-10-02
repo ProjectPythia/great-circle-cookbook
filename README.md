@@ -40,7 +40,6 @@ Where available, this cookbook will demonstrate how to determine the features of
 
 - "Great Circle Terminology": Breakdown of terminology important for working with and understanding great circles including WGS-84
 - "Coordinate Systems": Understanding and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Geodesic (Latitude/Longitude)
-- "Geodesic and Python": General overview of powerful open-source Python packages for working with geodesic data like `pyproj` and `geopy`
 
 Each section will make use of plotting to visually demonstrate concepts with `matplotlib` and `cartopy`
 
