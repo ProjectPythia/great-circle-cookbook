@@ -416,10 +416,11 @@
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>If you have an introductory paragraph, lead with it here! Keep it short and tied to your material, then be sure to continue into the required list of topics below,</p>
+<p>A great circle path crosses the entire planet and any two valid great circle paths will always intersect</p>
 <ol class="arabic simple">
-<li><p>Find the intersection of two great circle paths (always exists)1. Calculate the directed angle of two great circle paths based on an intersection point</p></li>
-<li><p>Find the intersection of two great circle arcs (if it exists)</p></li>
+<li><p>Find the intersection of two great circle paths</p></li>
+<li><p>Find the intersection of two great circle arcs</p></li>
+<li><p>Calculate the directed angle of two great circle paths</p></li>
 </ol>
 </section>
 <section id="prerequisites">
@@ -605,6 +606,9 @@
 <section id="find-the-intersection-of-two-great-circle-paths">
 <h2>Find the intersection of two great circle paths<a class="headerlink" href="#find-the-intersection-of-two-great-circle-paths" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>The intersection of two great circle paths always exists at two positions on the globe if both paths are valid great circle paths (not meridians)</p>
+<section id="math-of-intersection">
+<h3>Math of intersection<a class="headerlink" href="#math-of-intersection" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>TODO</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
@@ -657,9 +661,6 @@
 </div>
 </div>
 </div>
-<section id="math-of-intersection">
-<h3>Math of intersection<a class="headerlink" href="#math-of-intersection" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>TODO</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">intersection_of_gc</span><span class="p">(</span><span class="n">start_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -766,13 +767,8 @@
     <span class="n">points_along_arc</span> <span class="o">=</span> <span class="n">interpolate_points_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">,</span>
                                               <span class="n">distance_between_points_meter</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">points_along_arc</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_gc_with_intersection</span><span class="p">(</span><span class="n">start_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+<span class="k">def</span> <span class="nf">plot_gc_with_intersection</span><span class="p">(</span><span class="n">start_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                              <span class="n">start_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                              <span class="n">lon_west</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">lon_east</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
                              <span class="n">lat_south</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">lat_north</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
@@ -859,6 +855,10 @@
 </section>
 <section id="resources-and-references">
 <h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://edwilliams.org/avform147.htm">Aviation Formulary V1.47</a></p></li>
+<li><p><a class="reference external" href="https://www.movable-type.co.uk/scripts/latlong.html">Moveable Type Script</a></p></li>
+</ul>
 </section>
 </section>
 
