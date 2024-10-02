@@ -81,7 +81,7 @@
     <link rel="prev" title="Great Circle Terminology" href="terminology.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="1 October 2024"/>
+    <meta name="docbuild:last-update" content="2 October 2024"/>
   </head>
   
   
@@ -381,6 +381,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/arc_to_point.html">Great Circles and a Point</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/parallels_max_min.html">Great Circles and Parallels</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/path_intersection.html">Intersections of Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/angles.html">Angles and Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/polygon_area.html">Spherical Polygons and Areas</a></li>
 </ul>
 
     </div>
@@ -477,12 +479,17 @@
 <blockquote>
 <div><p>A geographic coordinate system (GCS) is a spherical or geodetic coordinate system for measuring and communicating positions directly on Earth as latitude and longitude <a class="reference external" href="https://en.wikipedia.org/wiki/Geographic_coordinate_system">(Wikipedia)</a></p>
 </div></blockquote>
+<p>Geodesic coordiantes are latitude and longtiude, from -90° South to 90° North and -180° East to 180° West measured from Greenwich</p>
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/FedStats_Lat_long.svg/1024px-FedStats_Lat_long.svg.png" alt="Longitude lines are perpendicular to and latitude lines are parallel to the Equator from Wikipedia" width=400 />
 </p></section>
 <section id="cartesian-coordinates">
 <h3>Cartesian Coordinates<a class="headerlink" href="#cartesian-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Cartesian coordinates describe points in space based on perpendicular axis lines that meet at a singlle point of origin, where any point’s position is described based on the distance to the origin along xyz axis</p>
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Coord_system_CA_0.svg/1024px-Coord_system_CA_0.svg.png" alt="A three dimensional Cartesian coordinate system, with origin O and axis lines X, Y and Z, oriented as shown by the arrows. The tick marks on the axes are one length unit apart. The black dot shows the point with coordinates x = 2, y = 3, and z = 4, or (2, 3, 4) from Wikipedia" width=400 />
+</p>
+<p>Image Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system#description">Three Dimensional Cartesian Coordiante System</a></p>
 <p><strong>Geodesic to Cartesian Coordinates</strong></p>
 <p>Assuming the earth’s radius is 6378137 meters</p>
 <div class="math notranslate nohighlight">
@@ -573,10 +580,10 @@
 <h2>Convert Coordinates to All Coordinate Types<a class="headerlink" href="#convert-coordinates-to-all-coordinate-types" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="display-coordinates-of-cities">
 <h3>Display Coordinates of Cities<a class="headerlink" href="#display-coordinates-of-cities" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Read in latitude and longitude coordinates from locations</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in location coordinates</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">location_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../location_coords.txt&quot;</span><span class="p">)</span>
 <span class="n">location_df</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="c1"># strip excess white space from column names and values</span>
@@ -1102,6 +1109,16 @@
 <h2>Plot Coordinates on a World Map<a class="headerlink" href="#plot-coordinates-on-a-world-map" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="world-map">
 <h3>World Map<a class="headerlink" href="#world-map" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Full world map from -180-180 and -90-90:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">longitude</span> <span class="n">east</span> <span class="o">=</span> <span class="mi">180</span>
+
+<span class="n">longitude</span> <span class="n">west</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span>
+
+<span class="n">latitude</span> <span class="n">north</span> <span class="o">=</span> <span class="mi">90</span>
+
+<span class="n">latitude</span> <span class="n">south</span> <span class="o">=</span> <span class="o">-</span><span class="mi">90</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up world map plot</span>
@@ -1131,7 +1148,9 @@
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_boundary_lines_land.zip
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
-/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_1_states_provinces_lakes.zip
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_1_states_provinces_lakes.zip
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
 </pre></div>
 </div>
@@ -1141,6 +1160,16 @@
 </section>
 <section id="united-states-map">
 <h3>United States Map<a class="headerlink" href="#united-states-map" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Map of the United States roughly from -130 to -60 and 20 to 60:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">longitude</span> <span class="n">east</span> <span class="o">=</span> <span class="o">-</span><span class="mi">60</span>
+
+<span class="n">longitude</span> <span class="n">west</span> <span class="o">=</span> <span class="o">-</span><span class="mi">130</span>
+
+<span class="n">latitude</span> <span class="n">north</span> <span class="o">=</span> <span class="mi">60</span>
+
+<span class="n">latitude</span> <span class="n">south</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up United States map plot</span>
@@ -1170,7 +1199,9 @@
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_admin_0_boundary_lines_land.zip
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
-/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_admin_1_states_provinces_lakes.zip
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_admin_1_states_provinces_lakes.zip
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
 </pre></div>
 </div>
@@ -1526,7 +1557,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 1 October 2024.
+  Last updated on 2 October 2024.
   <br/>
 </p>
   </div>
@@ -1580,7 +1611,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 1 October 2024.
+          Last updated on 2 October 2024.
         </p>
       </div>
     </div>

@@ -81,7 +81,7 @@
     <link rel="prev" title="How to Cite This Cookbook" href="../how-to-cite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="1 October 2024"/>
+    <meta name="docbuild:last-update" content="2 October 2024"/>
   </head>
   
   
@@ -381,6 +381,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/arc_to_point.html">Great Circles and a Point</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/parallels_max_min.html">Great Circles and Parallels</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/path_intersection.html">Intersections of Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/angles.html">Angles and Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/polygon_area.html">Spherical Polygons and Areas</a></li>
 </ul>
 
     </div>
@@ -494,8 +496,9 @@
 <div><p>TODO: https://gis.stackexchange.com/questions/25494/how-accurate-is-approximating-earth-as-sphere</p>
 </div></blockquote>
 <p>To account for the error when assuming the Earth is a sphere, there are various geodetic systems and ellipsoids to include in calculations.</p>
+</section>
 <section id="geodesic-and-python">
-<h3>Geodesic and Python<a class="headerlink" href="#geodesic-and-python" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<h2>Geodesic and Python<a class="headerlink" href="#geodesic-and-python" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>For the purpose of this notebook we will be taking advantage of two geodesic Python packages:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pyproj4.github.io/pyproj/stable/"><code class="docutils literal notranslate"><span class="pre">pyproj</span></code>: Python interface to PROJ (catographic projections and coordinate transformations library)</a></p></li>
@@ -547,7 +550,6 @@
 </div>
 <p>WGS-84 is an ellipsoid with a semi-major axis of <code class="docutils literal notranslate"><span class="pre">6378137.0</span></code> meters, an inverse flattening feature of <code class="docutils literal notranslate"><span class="pre">298.257223563</span></code>, and a flattening factor of <code class="docutils literal notranslate"><span class="pre">0.0033528106647474805</span></code></p>
 <p><a class="reference external" href="https://gisgeography.com/wgs84-world-geodetic-system/">Learn more!</a></p>
-</section>
 </section>
 <section id="geodesy">
 <h2>Geodesy<a class="headerlink" href="#geodesy" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -668,10 +670,8 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#great-circle-path-vs-great-circle-arc">Great Circle Path vs. Great Circle Arc</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ellipsoids-vs-spheres">Ellipsoids vs. Spheres</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geodesic-and-python">Geodesic and Python</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ellipsoids-vs-spheres">Ellipsoids vs. Spheres</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geodesic-and-python">Geodesic and Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geodesy">Geodesy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geodesic">Geodesic</a></li>
 </ul>
@@ -923,7 +923,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 1 October 2024.
+  Last updated on 2 October 2024.
   <br/>
 </p>
   </div>
@@ -977,7 +977,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 1 October 2024.
+          Last updated on 2 October 2024.
         </p>
       </div>
     </div>

@@ -75,9 +75,10 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Angles and Great Circles" href="angles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="1 October 2024"/>
+    <meta name="docbuild:last-update" content="2 October 2024"/>
   </head>
   
   
@@ -232,8 +233,6 @@
         
         
         
-          
-        
         <div class="bd-sidebar-primary bd-sidebar">
           
 
@@ -374,11 +373,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../foundations/coordinates.html">Coordinate Types</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="arc_path.html">Great Circle Arcs and Path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arc_to_point.html">Great Circles and a Point</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallels_max_min.html">Great Circles and Parallels</a></li>
 <li class="toctree-l1"><a class="reference internal" href="path_intersection.html">Intersections of Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="angles.html">Angles and Great Circles</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spherical Polygons and Areas</a></li>
 </ul>
 
     </div>
@@ -408,12 +409,7 @@
 <div id="searchbox"></div>
                   <article class="bd-article">
                     
-  <p>Let’s start here! If you can directly link to an image relevant to your notebook, such as <a class="reference external" href="https://github.com/numpy/numpy/blob/main/doc/source/_static/numpylogo.svg">canonical logos</a>, do so here at the top of your notebook. You can do this with Markdown syntax,</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">![&lt;image</span> <span class="pre">title&gt;](http://link.com/to/image.png</span> <span class="pre">&quot;image</span> <span class="pre">alt</span> <span class="pre">text&quot;)</span></code></p>
-</div></blockquote>
-<p>or edit this cell to see raw HTML <code class="docutils literal notranslate"><span class="pre">img</span></code> demonstration. This is preferred if you need to shrink your embedded image. <strong>Either way be sure to include <code class="docutils literal notranslate"><span class="pre">alt</span></code> text for any embedded images to make your content more accessible.</strong></p>
-<p><a class="reference internal" href="notebooks/tutorials/images/ProjectPythia_Logo_Final-01-Blue.svg"><img alt="Project Pythia Logo" src="notebooks/tutorials/images/ProjectPythia_Logo_Final-01-Blue.svg" style="width: 250px;" /></a></img></p>
+  <p><img alt="Tiling of the sphere by spherical triangles" src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Sphere5tesselation.gif" /></img></p>
 <section class="tex2jax_ignore mathjax_ignore" id="spherical-polygons-and-areas">
 <h1>Spherical Polygons and Areas<a class="headerlink" href="#spherical-polygons-and-areas" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
 <hr class="docutils" />
@@ -970,36 +966,25 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_centroid</span><span class="p">([</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;cape canaveral&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_centroid</span><span class="p">([</span><span class="s2">&quot;red woods&quot;</span><span class="p">,</span> <span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;cape canaveral&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span>
                <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2587b5077de1e429d6e4a32cd38bb210200b891bca7e808f15849705ed157e76.png" src="../../_images/2587b5077de1e429d6e4a32cd38bb210200b891bca7e808f15849705ed157e76.png" />
+<img alt="../../_images/709a3c9f87ee2a66285656fd076ac2cc85e60a3cd22b90be1829376618818e56.png" src="../../_images/709a3c9f87ee2a66285656fd076ac2cc85e60a3cd22b90be1829376618818e56.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Add one final <code class="docutils literal notranslate"><span class="pre">---</span></code> marking the end of your body of content, and then conclude with a brief single paragraph summarizing at a high level the key pieces that were learned and how they tied to your objectives. Look to reiterate what the most important takeaways were.</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Let Jupyter book tie this to the next (sequential) piece of content that people could move on to down below and in the sidebar. However, if this page uniquely enables your reader to tackle other nonsequential concepts throughout this book, or even external content, link to it here!</p>
 </section>
 </section>
 <section id="resources-and-references">
 <h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Finally, be rigorous in your citations and references as necessary. Give credit where credit is due. Also, feel free to link to relevant external material, further reading, documentation, etc. Then you’re done! Give yourself a quick review, a high five, and send us a pull request. A few final notes:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Kernel</span> <span class="pre">&gt;</span> <span class="pre">Restart</span> <span class="pre">Kernel</span> <span class="pre">and</span> <span class="pre">Run</span> <span class="pre">All</span> <span class="pre">Cells...</span></code> to confirm that your notebook will cleanly run from start to finish</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kernel</span> <span class="pre">&gt;</span> <span class="pre">Restart</span> <span class="pre">Kernel</span> <span class="pre">and</span> <span class="pre">Clear</span> <span class="pre">All</span> <span class="pre">Outputs...</span></code> before committing your notebook, our machines will do the heavy lifting</p></li>
-<li><p>Take credit! Provide author contact information if you’d like; if so, consider adding information here at the bottom of your notebook</p></li>
-<li><p>Give credit! Attribute appropriate authorship for referenced code, information, images, etc.</p></li>
-<li><p>Only include what you’re legally allowed: <strong>no copyright infringement or plagiarism</strong></p></li>
-</ul>
-<p>Thank you for your contribution!</p>
 </section>
 </section>
 
@@ -1033,6 +1018,15 @@ Roughly 1.05% of the Earth&#39;s Surface
                   <footer class="prev-next-footer">
                     
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="angles.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Angles and Great Circles</p>
+      </div>
+    </a>
 </div>
                   </footer>
                 
@@ -1310,7 +1304,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 1 October 2024.
+  Last updated on 2 October 2024.
   <br/>
 </p>
   </div>
@@ -1364,7 +1358,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 1 October 2024.
+          Last updated on 2 October 2024.
         </p>
       </div>
     </div>
