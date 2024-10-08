@@ -81,7 +81,7 @@
     <link rel="prev" title="Coordinate Types" href="../foundations/coordinates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="2 October 2024"/>
+    <meta name="docbuild:last-update" content="8 October 2024"/>
   </head>
   
   
@@ -1526,38 +1526,65 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_antipodal</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># Set up world map plot</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">projection_map</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+    <span class="n">lon_west</span><span class="p">,</span> <span class="n">lon_east</span><span class="p">,</span> <span class="n">lat_south</span><span class="p">,</span> <span class="n">lat_north</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">lon_west</span><span class="p">,</span> <span class="n">lon_east</span><span class="p">,</span> <span class="n">lat_south</span><span class="p">,</span> <span class="n">lat_north</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+        
+    <span class="c1"># Plot Start point</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;cornflowerblue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">start_point</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
+
+    <span class="c1"># Plot Antipodal Point</span>
+    <span class="n">antipodal_point</span> <span class="o">=</span> <span class="n">antipodal</span><span class="p">(</span><span class="n">start_point</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">antipodal_point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">antipodal_point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Antipodal&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Setup Axis Limits and Title/Labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">start_point</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> and Antipodal Point </span><span class="si">{</span><span class="n">antipodal_point</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">)</span>
+<span class="n">plot_antipodal</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-40.015), np.float64(74.7295))
-</pre></div>
-</div>
+<img alt="../../_images/fd9d865ed3b9037c3c59f0013640c91943adba6be65e525d6c1dbc4a71bcc11a.png" src="../../_images/fd9d865ed3b9037c3c59f0013640c91943adba6be65e525d6c1dbc4a71bcc11a.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;svalbard&quot;</span><span class="p">)</span>
+<span class="n">plot_antipodal</span><span class="p">(</span><span class="s2">&quot;svalbard&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-77.875), np.float64(-159.0248))
-</pre></div>
-</div>
+<img alt="../../_images/493cb2d849699437784a317a9d39cf215925740593f7b33c0b2dc0fbe2117cf9.png" src="../../_images/493cb2d849699437784a317a9d39cf215925740593f7b33c0b2dc0fbe2117cf9.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;cairo&quot;</span><span class="p">)</span>
+<span class="n">plot_antipodal</span><span class="p">(</span><span class="s2">&quot;cairo&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-30.0444), np.float64(-148.7643))
-</pre></div>
-</div>
+<img alt="../../_images/ff0d5e416f1421f4bb4d07094e14fc2ee41e92c7989fb0525658cc8bc7872106.png" src="../../_images/ff0d5e416f1421f4bb4d07094e14fc2ee41e92c7989fb0525658cc8bc7872106.png" />
 </div>
 </div>
 </section>
@@ -1918,7 +1945,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 2 October 2024.
+  Last updated on 8 October 2024.
   <br/>
 </p>
   </div>
@@ -1972,7 +1999,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 2 October 2024.
+          Last updated on 8 October 2024.
         </p>
       </div>
     </div>
