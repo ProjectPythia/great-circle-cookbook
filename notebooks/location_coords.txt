@@ -2,7 +2,7 @@ name, latitude, longitude
 arecibo, 18.3441, -66.7527
 boulder, 40.0150, -105.2705
 boston, 42.3601, -71.0589
-red woods, 41.4017, -124.0417
+redwoods, 41.4017, -124.0417
 houston, 29.5518, -95.0982
 greenwich, 51.4934, 0.0098
 svalbard, 77.8750, 20.9752
@@ -19,3 +19,4 @@ reykjavík, 64.1470, -21.9408
 al-qarawiyyin, 34.0649, -4.9734
 zambezi, -18.3414, 36.2813
 timbuktu, 16.7666, -3.0026
+rockford, 42.2711, -89.0940
