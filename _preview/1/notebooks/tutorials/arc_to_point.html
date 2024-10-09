@@ -780,21 +780,28 @@ lon_D-lon_B or lon_B-lon_D, respectively</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                     <span class="n">new_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                     <span class="n">closest_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                     <span class="n">cross_track_distance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                      <span class="n">lon_west</span><span class="o">=-</span><span class="mi">130</span><span class="p">,</span> <span class="n">lon_east</span><span class="o">=-</span><span class="mi">60</span><span class="p">,</span>
                      <span class="n">lat_south</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">lat_north</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
     <span class="c1"># Set up world map plot</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
     <span class="n">projection_map</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">lon_west</span><span class="p">,</span> <span class="n">lon_east</span><span class="p">,</span> <span class="n">lat_south</span><span class="p">,</span> <span class="n">lat_north</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
-    
+
+    <span class="c1"># Cross-Track and Along-Track Distances</span>
+    <span class="n">ct_distance</span> <span class="o">=</span> <span class="n">cross_track_distance</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">,</span> <span class="n">new_point</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">ct_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">ct_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)&quot;</span><span class="p">)</span>
+
+    <span class="n">at_distance</span> <span class="o">=</span> <span class="n">along_track_distance</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">,</span> <span class="n">new_point</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Along Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">at_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">at_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">closest_point</span> <span class="o">=</span> <span class="n">point_along_path</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">,</span> <span class="n">at_distance</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closest Point To Point Along Great Circle Path:</span><span class="se">\n</span><span class="si">{</span><span class="n">closest_point</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+
     <span class="c1"># Plot Latitude/Longitude Location</span>
     <span class="n">great_circle_arc_pts</span> <span class="o">=</span> <span class="n">arc_points</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                          <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
@@ -806,20 +813,20 @@ lon_D-lon_B or lon_B-lon_D, respectively</p>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
 
-    <span class="n">new_point_arc_pts</span> <span class="o">=</span> <span class="n">arc_points</span><span class="p">(</span><span class="n">closest_point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">cross_track_arc</span> <span class="o">=</span> <span class="n">arc_points</span><span class="p">(</span><span class="n">closest_point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                    <span class="n">closest_point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
                                    <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">new_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                    <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">new_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                    <span class="mi">10</span><span class="p">)</span>
-    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">new_point_arc_pts</span><span class="p">]</span> <span class="c1"># longitude</span>
-    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">new_point_arc_pts</span><span class="p">]</span> <span class="c1"># latitude</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cross_track_arc</span><span class="p">]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cross_track_arc</span><span class="p">]</span> <span class="c1"># latitude</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
 
     <span class="c1"># plot closest_point in red</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">closest_point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">closest_point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closest Point to Arc from </span><span class="si">{</span><span class="n">start_point</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">end_point</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">new_point</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">, Cross-Track Distance = </span><span class="si">{</span><span class="n">cross_track_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closest Point </span><span class="si">{</span><span class="n">closest_point</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">start_point</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">-&gt;</span><span class="si">{</span><span class="n">end_point</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">new_point</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">, Cross-Track Distance = </span><span class="si">{</span><span class="n">ct_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">4f</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -827,18 +834,7 @@ lon_D-lon_B or lon_B-lon_D, respectively</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct_distance</span> <span class="o">=</span> <span class="n">cross_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">ct_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">ct_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)&quot;</span><span class="p">)</span>
-
-<span class="n">at_distance</span> <span class="o">=</span> <span class="n">along_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Along Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">at_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">at_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">closest_point</span> <span class="o">=</span> <span class="n">point_along_path</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="n">at_distance</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closest Point To Point Along Great Circle Path:</span><span class="se">\n</span><span class="si">{</span><span class="n">closest_point</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
-
-<span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;greenwich&quot;</span><span class="p">,</span>
-                 <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> 
-                 <span class="n">closest_point</span><span class="o">=</span><span class="n">closest_point</span><span class="p">,</span> <span class="n">cross_track_distance</span><span class="o">=</span><span class="n">ct_distance</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -852,23 +848,12 @@ Closest Point To Point Along Great Circle Path:
 (54.55029102855308, -80.58076564323979)
 </pre></div>
 </div>
-<img alt="../../_images/c102c119324e0bf69c845eb948d0e3358e4f401070f54dc9937c4d6b757909c3.png" src="../../_images/c102c119324e0bf69c845eb948d0e3358e4f401070f54dc9937c4d6b757909c3.png" />
+<img alt="../../_images/e932e122496bfb54879de2c970cacdaa964aba25e4416213423a9dc2ed7d78e4.png" src="../../_images/e932e122496bfb54879de2c970cacdaa964aba25e4416213423a9dc2ed7d78e4.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct_distance</span> <span class="o">=</span> <span class="n">cross_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;cape canaveral&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">ct_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">ct_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)&quot;</span><span class="p">)</span>
-
-<span class="n">at_distance</span> <span class="o">=</span> <span class="n">along_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;cape canaveral&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Along Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">at_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">at_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">closest_point</span> <span class="o">=</span> <span class="n">point_along_path</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">at_distance</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closest Point To Point Along Great Circle Path:</span><span class="se">\n</span><span class="si">{</span><span class="n">closest_point</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
-
-<span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span>
-                 <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;cape canaveral&quot;</span><span class="p">,</span> 
-                 <span class="n">closest_point</span><span class="o">=</span><span class="n">closest_point</span><span class="p">,</span> <span class="n">cross_track_distance</span><span class="o">=</span><span class="n">ct_distance</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;cape canaveral&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -882,7 +867,29 @@ Closest Point To Point Along Great Circle Path:
 (42.75525245755491, -80.62124342116076)
 </pre></div>
 </div>
-<img alt="../../_images/0c3f4945f5e06abc909faa862a424631f5e125279b1b4dad351334f5cef6ff13.png" src="../../_images/0c3f4945f5e06abc909faa862a424631f5e125279b1b4dad351334f5cef6ff13.png" />
+<img alt="../../_images/4fb0912459a8181013ffb0b273e0425aaf2dc01f4adb41999bf4ad5f356ac10c.png" src="../../_images/4fb0912459a8181013ffb0b273e0425aaf2dc01f4adb41999bf4ad5f356ac10c.png" />
+</div>
+</div>
+</section>
+<section id="interesting-edge-case-when-point-not-within-range-of-longtiudes-of-arc">
+<h3>Interesting Edge Case when Point not within Range of Longtiudes of Arc<a class="headerlink" href="#interesting-edge-case-when-point-not-within-range-of-longtiudes-of-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;redwoods&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross Track Distance: 
+-744048.9243466797 meters (-744.0489243466797 km)
+Along Track Distance: 
+1409025.1954944504 meters (1409.0251954944504 km)
+
+Closest Point To Point Along Great Circle Path:
+(42.46116756301668, -88.74894120764374)
+</pre></div>
+</div>
+<img alt="../../_images/2e93c9628ee28a8f5f621ce9a4dc8f89fc82fe8cc3177375fca0526203588473.png" src="../../_images/2e93c9628ee28a8f5f621ce9a4dc8f89fc82fe8cc3177375fca0526203588473.png" />
 </div>
 </div>
 </section>
@@ -946,18 +953,7 @@ Closest Point To Point Along Great Circle Path:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct_distance</span> <span class="o">=</span> <span class="n">cross_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;rockford&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">ct_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">ct_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)&quot;</span><span class="p">)</span>
-
-<span class="n">at_distance</span> <span class="o">=</span> <span class="n">along_track_distance</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;rockford&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Along Track Distance: </span><span class="se">\n</span><span class="si">{</span><span class="n">at_distance</span><span class="si">}</span><span class="s2"> meters (</span><span class="si">{</span><span class="n">at_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">closest_point</span> <span class="o">=</span> <span class="n">point_along_path</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">at_distance</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closest Point To Point Along Great Circle Path:</span><span class="se">\n</span><span class="si">{</span><span class="n">closest_point</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
-
-<span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span>
-                 <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;rockford&quot;</span><span class="p">,</span> 
-                 <span class="n">closest_point</span><span class="o">=</span><span class="n">closest_point</span><span class="p">,</span> <span class="n">cross_track_distance</span><span class="o">=</span><span class="n">ct_distance</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;rockford&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -971,20 +967,27 @@ Closest Point To Point Along Great Circle Path:
 (42.434120910748035, -89.11630028269337)
 </pre></div>
 </div>
-<img alt="../../_images/003efc50c6dc07766520921c07a0f7dcf35ff4b46356cc76f9f9816cc9cfc945.png" src="../../_images/003efc50c6dc07766520921c07a0f7dcf35ff4b46356cc76f9f9816cc9cfc945.png" />
+<img alt="../../_images/6be44ec375b69f73b2cc78e5d60e484eabe8a2b680dd86333292b73c1e53d08c.png" src="../../_images/6be44ec375b69f73b2cc78e5d60e484eabe8a2b680dd86333292b73c1e53d08c.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span>
-                 <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;rockford&quot;</span><span class="p">,</span> 
-                 <span class="n">closest_point</span><span class="o">=</span><span class="n">closest_point</span><span class="p">,</span> <span class="n">cross_track_distance</span><span class="o">=</span><span class="n">ct_distance</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;rockford&quot;</span><span class="p">,</span> 
                  <span class="n">lon_west</span><span class="o">=-</span><span class="mi">95</span><span class="p">,</span> <span class="n">lon_east</span><span class="o">=-</span><span class="mi">85</span><span class="p">,</span>
                  <span class="n">lat_south</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">lat_north</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross Track Distance: 
+18201.48035911659 meters (18.20148035911659 km)
+Along Track Distance: 
+1378654.5186233742 meters (1378.654518623374 km)
+
+Closest Point To Point Along Great Circle Path:
+(42.434120910748035, -89.11630028269337)
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_coastline.zip
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
 </pre></div>
@@ -997,7 +1000,7 @@ Closest Point To Point Along Great Circle Path:
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
 </pre></div>
 </div>
-<img alt="../../_images/f1411803c9cea20da8981abdaac2829e7143372007fde6f41ba9b060e8021fbd.png" src="../../_images/f1411803c9cea20da8981abdaac2829e7143372007fde6f41ba9b060e8021fbd.png" />
+<img alt="../../_images/392853142aa27ec1a56e829d9a90cab2d1c0a82ca868f4e2d98368a154c7f523.png" src="../../_images/392853142aa27ec1a56e829d9a90cab2d1c0a82ca868f4e2d98368a154c7f523.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1113,6 +1116,7 @@ True
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-track-distance">Cross Track Distance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#along-track-distance">Along Track Distance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-points-at-intermediate-points-along-an-arc-path">Generate Points at Intermediate Points along an Arc/Path</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interesting-edge-case-when-point-not-within-range-of-longtiudes-of-arc">Interesting Edge Case when Point not within Range of Longtiudes of Arc</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-a-point-lies-on-a-great-circle-arc-and-path">Determine if a point lies on a great circle arc and path</a><ul class="nav section-nav flex-column">
