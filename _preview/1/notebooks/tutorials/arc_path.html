@@ -422,6 +422,7 @@
 <p>Great circles are circles that circumnavigate the globe</p>
 <ol class="arabic simple">
 <li><p>Distance Between Points on a Great Circle Arc</p></li>
+<li><p>Spherical distance to degrees</p></li>
 <li><p>Determine the Bearing of a Great Circle Arc</p></li>
 <li><p>Generating a Great Circle Arc with Intermediates Points</p></li>
 <li><p>Determine the Midpoint of a Great Circle Arc</p></li>
@@ -650,18 +651,13 @@
 </div>
 </div>
 </div>
-</section>
-<section id="haversine-todo">
-<h3>Haversine (TODO)<a class="headerlink" href="#haversine-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-</section>
-<section id="vincenty-sphere-great-circle-distance-todo">
-<h3>Vincenty Sphere Great Circle Distance (TODO)<a class="headerlink" href="#vincenty-sphere-great-circle-distance-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-</section>
-<section id="vincenty-ellipsoid-great-circle-distance-todo">
-<h3>Vincenty Ellipsoid Great Circle Distance (TODO)<a class="headerlink" href="#vincenty-ellipsoid-great-circle-distance-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-</section>
-<section id="meeus-great-circle-distance-todo">
-<h3>Meeus Great Circle Distance (TODO)<a class="headerlink" href="#meeus-great-circle-distance-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Additional distance measuerments</p>
+<ul class="simple">
+<li><p>Haversine (TODO)</p></li>
+<li><p>Vincenty Sphere Great Circle Distance (TODO)</p></li>
+<li><p>Vincenty Ellipsoid Great Circle Distance (TODO)</p></li>
+<li><p>Meeus Great Circle Distance (TODO)</p></li>
+</ul>
 </section>
 <section id="determine-distance-points-via-python-package-pyproj">
 <h3>Determine Distance Points via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code><a class="headerlink" href="#determine-distance-points-via-python-package-pyproj" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
@@ -787,6 +783,41 @@ Distance between coordinates (unit sphere) = 2858.5322136393447 km
 </div>
 <p>Compared to the distance from the associated airports in Denver and Boston (<a class="reference external" href="https://www.greatcirclemap.com/?routes=DEN-BOS">DIA to Logan</a>) which has a distance of 2823 km</p>
 </section>
+</section>
+<section id="spherical-distance-to-degrees">
+<h2>Spherical distance to degrees<a class="headerlink" href="#spherical-distance-to-degrees" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Convert a distance from meters to degrees, measured along the great circle sphere with a radius of ~6371 km (mean radius of Earth)</p>
+<ul class="simple">
+<li><p>See also: <a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.geodetics.base.kilometer2degrees.html">ObsPy <code class="docutils literal notranslate"><span class="pre">kilometer2degrees()</span></code></a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># assumes a spherical Earth</span>
+<span class="n">earth_radius</span> <span class="o">=</span> <span class="mf">6378.137</span> <span class="c1"># km</span>
+
+<span class="k">def</span> <span class="nf">km_to_degree_distance</span><span class="p">(</span><span class="n">distance_km</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">distance_km</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">earth_radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">360</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">degree_to_km_distance</span><span class="p">(</span><span class="n">distance_degree</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">distance_degree</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">earth_radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">360</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;300 km to degrees = </span><span class="si">{</span><span class="n">km_to_degree_distance</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span><span class="si">}</span><span class="s2"> degrees&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;6.381307 degree to km = </span><span class="si">{</span><span class="n">degree_to_km_distance</span><span class="p">(</span><span class="mf">6.381307</span><span class="p">)</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>300 km to degrees = 2.6949458523585643 degrees
+6.381307 degree to km = 710.3638458355522 km
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="determine-the-bearing-of-a-great-circle-arc">
 <h2>Determine the Bearing of a Great Circle Arc<a class="headerlink" href="#determine-the-bearing-of-a-great-circle-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -1672,13 +1703,10 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-between-points-on-a-great-circle-arc">Distance Between Points on a Great Circle Arc</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-mathematically-via-unit-sphere">Determine Distance Mathematically via Unit Sphere</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#haversine-todo">Haversine (TODO)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vincenty-sphere-great-circle-distance-todo">Vincenty Sphere Great Circle Distance (TODO)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vincenty-ellipsoid-great-circle-distance-todo">Vincenty Ellipsoid Great Circle Distance (TODO)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meeus-great-circle-distance-todo">Meeus Great Circle Distance (TODO)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-points-via-python-package-pyproj">Determine Distance Points via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-distance-to-degrees">Spherical distance to degrees</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-of-a-great-circle-arc">Determine the Bearing of a Great Circle Arc</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-mathematically-via-unit-sphere">Determine the Bearing Mathematically via Unit Sphere</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-via-python-package-pyproj">Determine the Bearing via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code></a></li>
