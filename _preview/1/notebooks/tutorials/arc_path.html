@@ -1037,7 +1037,7 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">lst_of_coords</span><span class="o">=</span><span class="n">intermediate_geodesic</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">intermediate_geodesic</span><span class="p">,</span>
                 <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Interpolate </span><span class="si">{</span><span class="n">n_total_points</span><span class="si">}</span><span class="s2"> Points&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1114,7 +1114,7 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">lst_of_coords</span><span class="o">=</span><span class="n">intermediate_geodesic</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">intermediate_geodesic</span><span class="p">,</span>
                 <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Interpolate every </span><span class="si">{</span><span class="n">distance_between_points_meter</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1151,13 +1151,13 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">lat_end</span><span class="p">,</span> <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="n">intermediate_geodesic</span> <span class="o">=</span> <span class="n">interpolate_points_along_gc</span><span class="p">(</span><span class="n">lat_start</span><span class="p">,</span>
+<span class="n">intermediate_ellipsoid</span> <span class="o">=</span> <span class="n">interpolate_points_along_gc</span><span class="p">(</span><span class="n">lat_start</span><span class="p">,</span>
                                           <span class="n">lon_start</span><span class="p">,</span>
                                           <span class="n">lat_end</span><span class="p">,</span>
                                           <span class="n">lon_end</span><span class="p">,</span>
                                           <span class="n">distance_between_points_meter</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">intermediate_geodesic</span><span class="p">)</span><span class="si">}</span><span class="s2"> Total Points&quot;</span><span class="p">)</span>
-<span class="n">intermediate_geodesic</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">intermediate_ellipsoid</span><span class="p">)</span><span class="si">}</span><span class="s2"> Total Points&quot;</span><span class="p">)</span>
+<span class="n">intermediate_ellipsoid</span>
 </pre></div>
 </div>
 </div>
@@ -1182,13 +1182,13 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">lst_of_coords</span><span class="o">=</span><span class="n">intermediate_geodesic</span><span class="p">,</span>
-                <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(Geodesic) Interpolate on Fraction </span><span class="si">{</span><span class="n">fraction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">intermediate_ellipsoid</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(Ellipsoid) Interpolate on Fraction </span><span class="si">{</span><span class="n">fraction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/46149876595166fa626f8de26d82407511a19643f9c395056a2558122ce6f057.png" src="../../_images/46149876595166fa626f8de26d82407511a19643f9c395056a2558122ce6f057.png" />
+<img alt="../../_images/5d0cc8d449fb4d979ec212716ea26b5998598f9ff56e215ab437ec21d5a306ab.png" src="../../_images/5d0cc8d449fb4d979ec212716ea26b5998598f9ff56e215ab437ec21d5a306ab.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1222,7 +1222,7 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">lst_of_coords</span><span class="o">=</span><span class="n">intermediate_unit_sphere</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_coordinate</span><span class="p">(</span><span class="n">intermediate_unit_sphere</span><span class="p">,</span>
                 <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(Unit Sphere) Interpolate on Fraction </span><span class="si">{</span><span class="n">fraction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1234,26 +1234,26 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare math and geodesic outputs</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intermediate_geodesic</span><span class="p">)):</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">distance_m</span> <span class="o">=</span> <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">intermediate_geodesic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">intermediate_geodesic</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intermediate_ellipsoid</span><span class="p">)):</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">distance_m</span> <span class="o">=</span> <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">intermediate_ellipsoid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">intermediate_ellipsoid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
                                    <span class="n">intermediate_unit_sphere</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">intermediate_unit_sphere</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">distance_m</span><span class="p">):</span> <span class="n">distance_m</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between geodesic/unit sphere defined point </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">distance_m</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between ellipsoid/unit sphere defined point </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">distance_m</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance between geodesic/unit sphere defined point 0: 0 meters
-Distance between geodesic/unit sphere defined point 1: 0 meters
-Distance between geodesic/unit sphere defined point 2: 0 meters
-Distance between geodesic/unit sphere defined point 3: 0 meters
-Distance between geodesic/unit sphere defined point 4: 0 meters
-Distance between geodesic/unit sphere defined point 5: 132.55154860348821 meters
-Distance between geodesic/unit sphere defined point 6: 136.26443374199349 meters
-Distance between geodesic/unit sphere defined point 7: 132.0972186842191 meters
-Distance between geodesic/unit sphere defined point 8: 112.95654352480192 meters
-Distance between geodesic/unit sphere defined point 9: 71.29186326482345 meters
-Distance between geodesic/unit sphere defined point 10: 0.0 meters
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance between ellipsoid/unit sphere defined point 0: 0 meters
+Distance between ellipsoid/unit sphere defined point 1: 0 meters
+Distance between ellipsoid/unit sphere defined point 2: 0 meters
+Distance between ellipsoid/unit sphere defined point 3: 0 meters
+Distance between ellipsoid/unit sphere defined point 4: 0 meters
+Distance between ellipsoid/unit sphere defined point 5: 132.55154860348821 meters
+Distance between ellipsoid/unit sphere defined point 6: 136.26443374199349 meters
+Distance between ellipsoid/unit sphere defined point 7: 132.0972186842191 meters
+Distance between ellipsoid/unit sphere defined point 8: 112.95654352480192 meters
+Distance between ellipsoid/unit sphere defined point 9: 71.29186326482345 meters
+Distance between ellipsoid/unit sphere defined point 10: 0.0 meters
 </pre></div>
 </div>
 </div>
