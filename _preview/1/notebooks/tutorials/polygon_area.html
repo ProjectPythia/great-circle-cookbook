@@ -78,7 +78,7 @@
     <link rel="prev" title="Angles and Great Circles" href="angles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="8 October 2024"/>
+    <meta name="docbuild:last-update" content="9 October 2024"/>
   </head>
   
   
@@ -462,7 +462,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>       <span class="c1"># reading in data for location information from text file</span>
-<span class="c1">#import numpy as np        # working with arrays, vectors, cross/dot products, and radians</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>        <span class="c1"># working with arrays, vectors, cross/dot products, and radians</span>
 
 <span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>   <span class="c1"># working with the Earth as an ellipsod (WGS-84)</span>
 
@@ -565,7 +565,7 @@
     </tr>
     <tr>
       <th>3</th>
-      <td>red woods</td>
+      <td>redwoods</td>
       <td>41.4017</td>
       <td>-124.0417</td>
       <td>-2.678169e+06</td>
@@ -799,7 +799,7 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_area</span><span class="p">([</span><span class="s2">&quot;red woods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_area</span><span class="p">([</span><span class="s2">&quot;redwoods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -824,20 +824,17 @@ Roughly 1.05% of the Earth&#39;s Surface
 </section>
 <section id="determine-if-a-given-point-is-within-a-spherical-polygon">
 <h2>Determine if a given point is within a spherical polygon<a class="headerlink" href="#determine-if-a-given-point-is-within-a-spherical-polygon" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Single or list of points</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polygon_contains_point</span><span class="p">(</span><span class="n">pt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polygon_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tolerance_m</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polygon_contains_points</span><span class="p">(</span><span class="n">pt_lst</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polygon_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tolerance_m</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="c1"># tolerance in meters</span>
-    <span class="n">check_pt</span> <span class="o">=</span> <span class="n">Point</span><span class="p">((</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
-                      <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
     <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">polygon_pts</span><span class="p">]</span>
     <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">polygon_pts</span><span class="p">]</span>
     <span class="n">lat_lon_coords</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">))</span>
     <span class="n">polygon</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">lat_lon_coords</span><span class="p">)</span>
-    <span class="n">contained_by_polygon</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">check_pt</span><span class="p">)</span>
-    <span class="c1"># check boundary conditions</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">contained_by_polygon</span><span class="p">:</span>
-        <span class="n">contained_by_polygon</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">distance</span><span class="o">=</span><span class="n">tolerance_m</span><span class="o">/</span><span class="mi">110000</span><span class="p">)</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">check_pt</span><span class="p">)</span>
+    <span class="n">contains</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">pt</span><span class="p">:</span> <span class="n">polygon</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">Point</span><span class="p">((</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]))))</span>
+    <span class="n">contained_by_polygon</span> <span class="o">=</span> <span class="n">contains</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">contained_by_polygon</span>
 </pre></div>
 </div>
@@ -845,19 +842,7 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polygon_contains_point</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;red woods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_polygon_pt</span><span class="p">(</span><span class="n">pt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polygon_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tolerance_m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_polygon_pts</span><span class="p">(</span><span class="n">pt_lst</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polygon_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tolerance_m</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                    <span class="n">lon_west</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">lon_east</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
                    <span class="n">lat_south</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">lat_north</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
     <span class="c1"># Set up world map plot</span>
@@ -874,13 +859,17 @@ Roughly 1.05% of the Earth&#39;s Surface
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-    <span class="c1"># plot check point</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="c1"># plot check points</span>
+    <span class="n">contains_pts</span> <span class="o">=</span> <span class="n">polygon_contains_points</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">,</span> <span class="n">polygon_pts</span><span class="p">,</span> <span class="n">tolerance_m</span><span class="p">)</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)[</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)[</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># latitude</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Within Polygon&quot;</span><span class="p">)</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)[</span><span class="o">~</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)[</span><span class="o">~</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># latitude</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Not within Polygon&quot;</span><span class="p">)</span>
 
-
-    <span class="n">contains_pt</span> <span class="o">=</span> <span class="n">polygon_contains_point</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">polygon_pts</span><span class="p">,</span> <span class="n">tolerance_m</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Point contained within polygon (tolerance </span><span class="si">{</span><span class="n">tolerance_m</span><span class="si">}</span><span class="s2"> m) = </span><span class="si">{</span><span class="n">contains_pt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Points contained within polygon (tolerance </span><span class="si">{</span><span class="n">tolerance_m</span><span class="si">}</span><span class="s2"> m) = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)[</span><span class="n">contains_pts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -888,24 +877,59 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_polygon_pt</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;red woods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span>
-               <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polygon_contains_points</span><span class="p">([</span><span class="s2">&quot;boulder&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;redwoods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4cff3eda8537ac22a6e9bf4c0325b46ff98a3d94223db9fa9e26b04534b459ff.png" src="../../_images/4cff3eda8537ac22a6e9bf4c0325b46ff98a3d94223db9fa9e26b04534b459ff.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True])
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_polygon_pt</span><span class="p">(</span><span class="s2">&quot;cape canaveral&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;red woods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_polygon_pts</span><span class="p">([</span><span class="s2">&quot;boulder&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;redwoods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span>
                <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cc79bf1aad89d6bb334c9c093181cc65abe1901ef50e4506c4362f8f120acd4a.png" src="../../_images/cc79bf1aad89d6bb334c9c093181cc65abe1901ef50e4506c4362f8f120acd4a.png" />
+<img alt="../../_images/2102ee619356d8a25facbeba8ce2a525724d65688c05dd97009c081f597b62ef.png" src="../../_images/2102ee619356d8a25facbeba8ce2a525724d65688c05dd97009c081f597b62ef.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polygon_contains_points</span><span class="p">([</span><span class="s2">&quot;cape canaveral&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;redwoods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_polygon_pts</span><span class="p">([</span><span class="s2">&quot;cape canaveral&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;redwoods&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7ce410b7c9c76a56da940f07965f2fa7f88b443665dbe4e5dfb224c7d5d500ca.png" src="../../_images/7ce410b7c9c76a56da940f07965f2fa7f88b443665dbe4e5dfb224c7d5d500ca.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_polygon_pts</span><span class="p">([</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;redwoods&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;rockford&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;cape canaveral&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7a7827e6e26cfb6f38093393613fba6e90adc69cb39b7fb123520c6d0757be16.png" src="../../_images/7a7827e6e26cfb6f38093393613fba6e90adc69cb39b7fb123520c6d0757be16.png" />
 </div>
 </div>
 </section>
@@ -976,7 +1000,7 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_centroid</span><span class="p">([</span><span class="s2">&quot;red woods&quot;</span><span class="p">,</span> <span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;cape canaveral&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_centroid</span><span class="p">([</span><span class="s2">&quot;redwoods&quot;</span><span class="p">,</span> <span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;cape canaveral&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">],</span>
                <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1314,7 +1338,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 8 October 2024.
+  Last updated on 9 October 2024.
   <br/>
 </p>
   </div>
@@ -1368,7 +1392,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 8 October 2024.
+          Last updated on 9 October 2024.
         </p>
       </div>
     </div>
