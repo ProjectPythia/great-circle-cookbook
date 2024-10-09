@@ -641,9 +641,10 @@
 \[d_xt = np.arcsin(np.sin(delta_13)*np.sin(theta_13 - theta_12)) * R\]</div>
 <div class="math notranslate nohighlight">
 \[XTD =asin(sin(dist_AD)*sin(crs_AD-crs_AB))\]</div>
-<blockquote>
-<div><p>positive XTD means right of course, negative means left</p>
-</div></blockquote>
+<ul class="simple">
+<li><p>Postive Cross-Track Distance: Point lies in the hemisphere t0 the left of the great circle</p></li>
+<li><p>Negative Cross-Track Distance: Point lies in the hemiphere to the right of the great circle</p></li>
+</ul>
 <blockquote>
 <div><p>If the point A is the N. or S. Pole replace crs_AD-crs_AB with
 lon_D-lon_B or lon_B-lon_D, respectively</p>
@@ -832,23 +833,25 @@ lon_D-lon_B or lon_B-lon_D, respectively</p>
 </div>
 </div>
 </div>
+<section id="postive-cross-track-distance-point-lies-in-the-hemisphere-to-the-left-of-the-great-circle">
+<h4>Postive Cross-Track Distance: Point lies in the hemisphere to the left of the great circle<a class="headerlink" href="#postive-cross-track-distance-point-lies-in-the-hemisphere-to-the-left-of-the-great-circle" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;greenwich&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross Track Distance: 
-1524404.292850109 meters (1524.404292850109 km)
+0.0 meters (0.0 km)
 Along Track Distance: 
-2446670.633222115 meters (2446.670633222115 km)
+7561763.794332366 meters (7561.763794332366 km)
 
 Closest Point To Point Along Great Circle Path:
-(54.55029102855308, -80.58076564323979)
+(51.49340000000001, 0.009800000000012687)
 </pre></div>
 </div>
-<img alt="../../_images/e932e122496bfb54879de2c970cacdaa964aba25e4416213423a9dc2ed7d78e4.png" src="../../_images/e932e122496bfb54879de2c970cacdaa964aba25e4416213423a9dc2ed7d78e4.png" />
+<img alt="../../_images/3497545429bc9f27bec451c3da9fd2bce2c3200de4391dac7910188197ecee8e.png" src="../../_images/3497545429bc9f27bec451c3da9fd2bce2c3200de4391dac7910188197ecee8e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -870,9 +873,29 @@ Closest Point To Point Along Great Circle Path:
 <img alt="../../_images/4fb0912459a8181013ffb0b273e0425aaf2dc01f4adb41999bf4ad5f356ac10c.png" src="../../_images/4fb0912459a8181013ffb0b273e0425aaf2dc01f4adb41999bf4ad5f356ac10c.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;arecibo&quot;</span><span class="p">,</span>
+                <span class="n">lat_south</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross Track Distance: 
+2577081.0417989404 meters (2577.0810417989405 km)
+Along Track Distance: 
+3669432.5407487787 meters (3669.4325407487786 km)
+
+Closest Point To Point Along Great Circle Path:
+(41.142677689865174, -61.4898025092551)
+</pre></div>
+</div>
+<img alt="../../_images/4d117161dc4466c8dea04b234c5405f20877e3e327af0b04f1f36ef6672cc79a.png" src="../../_images/4d117161dc4466c8dea04b234c5405f20877e3e327af0b04f1f36ef6672cc79a.png" />
+</div>
+</div>
 </section>
-<section id="interesting-edge-case-when-point-not-within-range-of-longtiudes-of-arc">
-<h3>Interesting Edge Case when Point not within Range of Longtiudes of Arc<a class="headerlink" href="#interesting-edge-case-when-point-not-within-range-of-longtiudes-of-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="negative-cross-track-distance-point-lies-in-the-hemiphere-to-the-right-of-the-great-circle">
+<h4>Negative Cross-Track Distance: Point lies in the hemiphere to the right of the great circle<a class="headerlink" href="#negative-cross-track-distance-point-lies-in-the-hemiphere-to-the-right-of-the-great-circle" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;redwoods&quot;</span><span class="p">)</span>
@@ -892,6 +915,27 @@ Closest Point To Point Along Great Circle Path:
 <img alt="../../_images/2e93c9628ee28a8f5f621ce9a4dc8f89fc82fe8cc3177375fca0526203588473.png" src="../../_images/2e93c9628ee28a8f5f621ce9a4dc8f89fc82fe8cc3177375fca0526203588473.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;greenwich&quot;</span><span class="p">,</span>
+                <span class="n">lon_east</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross Track Distance: 
+-3381043.8402817464 meters (-3381.0438402817463 km)
+Along Track Distance: 
+7144535.346708467 meters (7144.535346708467 km)
+
+Closest Point To Point Along Great Circle Path:
+(28.39735920969611, -26.451361846821584)
+</pre></div>
+</div>
+<img alt="../../_images/8ab01f532d5cd2aca670e0ea639e2a051c122c3c25091383b0d0052654ab0897.png" src="../../_images/8ab01f532d5cd2aca670e0ea639e2a051c122c3c25091383b0d0052654ab0897.png" />
+</div>
+</div>
+</section>
 </section>
 </section>
 <section id="determine-if-a-point-lies-on-a-great-circle-arc-and-path">
@@ -1115,8 +1159,11 @@ True
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-distance-of-a-point-to-a-great-circle-arc">Determine the distance of a point to a great circle arc</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-track-distance">Cross Track Distance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#along-track-distance">Along Track Distance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-points-at-intermediate-points-along-an-arc-path">Generate Points at Intermediate Points along an Arc/Path</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interesting-edge-case-when-point-not-within-range-of-longtiudes-of-arc">Interesting Edge Case when Point not within Range of Longtiudes of Arc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-points-at-intermediate-points-along-an-arc-path">Generate Points at Intermediate Points along an Arc/Path</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#postive-cross-track-distance-point-lies-in-the-hemisphere-to-the-left-of-the-great-circle">Postive Cross-Track Distance: Point lies in the hemisphere to the left of the great circle</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-cross-track-distance-point-lies-in-the-hemiphere-to-the-right-of-the-great-circle">Negative Cross-Track Distance: Point lies in the hemiphere to the right of the great circle</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-if-a-point-lies-on-a-great-circle-arc-and-path">Determine if a point lies on a great circle arc and path</a><ul class="nav section-nav flex-column">
