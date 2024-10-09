@@ -49,6 +49,7 @@ Each section will make use of plotting to visually demonstrate concepts with `ma
 - Generating a great circle arc and path
 - Midpoint (and additional intermediate points) of a great circle arc
 - Length of a great circle arc (the distance between two points)
+- Spherical distance to degrees
 - Bearing of a great circle arc
 - Compare great circle arc to rhumb line
 - Antipodal point
