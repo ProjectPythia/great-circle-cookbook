@@ -81,7 +81,7 @@
     <link rel="prev" title="Great Circle Arcs and Path" href="arc_path.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="9 October 2024"/>
+    <meta name="docbuild:last-update" content="10 October 2024"/>
   </head>
   
   
@@ -463,8 +463,8 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                    <span class="c1"># read in data text file</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                     <span class="c1"># working with degrees and radians</span>
 
-<span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>
-<span class="kn">import</span> <span class="nn">geopy.distance</span>
+<span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>                                <span class="c1"># working with the Earth as an ellipsod (WGS-84)</span>
+<span class="kn">import</span> <span class="nn">geopy.distance</span>                                  <span class="c1"># moving along a known distance on the Earth&#39;s ellipsoid surface</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                        <span class="c1"># plotting a graph</span>
 <span class="kn">from</span> <span class="nn">cartopy</span> <span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span><span class="p">,</span> <span class="n">feature</span> <span class="k">as</span> <span class="n">cfeature</span>   <span class="c1"># plotting a world map</span>
@@ -642,7 +642,7 @@
 <div class="math notranslate nohighlight">
 \[XTD =asin(sin(dist_AD)*sin(crs_AD-crs_AB))\]</div>
 <ul class="simple">
-<li><p>Postive Cross-Track Distance: Point lies in the hemisphere t0 the left of the great circle</p></li>
+<li><p>Positive Cross-Track Distance: Point lies in the hemisphere t0 the left of the great circle</p></li>
 <li><p>Negative Cross-Track Distance: Point lies in the hemiphere to the right of the great circle</p></li>
 </ul>
 <blockquote>
@@ -833,8 +833,8 @@ lon_D-lon_B or lon_B-lon_D, respectively</p>
 </div>
 </div>
 </div>
-<section id="postive-cross-track-distance-point-lies-in-the-hemisphere-to-the-left-of-the-great-circle">
-<h4>Postive Cross-Track Distance: Point lies in the hemisphere to the left of the great circle<a class="headerlink" href="#postive-cross-track-distance-point-lies-in-the-hemisphere-to-the-left-of-the-great-circle" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<section id="positive-cross-track-distance-point-lies-in-the-hemisphere-to-the-left-of-the-great-circle">
+<h4>Positive Cross-Track Distance: Point lies in the hemisphere to the left of the great circle<a class="headerlink" href="#positive-cross-track-distance-point-lies-in-the-hemisphere-to-the-left-of-the-great-circle" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cross_track</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="n">new_point</span><span class="o">=</span><span class="s2">&quot;greenwich&quot;</span><span class="p">)</span>
@@ -962,7 +962,7 @@ Closest Point To Point Along Great Circle Path:
     <span class="k">if</span> <span class="n">lat1</span> <span class="o">+</span> <span class="n">lat2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lon1</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid inputs: start/end points are antipodal&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="c1"># acccount for tolerance based on cross-track distance from arc</span>
+    <span class="c1"># account for tolerance based on cross-track distance from arc</span>
     <span class="n">ct_distance</span> <span class="o">=</span> <span class="n">cross_track_distance</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">,</span> <span class="n">check_point</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross-Track Distance = </span><span class="si">{</span><span class="n">ct_distance</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ct_distance</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tolerance</span><span class="p">:</span>
@@ -1160,7 +1160,7 @@ True
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-track-distance">Cross Track Distance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#along-track-distance">Along Track Distance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-points-at-intermediate-points-along-an-arc-path">Generate Points at Intermediate Points along an Arc/Path</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#postive-cross-track-distance-point-lies-in-the-hemisphere-to-the-left-of-the-great-circle">Postive Cross-Track Distance: Point lies in the hemisphere to the left of the great circle</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-cross-track-distance-point-lies-in-the-hemisphere-to-the-left-of-the-great-circle">Positive Cross-Track Distance: Point lies in the hemisphere to the left of the great circle</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-cross-track-distance-point-lies-in-the-hemiphere-to-the-right-of-the-great-circle">Negative Cross-Track Distance: Point lies in the hemiphere to the right of the great circle</a></li>
 </ul>
 </li>
@@ -1417,7 +1417,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 9 October 2024.
+  Last updated on 10 October 2024.
   <br/>
 </p>
   </div>
@@ -1471,7 +1471,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 9 October 2024.
+          Last updated on 10 October 2024.
         </p>
       </div>
     </div>

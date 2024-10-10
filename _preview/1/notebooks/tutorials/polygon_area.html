@@ -78,7 +78,7 @@
     <link rel="prev" title="Angles and Great Circles" href="angles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="9 October 2024"/>
+    <meta name="docbuild:last-update" content="10 October 2024"/>
   </head>
   
   
@@ -618,7 +618,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_clockwise</span><span class="p">(</span><span class="n">pt_lst</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="c1"># signed polygon area -&gt; shoelace formula</span>
-    <span class="c1"># postive = counterclockwise, negative = clockwise</span>
+    <span class="c1"># positive = counterclockwise, negative = clockwise</span>
     <span class="n">area</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)):</span>
         <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">):</span>
@@ -629,7 +629,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;clockwise -&gt; negative&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">if</span> <span class="n">area</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;counterclockwise -&gt; postive&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;counterclockwise -&gt; positive&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">area</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;non-collinear -&gt; zero&quot;</span><span class="p">)</span> <span class="c1">#https://en.wikipedia.org/wiki/Curve_orientation</span>
@@ -708,7 +708,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>counterclockwise -&gt; postive
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>counterclockwise -&gt; positive
 </pre></div>
 </div>
 <img alt="../../_images/19eb36cda775aa144094e0353103bd53e53c122ca123f4129c998998dae7378c.png" src="../../_images/19eb36cda775aa144094e0353103bd53e53c122ca123f4129c998998dae7378c.png" />
@@ -721,7 +721,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>counterclockwise -&gt; postive
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>counterclockwise -&gt; positive
 </pre></div>
 </div>
 <img alt="../../_images/ceabe3ceedd075119f64a0dd5bc2ad3b7c5a6b8ecb92b3afc531b6a6d17e1bad.png" src="../../_images/ceabe3ceedd075119f64a0dd5bc2ad3b7c5a6b8ecb92b3afc531b6a6d17e1bad.png" />
@@ -733,12 +733,19 @@
 <h2>Area and Perimeter of quadrilateral patch<a class="headerlink" href="#area-and-perimeter-of-quadrilateral-patch" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area_of_polygon_projection</span><span class="p">(</span><span class="n">poly_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area_of_polygon_ellps</span><span class="p">(</span><span class="n">poly_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">geod</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
     <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">poly_pts</span><span class="p">]</span>
     <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">poly_pts</span><span class="p">]</span>
     <span class="n">poly_area_m</span><span class="p">,</span> <span class="n">poly_perimeter_m</span> <span class="o">=</span> <span class="n">geod</span><span class="o">.</span><span class="n">polygon_area_perimeter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">poly_area_m</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="n">poly_perimeter_m</span><span class="o">/</span><span class="mi">1000</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">poly_area_m</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="n">poly_perimeter_m</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># km^2 and km</span>
+
+<span class="k">def</span> <span class="nf">area_of_polygon_unit_sphere</span><span class="p">(</span><span class="n">poly_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">geod</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;sphere&quot;</span><span class="p">)</span> <span class="c1"># &#39;sphere&#39;: {&#39;a&#39;: 6370997.0, &#39;b&#39;: 6370997.0, &#39;description&#39;: &#39;Normal Sphere (r=6370997)&#39;</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">poly_pts</span><span class="p">]</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">pt</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pt</span> <span class="ow">in</span> <span class="n">poly_pts</span><span class="p">]</span>
+    <span class="n">poly_area_m</span><span class="p">,</span> <span class="n">poly_perimeter_m</span> <span class="o">=</span> <span class="n">geod</span><span class="o">.</span><span class="n">polygon_area_perimeter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">poly_area_m</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="n">poly_perimeter_m</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># km^2 and km</span>
 </pre></div>
 </div>
 </div>
@@ -762,8 +769,11 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-    <span class="n">area</span><span class="p">,</span> <span class="n">perimeter</span> <span class="o">=</span> <span class="n">area_of_polygon_projection</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Roughly </span><span class="si">{</span><span class="p">(</span><span class="n">area</span><span class="o">/</span><span class="mi">509600000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the Earth&#39;s Surface&quot;</span><span class="p">)</span>
+    <span class="n">area_ellps</span><span class="p">,</span> <span class="n">perimeter_ellps</span> <span class="o">=</span> <span class="n">area_of_polygon_ellps</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)</span>
+    <span class="n">area_us</span><span class="p">,</span> <span class="n">perimeter_us</span> <span class="o">=</span> <span class="n">area_of_polygon_unit_sphere</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ellipsoid Area   = </span><span class="si">{</span><span class="n">area_ellps</span><span class="si">}</span><span class="s2"> km^2&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unit Sphere Area = </span><span class="si">{</span><span class="n">area_us</span><span class="si">}</span><span class="s2"> km^2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Roughly </span><span class="si">{</span><span class="p">(</span><span class="n">area_ellps</span><span class="o">/</span><span class="mi">509600000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="p">(</span><span class="n">area_us</span><span class="o">/</span><span class="mi">509600000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%) of the Earth&#39;s Surface&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -771,17 +781,25 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area</span><span class="p">,</span> <span class="n">perimeter</span> <span class="o">=</span> <span class="n">area_of_polygon_projection</span><span class="p">([</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_ellps</span><span class="p">,</span> <span class="n">perimeter_ellps</span> <span class="o">=</span> <span class="n">area_of_polygon_ellps</span><span class="p">([</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span>
                                              <span class="s2">&quot;arecibo&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perimeter = </span><span class="si">{</span><span class="n">perimeter</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area = </span><span class="si">{</span><span class="n">area</span><span class="si">}</span><span class="s2"> km^2&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Roughly </span><span class="si">{</span><span class="p">(</span><span class="n">area</span><span class="o">/</span><span class="mi">509600000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the Earth&#39;s Surface&quot;</span><span class="p">)</span>
+<span class="n">area_us</span><span class="p">,</span> <span class="n">perimeter_us</span> <span class="o">=</span> <span class="n">area_of_polygon_unit_sphere</span><span class="p">([</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span>
+                                             <span class="s2">&quot;arecibo&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area Ellipsoid   = </span><span class="si">{</span><span class="n">area_ellps</span><span class="si">}</span><span class="s2"> km^2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area Unit Sphere = </span><span class="si">{</span><span class="n">area_us</span><span class="si">}</span><span class="s2"> km^2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perimeter Ellipsoid = </span><span class="si">{</span><span class="n">perimeter_ellps</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perimeter Unit SPhere = </span><span class="si">{</span><span class="n">perimeter_us</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Roughly </span><span class="si">{</span><span class="p">(</span><span class="n">area_ellps</span><span class="o">/</span><span class="mi">509600000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the Earth&#39;s Surface&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Roughly </span><span class="si">{</span><span class="p">(</span><span class="n">area_us</span><span class="o">/</span><span class="mi">509600000</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% of the Earth&#39;s Surface&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Perimeter = 10171.738963248145 km
-Area = 5342585.6476998255 km^2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area Ellipsoid   = 5342585.6476998255 km^2
+Area Unit Sphere = 5344606.94796931 km^2
+Perimeter Ellipsoid = 10171.738963248145 km
+Perimeter Unit SPhere = 10170.504728302833 km
+Roughly 1.05% of the Earth&#39;s Surface
 Roughly 1.05% of the Earth&#39;s Surface
 </pre></div>
 </div>
@@ -794,7 +812,25 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8221d282adb7962c8fa380022397c5a04002e94312ceb97ab6d512f71693854f.png" src="../../_images/8221d282adb7962c8fa380022397c5a04002e94312ceb97ab6d512f71693854f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ellipsoid Area   = 21872449.378265787 km^2
+Unit Sphere Area = 21896220.663299154 km^2
+</pre></div>
+</div>
+<img alt="../../_images/0bec16ea079e4a8da0d26ded42cff6a484d12e36a9d5a6cd09db434bb5a064fa.png" src="../../_images/0bec16ea079e4a8da0d26ded42cff6a484d12e36a9d5a6cd09db434bb5a064fa.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_area</span><span class="p">([</span><span class="s2">&quot;redwoods&quot;</span><span class="p">,</span> <span class="s2">&quot;rockford&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">,],</span> <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ellipsoid Area   = 3150946.426714995 km^2
+Unit Sphere Area = 3149017.3086414044 km^2
+</pre></div>
+</div>
+<img alt="../../_images/1812e9b1822dfe32cad0d9dee0edb6618bcdf4d00dd3ebf3f7aca9f78cacb676.png" src="../../_images/1812e9b1822dfe32cad0d9dee0edb6618bcdf4d00dd3ebf3f7aca9f78cacb676.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -804,7 +840,11 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0f5317da990a78f7d5ae8a22c1ff1777071c9b53b6d3095433c1adf42e675473.png" src="../../_images/0f5317da990a78f7d5ae8a22c1ff1777071c9b53b6d3095433c1adf42e675473.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ellipsoid Area   = 3788155.432965353 km^2
+Unit Sphere Area = 3782548.632737316 km^2
+</pre></div>
+</div>
+<img alt="../../_images/c4fc9de9eb0877ca5c1a19851b56bb65963978f153683030431fab986366c13a.png" src="../../_images/c4fc9de9eb0877ca5c1a19851b56bb65963978f153683030431fab986366c13a.png" />
 </div>
 </div>
 <section id="todo">
@@ -817,7 +857,11 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/572cda1f21e0aed354df54f9b8d38174800944a270d8b3f502e3455f36c2af8a.png" src="../../_images/572cda1f21e0aed354df54f9b8d38174800944a270d8b3f502e3455f36c2af8a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ellipsoid Area   = 914381.1786067598 km^2
+Unit Sphere Area = 954445.989927043 km^2
+</pre></div>
+</div>
+<img alt="../../_images/159ed85348cee0df4b2c962009660a42ea31632215371c00d577502342060bdd.png" src="../../_images/159ed85348cee0df4b2c962009660a42ea31632215371c00d577502342060bdd.png" />
 </div>
 </div>
 </section>
@@ -865,12 +909,12 @@ Roughly 1.05% of the Earth&#39;s Surface
     <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pt_lst</span><span class="p">[</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># longitude</span>
     <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pt_lst</span><span class="p">[</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># latitude</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Within Polygon&quot;</span><span class="p">)</span>
-    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)[</span><span class="o">~</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># longitude</span>
-    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)[</span><span class="o">~</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># latitude</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pt_lst</span><span class="p">[</span><span class="o">~</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">x</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pt_lst</span><span class="p">[</span><span class="o">~</span><span class="n">contains_pts</span><span class="p">]]</span> <span class="c1"># latitude</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Not within Polygon&quot;</span><span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Points contained within polygon (tolerance </span><span class="si">{</span><span class="n">tolerance_m</span><span class="si">}</span><span class="s2"> m) = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pt_lst</span><span class="p">)[</span><span class="n">contains_pts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Points contained within polygon (tolerance </span><span class="si">{</span><span class="n">tolerance_m</span><span class="si">}</span><span class="s2"> m) = </span><span class="si">{</span><span class="n">pt_lst</span><span class="p">[</span><span class="n">contains_pts</span><span class="p">]</span><span class="si">}</span><span class="s2">, not contained = </span><span class="si">{</span><span class="n">pt_lst</span><span class="p">[</span><span class="o">~</span><span class="n">contains_pts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -896,7 +940,7 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2102ee619356d8a25facbeba8ce2a525724d65688c05dd97009c081f597b62ef.png" src="../../_images/2102ee619356d8a25facbeba8ce2a525724d65688c05dd97009c081f597b62ef.png" />
+<img alt="../../_images/a26577e61ecf2d72c2419bf6788437b5a6b5642b610efe57beb099ad090b5d98.png" src="../../_images/a26577e61ecf2d72c2419bf6788437b5a6b5642b610efe57beb099ad090b5d98.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -919,7 +963,7 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7ce410b7c9c76a56da940f07965f2fa7f88b443665dbe4e5dfb224c7d5d500ca.png" src="../../_images/7ce410b7c9c76a56da940f07965f2fa7f88b443665dbe4e5dfb224c7d5d500ca.png" />
+<img alt="../../_images/142129557e37183e3e2ba5de3b64e85cdeb9b86e51f1a85945836d7b9e22960c.png" src="../../_images/142129557e37183e3e2ba5de3b64e85cdeb9b86e51f1a85945836d7b9e22960c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -930,7 +974,7 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a17cefba1f31aa29441088a365c81b4f5f50c909ebe005a0c58044192b3616fb.png" src="../../_images/a17cefba1f31aa29441088a365c81b4f5f50c909ebe005a0c58044192b3616fb.png" />
+<img alt="../../_images/089c6ca066cd356ffe14484f68683e8de73abda1198a9f9cea900b85a4927bc8.png" src="../../_images/089c6ca066cd356ffe14484f68683e8de73abda1198a9f9cea900b85a4927bc8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -941,7 +985,7 @@ Roughly 1.05% of the Earth&#39;s Surface
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7a7827e6e26cfb6f38093393613fba6e90adc69cb39b7fb123520c6d0757be16.png" src="../../_images/7a7827e6e26cfb6f38093393613fba6e90adc69cb39b7fb123520c6d0757be16.png" />
+<img alt="../../_images/7e8737cc5e26c077321f781f8eed321f43f904f09ed616437c684149fb6632b6.png" src="../../_images/7e8737cc5e26c077321f781f8eed321f43f904f09ed616437c684149fb6632b6.png" />
 </div>
 </div>
 </section>
@@ -1350,7 +1394,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 9 October 2024.
+  Last updated on 10 October 2024.
   <br/>
 </p>
   </div>
@@ -1404,7 +1448,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 9 October 2024.
+          Last updated on 10 October 2024.
         </p>
       </div>
     </div>

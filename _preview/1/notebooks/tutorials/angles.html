@@ -79,7 +79,7 @@
     <link rel="prev" title="Intersections of Great Circles" href="path_intersection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="9 October 2024"/>
+    <meta name="docbuild:last-update" content="10 October 2024"/>
   </head>
   
   
@@ -605,12 +605,12 @@
 </section>
 <section id="calculate-the-acute-and-obtuse-angle-of-two-great-circle-paths">
 <h2>Calculate the acute and obtuse angle of two great circle paths<a class="headerlink" href="#calculate-the-acute-and-obtuse-angle-of-two-great-circle-paths" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The acute and obtuse angle formed by two gerat circle paths and an intersection point</p>
+<p>The acute and obtuse angle formed by two great circle paths and an intersection point</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">angle_between_arcs</span><span class="p">(</span><span class="n">start_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                        <span class="n">start_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="c1"># get normal of planes containing great cirlces</span>
+    <span class="c1"># get normal of planes containing great circles</span>
     <span class="n">normal_one</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">([</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                            <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                            <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_z&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
@@ -623,7 +623,7 @@
                           <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_gc2</span><span class="p">]][</span><span class="s2">&quot;cart_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                            <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_gc2</span><span class="p">]][</span><span class="s2">&quot;cart_y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                            <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_gc2</span><span class="p">]][</span><span class="s2">&quot;cart_z&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-    <span class="c1"># dot product to obtain the angle bewteen the normal planes</span>
+    <span class="c1"># dot product to obtain the angle between the normal planes</span>
     <span class="n">angle_between_planes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">normal_one</span><span class="p">,</span> <span class="n">normal_two</span><span class="p">)</span>
     <span class="c1"># divide by the magnitude of the vectors, inverse of cos to find angle</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">normal_one</span><span class="p">,</span> <span class="n">normal_two</span><span class="p">)</span> <span class="o">/</span> 
@@ -666,8 +666,8 @@ Obtuse Angle = 145.89682385152852 degrees
 <blockquote>
 <div><p>Directed angle is in the standard position if it satistfies two conditions:</p>
 <p>Its vertex is the origin of rectangular coordinates system
-Its initial side lies on the postive direction of the x-axis</p>
-<p>The directed angle resulting from an anticlockwise rotation has a postive measure</p>
+Its initial side lies on the positive direction of the x-axis</p>
+<p>The directed angle resulting from an anticlockwise rotation has a positive measure</p>
 <p>The directed angle resulting from a clockwise rotation has a negative measure</p>
 </div></blockquote>
 <div class="cell docutils container">
@@ -694,7 +694,7 @@ Its initial side lies on the postive direction of the x-axis</p>
                           <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">c_coords</span><span class="p">]][</span><span class="s2">&quot;cart_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                            <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">c_coords</span><span class="p">]][</span><span class="s2">&quot;cart_y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                            <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">c_coords</span><span class="p">]][</span><span class="s2">&quot;cart_z&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-    <span class="c1"># dot product to obtain the angle bewteen the normal planes</span>
+    <span class="c1"># dot product to obtain the angle between the normal planes</span>
     <span class="n">angle_between_planes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">normal_one</span><span class="p">,</span> <span class="n">normal_two</span><span class="p">)</span>
     <span class="c1"># divide by the magnitude of the vectors, inverse of cos to find angle</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">normal_one</span><span class="p">,</span> <span class="n">normal_two</span><span class="p">)</span> <span class="o">/</span> 
@@ -731,7 +731,7 @@ Its initial side lies on the postive direction of the x-axis</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">intersection_of_gc</span><span class="p">(</span><span class="n">start_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                       <span class="n">start_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="c1"># get normal of planes containing great cirlces</span>
+    <span class="c1"># get normal of planes containing great circles</span>
 
     <span class="c1"># cross product of vectors</span>
     <span class="n">normal_one</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">([</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
@@ -1409,7 +1409,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 9 October 2024.
+  Last updated on 10 October 2024.
   <br/>
 </p>
   </div>
@@ -1463,7 +1463,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 9 October 2024.
+          Last updated on 10 October 2024.
         </p>
       </div>
     </div>
