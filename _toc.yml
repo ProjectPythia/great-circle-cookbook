@@ -4,6 +4,15 @@ parts:
   - caption: Preamble
     chapters:
       - file: notebooks/how-to-cite
-  - caption: Introduction
+  - caption: Foundations
     chapters:
-      - file: notebooks/notebook-template
+      - file: notebooks/foundations/1_terminology
+      - file: notebooks/foundations/2_coordinates
+  - caption: Tutorials
+    chapters:
+      - file: notebooks/tutorials/1_arc_path
+      - file: notebooks/tutorials/2_arc_to_point
+      - file: notebooks/tutorials/3_parallels_max_min
+      - file: notebooks/tutorials/4_path_intersection
+      - file: notebooks/tutorials/5_angles
+      - file: notebooks/tutorials/6_polygon_area

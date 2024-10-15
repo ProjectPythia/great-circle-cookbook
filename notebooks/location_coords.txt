@@ -1,0 +1,22 @@
+name, latitude, longitude
+arecibo, 18.3441, -66.7527
+boulder, 40.0150, -105.2705
+boston, 42.3601, -71.0589
+redwoods, 41.4017, -124.0417
+houston, 29.5518, -95.0982
+greenwich, 51.4934, 0.0098
+svalbard, 77.8750, 20.9752
+mcmurdo, -77.5000, 165.000
+cairo, 30.0444, 31.2357
+johannesburg, -26.2056, 28.0337
+stonehedge, 51.1789, -1.8262
+machu picchu, -13.1632, -72.5453
+cape canaveral, 28.3922, -80.6077
+uluru, -25.3444, 131.0369
+tunguska event, 60.5411, 101.5435
+hanle, 32.7908, 79.0002
+reykjavík, 64.1470, -21.9408
+al-qarawiyyin, 34.0649, -4.9734
+zambezi, -18.3414, 36.2813
+timbuktu, 16.7666, -3.0026
+rockford, 42.2711, -89.0940
