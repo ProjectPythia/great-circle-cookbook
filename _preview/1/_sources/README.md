@@ -38,48 +38,45 @@ Where available, this cookbook will demonstrate how to determine the features of
 
 ### Foundations and Terminology
 
-- "Great Circle Terminology": Breakdown of terminology important for working with and understanding great circles including WGS-84
-- "Coordinate Systems": Understanding and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Geodesic (Latitude/Longitude)
+- "Great Circle Terminology": Breakdown of terminology important for working with and understanding great circles
+- "Coordinate Systems": Understanding and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Latitude/Longitude
 
 Each section will make use of plotting to visually demonstrate concepts with `matplotlib` and `cartopy`
 
 ### Working with Great Circles
 
-1. **Great Circle Arcs and Paths**
-- Generating a great circle arc and path
-- Midpoint (and additional intermediate points) of a great circle arc
-- Length of a great circle arc (the distance between two points)
-- Spherical distance to degrees
-- Bearing of a great circle arc
-- Compare great circle arc to rhumb line
-- Antipodal point
+#### 1. **Great Circle Arcs and Paths**
+- Distance between Points on a Great Circle Arc
+- Spherical Distance to Degrees
+- Determine the Bearing of a Great Circle Arc
+- Generate a Great Circle Arc with Intermediate Points
+- Determine the Midpoint of a Great Circle Arc
+- Generate a Great Circle Path
+- Determine an Antipodal Point
 
-2. **Great Circles and a Point**
-- Determine the distance of a point to a great circle arc
-- Determine the distance of a point to a great circle path
+#### 2. **Great Circles and a Point**
+- Determine the distance of a point to a great circle arc (cross-track and along-track distance)
 - Determine if a point lies on a great circle arc and path (with and without tolerances)
 
-3. **Great Circles and Parallels**
-- Determine the maximum and minimum latitude coordinates along a great circle path
+#### 3. **Great Circles and Parallels**
+- Determine the maximum latitude on a Great Circle Path
+- Determine the minimum latitude on a Great Great path
 - Determine when a great circle path crosses parallels
 
-4. **Intersections of Great Circles**
+#### 4. **Intersections of Great Circles**
 - Find the intersection of two great circle paths (always exists)
 - Find the intersection of two great circle arcs (if it exists)
 
-5. **Angles and Great Circles**
-- Calculate the acute and obtuse angle of two great circle paths
-- Calculate the directed angle of two great circle paths based on an intersection point
+#### 5. **Angles and Great Circles**
+- Calculate the acute and obtuse angle of two Great Circle paths
+- Calculate the Directed Angle of two Great Circle paths based on an intersection point
 - Working with Spherical Triangles formed by great circle arcs
 
-6. **Spherical Polygons and Areas**
+#### 6. **Spherical Polygons and Areas**
 - Determine clockwise/counterclockwise ordering of points on spherical polygon
 - Area and Permieter of quadrilateral patch on a unit sphere
 - Determine if a given point is within a spherical polygon
 - Mean center of spherical polygon
-
-7. **Indiana Jones and the Great Circle**
-- Working Example
 
 ## Running the Notebooks
 

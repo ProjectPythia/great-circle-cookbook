@@ -373,17 +373,17 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/foundations/terminology.html">Great Circle Terminology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/foundations/coordinates.html">Coordinate Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/foundations/1_terminology.html">Great Circle Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/foundations/2_coordinates.html">Coordinate Types</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/arc_path.html">Great Circle Arcs and Path</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/arc_to_point.html">Great Circles and a Point</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/parallels_max_min.html">Great Circles and Parallels</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/path_intersection.html">Intersections of Great Circles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/angles.html">Angles and Great Circles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/polygon_area.html">Spherical Polygons and Areas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/1_arc_path.html">Great Circle Arcs and Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/2_arc_to_point.html">Great Circles and a Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/3_parallels_max_min.html">Great Circles and Parallels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/4_path_intersection.html">Intersections of Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/5_angles.html">Angles and Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/tutorials/6_polygon_area.html">Spherical Polygons and Areas</a></li>
 </ul>
 
     </div>
@@ -449,70 +449,64 @@
 <section id="foundations-and-terminology">
 <h3>Foundations and Terminology<a class="headerlink" href="#foundations-and-terminology" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <ul class="simple">
-<li><p>“Great Circle Terminology”: Breakdown of terminology important for working with and understanding great circles including WGS-84</p></li>
-<li><p>“Coordinate Systems”: Understanding and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Geodesic (Latitude/Longitude)</p></li>
+<li><p>“Great Circle Terminology”: Breakdown of terminology important for working with and understanding great circles</p></li>
+<li><p>“Coordinate Systems”: Understanding and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Latitude/Longitude</p></li>
 </ul>
 <p>Each section will make use of plotting to visually demonstrate concepts with <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code></p>
 </section>
 <section id="working-with-great-circles">
 <h3>Working with Great Circles<a class="headerlink" href="#working-with-great-circles" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<ol class="arabic simple">
-<li><p><strong>Great Circle Arcs and Paths</strong></p></li>
-</ol>
+<section id="great-circle-arcs-and-paths">
+<h4>1. <strong>Great Circle Arcs and Paths</strong><a class="headerlink" href="#great-circle-arcs-and-paths" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <ul class="simple">
-<li><p>Generating a great circle arc and path</p></li>
-<li><p>Midpoint (and additional intermediate points) of a great circle arc</p></li>
-<li><p>Length of a great circle arc (the distance between two points)</p></li>
-<li><p>Spherical distance to degrees</p></li>
-<li><p>Bearing of a great circle arc</p></li>
-<li><p>Compare great circle arc to rhumb line</p></li>
-<li><p>Antipodal point</p></li>
+<li><p>Distance between Points on a Great Circle Arc</p></li>
+<li><p>Spherical Distance to Degrees</p></li>
+<li><p>Determine the Bearing of a Great Circle Arc</p></li>
+<li><p>Generate a Great Circle Arc with Intermediate Points</p></li>
+<li><p>Determine the Midpoint of a Great Circle Arc</p></li>
+<li><p>Generate a Great Circle Path</p></li>
+<li><p>Determine an Antipodal Point</p></li>
 </ul>
-<ol class="arabic simple" start="2">
-<li><p><strong>Great Circles and a Point</strong></p></li>
-</ol>
+</section>
+<section id="great-circles-and-a-point">
+<h4>2. <strong>Great Circles and a Point</strong><a class="headerlink" href="#great-circles-and-a-point" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <ul class="simple">
-<li><p>Determine the distance of a point to a great circle arc</p></li>
-<li><p>Determine the distance of a point to a great circle path</p></li>
+<li><p>Determine the distance of a point to a great circle arc (cross-track and along-track distance)</p></li>
 <li><p>Determine if a point lies on a great circle arc and path (with and without tolerances)</p></li>
 </ul>
-<ol class="arabic simple" start="3">
-<li><p><strong>Great Circles and Parallels</strong></p></li>
-</ol>
+</section>
+<section id="great-circles-and-parallels">
+<h4>3. <strong>Great Circles and Parallels</strong><a class="headerlink" href="#great-circles-and-parallels" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <ul class="simple">
-<li><p>Determine the maximum and minimum latitude coordinates along a great circle path</p></li>
+<li><p>Determine the maximum latitude on a Great Circle Path</p></li>
+<li><p>Determine the minimum latitude on a Great Great path</p></li>
 <li><p>Determine when a great circle path crosses parallels</p></li>
 </ul>
-<ol class="arabic simple" start="4">
-<li><p><strong>Intersections of Great Circles</strong></p></li>
-</ol>
+</section>
+<section id="intersections-of-great-circles">
+<h4>4. <strong>Intersections of Great Circles</strong><a class="headerlink" href="#intersections-of-great-circles" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <ul class="simple">
 <li><p>Find the intersection of two great circle paths (always exists)</p></li>
 <li><p>Find the intersection of two great circle arcs (if it exists)</p></li>
 </ul>
-<ol class="arabic simple" start="5">
-<li><p><strong>Angles and Great Circles</strong></p></li>
-</ol>
+</section>
+<section id="angles-and-great-circles">
+<h4>5. <strong>Angles and Great Circles</strong><a class="headerlink" href="#angles-and-great-circles" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <ul class="simple">
-<li><p>Calculate the acute and obtuse angle of two great circle paths</p></li>
-<li><p>Calculate the directed angle of two great circle paths based on an intersection point</p></li>
+<li><p>Calculate the acute and obtuse angle of two Great Circle paths</p></li>
+<li><p>Calculate the Directed Angle of two Great Circle paths based on an intersection point</p></li>
 <li><p>Working with Spherical Triangles formed by great circle arcs</p></li>
 </ul>
-<ol class="arabic simple" start="6">
-<li><p><strong>Spherical Polygons and Areas</strong></p></li>
-</ol>
+</section>
+<section id="spherical-polygons-and-areas">
+<h4>6. <strong>Spherical Polygons and Areas</strong><a class="headerlink" href="#spherical-polygons-and-areas" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <ul class="simple">
 <li><p>Determine clockwise/counterclockwise ordering of points on spherical polygon</p></li>
 <li><p>Area and Permieter of quadrilateral patch on a unit sphere</p></li>
 <li><p>Determine if a given point is within a spherical polygon</p></li>
 <li><p>Mean center of spherical polygon</p></li>
 </ul>
-<ol class="arabic simple" start="7">
-<li><p><strong>Indiana Jones and the Great Circle</strong></p></li>
-</ol>
-<ul class="simple">
-<li><p>Working Example</p></li>
-</ul>
+</section>
 </section>
 </section>
 <section id="running-the-notebooks">
@@ -635,7 +629,15 @@ jupyter<span class="w"> </span>lab
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure">Structure</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundations-and-terminology">Foundations and Terminology</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-great-circles">Working with Great Circles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-great-circles">Working with Great Circles</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#great-circle-arcs-and-paths">1. <strong>Great Circle Arcs and Paths</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#great-circles-and-a-point">2. <strong>Great Circles and a Point</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#great-circles-and-parallels">3. <strong>Great Circles and Parallels</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#intersections-of-great-circles">4. <strong>Intersections of Great Circles</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#angles-and-great-circles">5. <strong>Angles and Great Circles</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-polygons-and-areas">6. <strong>Spherical Polygons and Areas</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-notebooks">Running the Notebooks</a><ul class="nav section-nav flex-column">

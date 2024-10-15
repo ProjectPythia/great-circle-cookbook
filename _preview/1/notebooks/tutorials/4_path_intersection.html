@@ -1,0 +1,1283 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Intersections of Great Circles &#8212; Project Pythia Cookbook Template</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/tutorials/4_path_intersection';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Angles and Great Circles" href="5_angles.html" />
+    <link rel="prev" title="Great Circles and Parallels" href="3_parallels_max_min.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="15 October 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="https://projectpythia.org">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Project Pythia Cookbook Template - Home"/>
+    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Project Pythia Cookbook Template - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+        
+        
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Great Circle Cookbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../foundations/1_terminology.html">Great Circle Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../foundations/2_coordinates.html">Coordinate Types</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_arc_path.html">Great Circle Arcs and Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_arc_to_point.html">Great Circles and a Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_parallels_max_min.html">Great Circles and Parallels</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intersections of Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_angles.html">Angles and Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_polygon_area.html">Spherical Polygons and Areas</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+        </div>
+
+        
+        <main id="main-content" class="bd-main" role="main">
+          
+
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
+                
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <p><img alt="Air traffic gif" src="https://i.pinimg.com/originals/3a/40/f9/3a40f906233af4665ddce02948013da5.gif" /></img></p>
+<section class="tex2jax_ignore mathjax_ignore" id="intersections-of-great-circles">
+<h1>Intersections of Great Circles<a class="headerlink" href="#intersections-of-great-circles" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>A great circle path crosses the entire planet and any two valid great circle paths will always intersect</p>
+<ul class="simple">
+<li><p>Find the intersection of two great circle paths (always exists)</p></li>
+<li><p>Find the intersection of two great circle arcs (if it exists) (TODO)</p></li>
+</ul>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Numpy</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Pandas</a></p></td>
+<td><p>Necessary</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Will be used for plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Will be used for plotting</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Time to learn</strong>: 40 minutes</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p>Import Packages</p></li>
+<li><p>Setup location dataframe with coordinates</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>       <span class="c1"># reading in data for location information from text file</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>        <span class="c1"># working with arrays, vectors, cross/dot products, and radians</span>
+
+<span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">Geod</span>   <span class="c1"># working with the Earth as an ellipsod (WGS-84)</span>
+<span class="kn">import</span> <span class="nn">geopy.distance</span>     <span class="c1"># working with the Earth as an ellipsod</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                        <span class="c1"># plotting a graph</span>
+<span class="kn">from</span> <span class="nn">cartopy</span> <span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span><span class="p">,</span> <span class="n">feature</span> <span class="k">as</span> <span class="n">cfeature</span>   <span class="c1"># plotting a world map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all Coordinates for Locations</span>
+<span class="n">location_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../location_full_coords.txt&quot;</span><span class="p">)</span>
+<span class="n">location_df</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="c1"># strip excess white space from column names and values</span>
+<span class="n">location_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>cart_x</th>
+      <th>cart_y</th>
+      <th>cart_z</th>
+      <th>rho</th>
+      <th>theta</th>
+      <th>phi</th>
+      <th>polar_x</th>
+      <th>polar_y</th>
+      <th>polar_z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>arecibo</td>
+      <td>18.3441</td>
+      <td>-66.7527</td>
+      <td>2.389526e+06</td>
+      <td>-5.562495e+06</td>
+      <td>2.007347e+06</td>
+      <td>6378137.0</td>
+      <td>-1.165054</td>
+      <td>1.250631</td>
+      <td>-5.562495e+06</td>
+      <td>2.389526e+06</td>
+      <td>2.007347e+06</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>boulder</td>
+      <td>40.0150</td>
+      <td>-105.2705</td>
+      <td>-1.286558e+06</td>
+      <td>-4.712394e+06</td>
+      <td>4.101066e+06</td>
+      <td>6378137.0</td>
+      <td>1.304276</td>
+      <td>0.872403</td>
+      <td>-4.712394e+06</td>
+      <td>-1.286558e+06</td>
+      <td>4.101066e+06</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>boston</td>
+      <td>42.3601</td>
+      <td>-71.0589</td>
+      <td>1.529809e+06</td>
+      <td>-4.457769e+06</td>
+      <td>4.297512e+06</td>
+      <td>6378137.0</td>
+      <td>-1.240212</td>
+      <td>0.831473</td>
+      <td>-4.457769e+06</td>
+      <td>1.529809e+06</td>
+      <td>4.297512e+06</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>redwoods</td>
+      <td>41.4017</td>
+      <td>-124.0417</td>
+      <td>-2.678169e+06</td>
+      <td>-3.964322e+06</td>
+      <td>4.218080e+06</td>
+      <td>6378137.0</td>
+      <td>0.976657</td>
+      <td>0.848200</td>
+      <td>-3.964322e+06</td>
+      <td>-2.678169e+06</td>
+      <td>4.218080e+06</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>houston</td>
+      <td>29.5518</td>
+      <td>-95.0982</td>
+      <td>-4.930480e+05</td>
+      <td>-5.526456e+06</td>
+      <td>3.145762e+06</td>
+      <td>6378137.0</td>
+      <td>1.481816</td>
+      <td>1.055020</td>
+      <td>-5.526456e+06</td>
+      <td>-4.930480e+05</td>
+      <td>3.145762e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">location_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="find-the-intersection-of-two-great-circle-paths">
+<h2>Find the intersection of two great circle paths<a class="headerlink" href="#find-the-intersection-of-two-great-circle-paths" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The intersection of two great circle paths always exists at two positions on the globe if both paths are valid great circle paths (not meridians)</p>
+<section id="math-of-intersection">
+<h3>Math of intersection<a class="headerlink" href="#math-of-intersection" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
+<span class="k">def</span> <span class="nf">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="mi">360</span><span class="p">):</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+
+    <span class="c1"># Verify not meridian (longitude passes through the poles)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lon1</span> <span class="o">-</span> <span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid inputs: start/end points are meridians&quot;</span><span class="p">)</span>
+        <span class="c1"># plotting meridians at 0 longitude through all latitudes</span>
+        <span class="n">meridian_lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">longitude_lst</span><span class="p">))</span> <span class="c1"># split in n number</span>
+        <span class="n">meridians</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">lat</span> <span class="ow">in</span> <span class="n">meridian_lat</span><span class="p">:</span>
+            <span class="n">meridians</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lat</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">meridians</span>
+
+    <span class="c1"># verify not anitpodal (diametrically opposite, points)</span>
+    <span class="k">if</span> <span class="n">lat1</span> <span class="o">+</span> <span class="n">lat2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lon1</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid inputs: start/end points are antipodal&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="c1"># note: can be expanded to handle input of np arrays by filter out antipodal/merdiain points</span>
+
+    <span class="c1"># generate n total number of longitude points along the great circle</span>
+    <span class="c1"># https://github.com/rspatial/geosphere/blob/master/R/greatCircle.R#L18C3-L18C7</span>
+    <span class="n">gc_lon_lst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">lon</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">new_lon</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon</span>  <span class="o">*</span> <span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="n">number_of_lon_pts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span><span class="p">)</span>
+        <span class="n">gc_lon_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">new_lon</span><span class="p">))</span>
+
+    <span class="c1"># Intermediate points on a great circle: https://edwilliams.org/avform147.htm&quot;</span>
+    <span class="n">gc_lat_lon</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">gc_lon</span> <span class="ow">in</span> <span class="n">gc_lon_lst</span><span class="p">:</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">gc_lon</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">gc_lon</span><span class="o">-</span><span class="n">lon1</span><span class="p">)</span>
+        <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lon1</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span>
+        <span class="n">new_lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">num</span><span class="o">/</span><span class="n">den</span><span class="p">)</span>
+        <span class="n">gc_lat_lon</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">new_lat</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">gc_lon</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">gc_lat_lon</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat_lon_pts</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">intersection_of_gc</span><span class="p">(</span><span class="n">start_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">start_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># get normal of planes containing great circles</span>
+
+    <span class="c1"># cross product of vectors</span>
+    <span class="n">normal_one</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">([</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_x&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_y&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_z&quot;</span><span class="p">]],</span>
+                          <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_x&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_y&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_z&quot;</span><span class="p">]])</span>
+    <span class="n">normal_two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">([</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_x&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_y&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_z&quot;</span><span class="p">]],</span>
+                          <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_x&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_y&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_z&quot;</span><span class="p">]])</span>
+    <span class="c1"># intersection of planes, normal to the poles of each plane</span>
+    <span class="n">line_of_intersection</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">normal_one</span><span class="p">,</span> <span class="n">normal_two</span><span class="p">)</span>
+    <span class="c1"># intersection points (one on each side of the earth)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">line_of_intersection</span> <span class="o">/</span>  <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">line_of_intersection</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">line_of_intersection</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">line_of_intersection</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> 
+    <span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="n">x1</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="nb">pow</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">))))</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">x2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">x2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="nb">pow</span><span class="p">(</span><span class="n">x2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">))))</span>
+    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">x2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x2</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="p">[(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">),</span> <span class="p">(</span><span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intersect_pts</span> <span class="o">=</span> <span class="n">intersection_of_gc</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="s2">&quot;cairo&quot;</span><span class="p">)</span>
+<span class="n">intersect_pts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(np.float64(42.13833707967324), np.float64(-92.3589541022366)),
+ (np.float64(-42.13833707967324), np.float64(87.6410458977634))]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-intersections-with-great-circle-paths">
+<h3>Plot Intersections with Great Circle Paths<a class="headerlink" href="#plot-intersections-with-great-circle-paths" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">interpolate_points_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                <span class="n">distance_between_points_meter</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span> 
+    <span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
+    
+    <span class="n">lat_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
+    <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+    <span class="n">lat_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
+    <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+
+    <span class="n">lat_lon_points</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span><span class="p">)]</span>
+    
+    <span class="c1"># move to next point when distance between points is less than the equal distance</span>
+    <span class="n">move_to_next_point</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">move_to_next_point</span><span class="p">):</span>
+        <span class="n">forward_bearing</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">distance_meters</span> <span class="o">=</span> <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">lon_start</span><span class="p">,</span>
+                                                            <span class="n">lat_start</span><span class="p">,</span> 
+                                                            <span class="n">lon_end</span><span class="p">,</span>
+                                                            <span class="n">lat_end</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">distance_meters</span> <span class="o">&lt;</span> <span class="n">distance_between_points_meter</span><span class="p">:</span>
+            <span class="c1"># ends before overshooting</span>
+            <span class="n">move_to_next_point</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">start_point</span> <span class="o">=</span> <span class="n">geopy</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span><span class="p">)</span>
+            <span class="n">distance_to_move</span> <span class="o">=</span> <span class="n">geopy</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span>
+                            <span class="n">kilometers</span><span class="o">=</span><span class="n">distance_between_points_meter</span> <span class="o">/</span>
+                            <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># distance to move towards the next point</span>
+            <span class="n">final_position</span> <span class="o">=</span> <span class="n">distance_to_move</span><span class="o">.</span><span class="n">destination</span><span class="p">(</span>
+                            <span class="n">start_point</span><span class="p">,</span> <span class="n">bearing</span><span class="o">=</span><span class="n">forward_bearing</span><span class="p">)</span>
+            <span class="n">lat_lon_points</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">final_position</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">final_position</span><span class="o">.</span><span class="n">longitude</span><span class="p">))</span>
+            <span class="c1"># new starting position is newly found end position</span>
+            <span class="n">lon_start</span><span class="p">,</span> <span class="n">lat_start</span> <span class="o">=</span> <span class="n">final_position</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">final_position</span><span class="o">.</span><span class="n">latitude</span>
+    <span class="n">lat_lon_points</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lat_end</span><span class="p">,</span> <span class="n">lon_end</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">lat_lon_points</span>
+
+<span class="k">def</span> <span class="nf">arc_points</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+               <span class="n">n_total_points</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">start_lat</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
+    <span class="n">start_lon</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+    <span class="n">end_lat</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
+    <span class="n">end_lon</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+
+    <span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">distance_meter</span> <span class="o">=</span>  <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">start_lon</span><span class="p">,</span>
+                                        <span class="n">start_lat</span><span class="p">,</span>
+                                        <span class="n">end_lon</span><span class="p">,</span>
+                                        <span class="n">end_lat</span><span class="p">)</span>
+        
+    <span class="n">distance_between_points_meter</span> <span class="o">=</span> <span class="n">distance_meter</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_total_points</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    
+    <span class="n">points_along_arc</span> <span class="o">=</span> <span class="n">interpolate_points_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="p">,</span> <span class="n">end_point</span><span class="p">,</span>
+                                              <span class="n">distance_between_points_meter</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">points_along_arc</span>
+
+<span class="k">def</span> <span class="nf">plot_gc_with_intersection</span><span class="p">(</span><span class="n">start_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                             <span class="n">start_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_gc2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                             <span class="n">lon_west</span><span class="o">=-</span><span class="mi">180</span><span class="p">,</span> <span class="n">lon_east</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+                             <span class="n">lat_south</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">lat_north</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
+    <span class="c1"># Set up world map plot</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">projection_map</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">lon_west</span><span class="p">,</span> <span class="n">lon_east</span><span class="p">,</span> <span class="n">lat_south</span><span class="p">,</span> <span class="n">lat_north</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot Great Circle Path</span>
+    <span class="n">gc_one_lat_pts</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_gc1</span><span class="p">,</span> <span class="n">end_gc1</span><span class="p">)</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gc_one_lat_pts</span><span class="p">]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gc_one_lat_pts</span><span class="p">]</span> <span class="c1"># latitude</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">)</span>
+    <span class="n">gc_two_lat_pts</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_gc2</span><span class="p">,</span> <span class="n">end_gc2</span><span class="p">)</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gc_two_lat_pts</span><span class="p">]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gc_two_lat_pts</span><span class="p">]</span> <span class="c1"># latitude</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">)</span>
+
+    <span class="c1"># Plot intersection point</span>
+    <span class="n">intersection_point</span> <span class="o">=</span> <span class="n">intersection_of_gc</span><span class="p">(</span><span class="n">start_gc1</span><span class="p">,</span> <span class="n">end_gc1</span><span class="p">,</span>
+                                            <span class="n">start_gc2</span><span class="p">,</span> <span class="n">end_gc2</span><span class="p">)</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">intersection_point</span><span class="p">]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">intersection_point</span><span class="p">]</span> <span class="c1"># latitude</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;intersection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot Great Circle Arc</span>
+    <span class="n">gc_one_arc_pts</span> <span class="o">=</span> <span class="n">arc_points</span><span class="p">(</span><span class="n">start_gc1</span><span class="p">,</span> <span class="n">end_gc1</span><span class="p">)</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gc_one_arc_pts</span><span class="p">]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gc_one_arc_pts</span><span class="p">]</span> <span class="c1"># latitude</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;GC 1&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">latitudes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Arc Start&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">latitudes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Arc End&quot;</span><span class="p">)</span>
+
+    <span class="n">gc_two_arc_pts</span> <span class="o">=</span> <span class="n">arc_points</span><span class="p">(</span><span class="n">start_gc2</span><span class="p">,</span> <span class="n">end_gc2</span><span class="p">)</span>
+    <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gc_two_arc_pts</span><span class="p">]</span> <span class="c1"># longitude</span>
+    <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gc_two_arc_pts</span><span class="p">]</span> <span class="c1"># latitude</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;GC 2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">latitudes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">latitudes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Intersection Point = </span><span class="si">{</span><span class="n">intersection_point</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_gc_with_intersection</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;greenwich&quot;</span><span class="p">,</span> <span class="s2">&quot;cairo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1432cbcfbd5255bf97180f02a0dd0bc9198b717cdcb5699f68e847ccbe17eeb3.png" src="../../_images/1432cbcfbd5255bf97180f02a0dd0bc9198b717cdcb5699f68e847ccbe17eeb3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_gc_with_intersection</span><span class="p">(</span><span class="s2">&quot;arecibo&quot;</span><span class="p">,</span> <span class="s2">&quot;zambezi&quot;</span><span class="p">,</span> <span class="s2">&quot;johannesburg&quot;</span><span class="p">,</span> <span class="s2">&quot;reykjavík&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2f18f4d90b02ea51893cda7823eb19eb55b1d90122a433d3c450bf8fb01dc77a.png" src="../../_images/2f18f4d90b02ea51893cda7823eb19eb55b1d90122a433d3c450bf8fb01dc77a.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="find-the-intersection-of-two-great-circle-arcs-todo">
+<h2>Find the intersection of two great circle arcs (TODO)<a class="headerlink" href="#find-the-intersection-of-two-great-circle-arcs-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The intersection of two great circle paths always exists at two positions on the globem but intersections do not always exists along the great circle arcs</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<section id="whats-next">
+<h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Angles and Great Circles</p>
+</section>
+</section>
+<section id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://edwilliams.org/avform147.htm">Aviation Formulary V1.47</a></p></li>
+<li><p><a class="reference external" href="https://www.movable-type.co.uk/scripts/latlong.html">Moveable Type Script</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3_parallels_max_min.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Great Circles and Parallels</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="5_angles.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Angles and Great Circles</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                  </footer>
+                
+              </div>
+
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-intersection-of-two-great-circle-paths">Find the intersection of two great circle paths</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math-of-intersection">Math of intersection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-intersections-with-great-circle-paths">Plot Intersections with Great Circle Paths</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-intersection-of-two-great-circle-arcs-todo">Find the intersection of two great circle arcs (TODO)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?urlpath=lab/tree/notebooks/tutorials/4_path_intersection.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cookbook-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cookbook-template/edit/main/notebooks/tutorials/4_path_intersection.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cookbook-template/issues/new?title=Issue%20on%20page%20%2Fnotebooks/tutorials/4_path_intersection.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/tutorials/4_path_intersection.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+            </div>
+
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the <a href="https://projectpythia.org/">Project Pythia</a> Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 15 October 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item">
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../../_images/NSF-NCAR_Lockup-UCAR-Dark_102523.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2024.
+        
+          By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
+        
+          Last updated on 15 October 2024.
+        </p>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item"><div class="container-fluid footer-extra">
+  <div class="container">
+    <center>
+      Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
+      in Pythia Cookbooks is licensed under
+      <a href="https://opensource.org/license/apache-2-0">Apache 2.0</a>. All
+      other non-code content is licensed under
+      <a href="https://creativecommons.org/licenses/by/4.0/">
+        Creative Commons BY 4.0 (CC BY 4.0)</a
+      >.
+    </center>
+    <br /><br />
+    <div class="row">
+      <p class="m-0">
+        <img
+          src="../../_static/footer-logo-nsf.png"
+          style="float: left; width: 60px; height: 60px; margin-right: 1rem"
+        />
+        This material is based upon work supported by the National Science
+        Foundation under Grant Nos. 2026863 and 2026899. Any opinions, findings,
+        and conclusions or recommendations expressed in this material are those
+        of the author(s) and do not necessarily reflect the views of the
+        National Science Foundation.
+      </p>
+    </div>
+  </div>
+</div></div>
+      
+      </div>
+    </div>
+  
+
+  </footer>
+  </body>
+</html>
