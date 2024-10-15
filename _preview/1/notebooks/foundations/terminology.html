@@ -81,7 +81,7 @@
     <link rel="prev" title="How to Cite This Cookbook" href="../how-to-cite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="10 October 2024"/>
+    <meta name="docbuild:last-update" content="15 October 2024"/>
   </head>
   
   
@@ -514,12 +514,58 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyproj</span>
-<span class="n">pyproj</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">get_ellps_map</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">get_ellps_map</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">pyproj</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">get_ellps_map</span><span class="p">()[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;MERIT&#39;, &#39;SGS85&#39;, &#39;GRS80&#39;, &#39;IAU76&#39;, &#39;airy&#39;, &#39;APL4.9&#39;, &#39;NWL9D&#39;, &#39;mod_airy&#39;, &#39;andrae&#39;, &#39;danish&#39;, &#39;aust_SA&#39;, &#39;GRS67&#39;, &#39;GSK2011&#39;, &#39;bessel&#39;, &#39;bess_nam&#39;, &#39;clrk66&#39;, &#39;clrk80&#39;, &#39;clrk80ign&#39;, &#39;CPM&#39;, &#39;delmbr&#39;, &#39;engelis&#39;, &#39;evrst30&#39;, &#39;evrst48&#39;, &#39;evrst56&#39;, &#39;evrst69&#39;, &#39;evrstSS&#39;, &#39;fschr60&#39;, &#39;fschr60m&#39;, &#39;fschr68&#39;, &#39;helmert&#39;, &#39;hough&#39;, &#39;intl&#39;, &#39;krass&#39;, &#39;kaula&#39;, &#39;lerch&#39;, &#39;mprts&#39;, &#39;new_intl&#39;, &#39;plessis&#39;, &#39;PZ90&#39;, &#39;SEasia&#39;, &#39;walbeck&#39;, &#39;WGS60&#39;, &#39;WGS66&#39;, &#39;WGS72&#39;, &#39;WGS84&#39;, &#39;sphere&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MERIT = {&#39;a&#39;: 6378137.0, &#39;rf&#39;: 298.257, &#39;description&#39;: &#39;MERIT 1983&#39;}
+SGS85 = {&#39;a&#39;: 6378136.0, &#39;rf&#39;: 298.257, &#39;description&#39;: &#39;Soviet Geodetic System 85&#39;}
+GRS80 = {&#39;a&#39;: 6378137.0, &#39;rf&#39;: 298.257222101, &#39;description&#39;: &#39;GRS 1980(IUGG, 1980)&#39;}
+IAU76 = {&#39;a&#39;: 6378140.0, &#39;rf&#39;: 298.257, &#39;description&#39;: &#39;IAU 1976&#39;}
+airy = {&#39;a&#39;: 6377563.396, &#39;rf&#39;: 299.3249646, &#39;description&#39;: &#39;Airy 1830&#39;}
+APL4.9 = {&#39;a&#39;: 6378137.0, &#39;rf&#39;: 298.25, &#39;description&#39;: &#39;Appl. Physics. 1965&#39;}
+NWL9D = {&#39;a&#39;: 6378145.0, &#39;rf&#39;: 298.25, &#39;description&#39;: &#39;Naval Weapons Lab., 1965&#39;}
+mod_airy = {&#39;a&#39;: 6377340.189, &#39;b&#39;: 6356034.446, &#39;description&#39;: &#39;Modified Airy&#39;}
+andrae = {&#39;a&#39;: 6377104.43, &#39;rf&#39;: 300.0, &#39;description&#39;: &#39;Andrae 1876 (Den., Iclnd.)&#39;}
+danish = {&#39;a&#39;: 6377019.2563, &#39;rf&#39;: 300.0, &#39;description&#39;: &#39;Andrae 1876 (Denmark, Iceland)&#39;}
+aust_SA = {&#39;a&#39;: 6378160.0, &#39;rf&#39;: 298.25, &#39;description&#39;: &#39;Australian Natl &amp; S. Amer. 1969&#39;}
+GRS67 = {&#39;a&#39;: 6378160.0, &#39;rf&#39;: 298.247167427, &#39;description&#39;: &#39;GRS 67(IUGG 1967)&#39;}
+GSK2011 = {&#39;a&#39;: 6378136.5, &#39;rf&#39;: 298.2564151, &#39;description&#39;: &#39;GSK-2011&#39;}
+bessel = {&#39;a&#39;: 6377397.155, &#39;rf&#39;: 299.1528128, &#39;description&#39;: &#39;Bessel 1841&#39;}
+bess_nam = {&#39;a&#39;: 6377483.865, &#39;rf&#39;: 299.1528128, &#39;description&#39;: &#39;Bessel 1841 (Namibia)&#39;}
+clrk66 = {&#39;a&#39;: 6378206.4, &#39;b&#39;: 6356583.8, &#39;description&#39;: &#39;Clarke 1866&#39;}
+clrk80 = {&#39;a&#39;: 6378249.145, &#39;rf&#39;: 293.4663, &#39;description&#39;: &#39;Clarke 1880 mod.&#39;}
+clrk80ign = {&#39;a&#39;: 6378249.2, &#39;rf&#39;: 293.4660212936269, &#39;description&#39;: &#39;Clarke 1880 (IGN).&#39;}
+CPM = {&#39;a&#39;: 6375738.7, &#39;rf&#39;: 334.29, &#39;description&#39;: &#39;Comm. des Poids et Mesures 1799&#39;}
+delmbr = {&#39;a&#39;: 6376428.0, &#39;rf&#39;: 311.5, &#39;description&#39;: &#39;Delambre 1810 (Belgium)&#39;}
+engelis = {&#39;a&#39;: 6378136.05, &#39;rf&#39;: 298.2566, &#39;description&#39;: &#39;Engelis 1985&#39;}
+evrst30 = {&#39;a&#39;: 6377276.345, &#39;rf&#39;: 300.8017, &#39;description&#39;: &#39;Everest 1830&#39;}
+evrst48 = {&#39;a&#39;: 6377304.063, &#39;rf&#39;: 300.8017, &#39;description&#39;: &#39;Everest 1948&#39;}
+evrst56 = {&#39;a&#39;: 6377301.243, &#39;rf&#39;: 300.8017, &#39;description&#39;: &#39;Everest 1956&#39;}
+evrst69 = {&#39;a&#39;: 6377295.664, &#39;rf&#39;: 300.8017, &#39;description&#39;: &#39;Everest 1969&#39;}
+evrstSS = {&#39;a&#39;: 6377298.556, &#39;rf&#39;: 300.8017, &#39;description&#39;: &#39;Everest (Sabah &amp; Sarawak)&#39;}
+fschr60 = {&#39;a&#39;: 6378166.0, &#39;rf&#39;: 298.3, &#39;description&#39;: &#39;Fischer (Mercury Datum) 1960&#39;}
+fschr60m = {&#39;a&#39;: 6378155.0, &#39;rf&#39;: 298.3, &#39;description&#39;: &#39;Modified Fischer 1960&#39;}
+fschr68 = {&#39;a&#39;: 6378150.0, &#39;rf&#39;: 298.3, &#39;description&#39;: &#39;Fischer 1968&#39;}
+helmert = {&#39;a&#39;: 6378200.0, &#39;rf&#39;: 298.3, &#39;description&#39;: &#39;Helmert 1906&#39;}
+hough = {&#39;a&#39;: 6378270.0, &#39;rf&#39;: 297.0, &#39;description&#39;: &#39;Hough&#39;}
+intl = {&#39;a&#39;: 6378388.0, &#39;rf&#39;: 297.0, &#39;description&#39;: &#39;International 1924 (Hayford 1909, 1910)&#39;}
+krass = {&#39;a&#39;: 6378245.0, &#39;rf&#39;: 298.3, &#39;description&#39;: &#39;Krassovsky, 1942&#39;}
+kaula = {&#39;a&#39;: 6378163.0, &#39;rf&#39;: 298.24, &#39;description&#39;: &#39;Kaula 1961&#39;}
+lerch = {&#39;a&#39;: 6378139.0, &#39;rf&#39;: 298.257, &#39;description&#39;: &#39;Lerch 1979&#39;}
+mprts = {&#39;a&#39;: 6397300.0, &#39;rf&#39;: 191.0, &#39;description&#39;: &#39;Maupertius 1738&#39;}
+new_intl = {&#39;a&#39;: 6378157.5, &#39;b&#39;: 6356772.2, &#39;description&#39;: &#39;New International 1967&#39;}
+plessis = {&#39;a&#39;: 6376523.0, &#39;b&#39;: 6355863.0, &#39;description&#39;: &#39;Plessis 1817 (France)&#39;}
+PZ90 = {&#39;a&#39;: 6378136.0, &#39;rf&#39;: 298.25784, &#39;description&#39;: &#39;PZ-90&#39;}
+SEasia = {&#39;a&#39;: 6378155.0, &#39;b&#39;: 6356773.3205, &#39;description&#39;: &#39;Southeast Asia&#39;}
+walbeck = {&#39;a&#39;: 6376896.0, &#39;b&#39;: 6355834.8467, &#39;description&#39;: &#39;Walbeck&#39;}
+WGS60 = {&#39;a&#39;: 6378165.0, &#39;rf&#39;: 298.3, &#39;description&#39;: &#39;WGS 60&#39;}
+WGS66 = {&#39;a&#39;: 6378145.0, &#39;rf&#39;: 298.25, &#39;description&#39;: &#39;WGS 66&#39;}
+WGS72 = {&#39;a&#39;: 6378135.0, &#39;rf&#39;: 298.26, &#39;description&#39;: &#39;WGS 72&#39;}
+WGS84 = {&#39;a&#39;: 6378137.0, &#39;rf&#39;: 298.257223563, &#39;description&#39;: &#39;WGS 84&#39;}
+sphere = {&#39;a&#39;: 6370997.0, &#39;b&#39;: 6370997.0, &#39;description&#39;: &#39;Normal Sphere (r=6370997)&#39;}
 </pre></div>
 </div>
 </div>
@@ -527,12 +573,18 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geopy</span> <span class="kn">import</span> <span class="n">distance</span>
-<span class="n">distance</span><span class="o">.</span><span class="n">ELLIPSOIDS</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">distance</span><span class="o">.</span><span class="n">ELLIPSOIDS</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">distance</span><span class="o">.</span><span class="n">ELLIPSOIDS</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;WGS-84&#39;, &#39;GRS-80&#39;, &#39;Airy (1830)&#39;, &#39;Intl 1924&#39;, &#39;Clarke (1880)&#39;, &#39;GRS-67&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WGS-84 = (6378.137, 6356.7523142, 0.0033528106647474805)
+GRS-80 = (6378.137, 6356.7523141, 0.003352810681182319)
+Airy (1830) = (6377.563396, 6356.256909, 0.0033408506414970775)
+Intl 1924 = (6378.388, 6356.911946, 0.003367003367003367)
+Clarke (1880) = (6378.249145, 6356.51486955, 0.003407561378699334)
+GRS-67 = (6378.16, 6356.774719, 0.003352891869237217)
 </pre></div>
 </div>
 </div>
@@ -581,8 +633,8 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://edwilliams.org/avform147.htm">Ed Williams “Avitation Formulary”</a></p></li>
 <li><p><a class="reference external" href="https://www.movable-type.co.uk/scripts/latlong.html">Movable Type Scripts</a></p></li>
-<li><p>“Heavenly Mathematics: The Forgotten Art of SPherical Trigonometry” by Glen Van Brummelen</p></li>
-<li><p>“SPherical Trigonometry: A Comprehensive Approach” by Ira Arevalo Fajardo</p></li>
+<li><p>“Heavenly Mathematics: The Forgotten Art of Spherical Trigonometry” by Glen Van Brummelen</p></li>
+<li><p>“Spherical Trigonometry: A Comprehensive Approach” by Ira Arevalo Fajardo</p></li>
 </ul>
 </section>
 <hr class="docutils" />
@@ -929,7 +981,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 10 October 2024.
+  Last updated on 15 October 2024.
   <br/>
 </p>
   </div>
@@ -983,7 +1035,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 10 October 2024.
+          Last updated on 15 October 2024.
         </p>
       </div>
     </div>

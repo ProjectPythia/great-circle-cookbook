@@ -79,7 +79,7 @@
     <link rel="prev" title="Great Circles and Parallels" href="parallels_max_min.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="10 October 2024"/>
+    <meta name="docbuild:last-update" content="15 October 2024"/>
   </head>
   
   
@@ -459,6 +459,10 @@
 <hr class="docutils" />
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p>Import Packages</p></li>
+<li><p>Setup location dataframe with coordinates</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>       <span class="c1"># reading in data for location information from text file</span>
@@ -613,10 +617,10 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
 <span class="k">def</span> <span class="nf">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="mi">360</span><span class="p">):</span>
-    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
 
     <span class="c1"># Verify not meridian (longitude passes through the poles)</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lon1</span> <span class="o">-</span> <span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -668,18 +672,18 @@
     <span class="c1"># get normal of planes containing great circles</span>
 
     <span class="c1"># cross product of vectors</span>
-    <span class="n">normal_one</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">([</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_z&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
-                          <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_gc1</span><span class="p">]][</span><span class="s2">&quot;cart_z&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-    <span class="n">normal_two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">([</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc2</span><span class="p">]][</span><span class="s2">&quot;cart_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc2</span><span class="p">]][</span><span class="s2">&quot;cart_y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_gc2</span><span class="p">]][</span><span class="s2">&quot;cart_z&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
-                          <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_gc2</span><span class="p">]][</span><span class="s2">&quot;cart_x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_gc2</span><span class="p">]][</span><span class="s2">&quot;cart_y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_gc2</span><span class="p">]][</span><span class="s2">&quot;cart_z&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="n">normal_one</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">([</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_x&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_y&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_z&quot;</span><span class="p">]],</span>
+                          <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_x&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_y&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc1</span><span class="p">,</span> <span class="s2">&quot;cart_z&quot;</span><span class="p">]])</span>
+    <span class="n">normal_two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">([</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_x&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_y&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_z&quot;</span><span class="p">]],</span>
+                          <span class="p">[</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_x&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_y&quot;</span><span class="p">],</span>
+                           <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_gc2</span><span class="p">,</span> <span class="s2">&quot;cart_z&quot;</span><span class="p">]])</span>
     <span class="c1"># intersection of planes, normal to the poles of each plane</span>
     <span class="n">line_of_intersection</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">normal_one</span><span class="p">,</span> <span class="n">normal_two</span><span class="p">)</span>
     <span class="c1"># intersection points (one on each side of the earth)</span>
@@ -717,10 +721,10 @@
                                 <span class="n">distance_between_points_meter</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span> 
     <span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
     
-    <span class="n">lat_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">lat_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">lat_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
+    <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+    <span class="n">lat_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
+    <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
 
     <span class="n">lat_lon_points</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span><span class="p">)]</span>
     
@@ -749,10 +753,10 @@
 
 <span class="k">def</span> <span class="nf">arc_points</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                <span class="n">n_total_points</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">start_lat</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">start_lon</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">end_lat</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">end_lon</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">start_lat</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
+    <span class="n">start_lon</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+    <span class="n">end_lat</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
+    <span class="n">end_lon</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
 
     <span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
 
@@ -1183,7 +1187,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 10 October 2024.
+  Last updated on 15 October 2024.
   <br/>
 </p>
   </div>
@@ -1237,7 +1241,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 10 October 2024.
+          Last updated on 15 October 2024.
         </p>
       </div>
     </div>

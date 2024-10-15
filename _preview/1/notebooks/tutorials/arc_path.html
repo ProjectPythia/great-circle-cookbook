@@ -81,7 +81,7 @@
     <link rel="prev" title="Coordinate Types" href="../foundations/coordinates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="10 October 2024"/>
+    <meta name="docbuild:last-update" content="15 October 2024"/>
   </head>
   
   
@@ -422,7 +422,7 @@
 <p>Great circles are circles that circumnavigate the globe</p>
 <ol class="arabic simple">
 <li><p>Distance Between Points on a Great Circle Arc</p></li>
-<li><p>Spherical distance to degrees</p></li>
+<li><p>Spherical Distance to Degrees</p></li>
 <li><p>Determine the Bearing of a Great Circle Arc</p></li>
 <li><p>Generating a Great Circle Arc with Intermediates Points</p></li>
 <li><p>Determine the Midpoint of a Great Circle Arc</p></li>
@@ -467,6 +467,10 @@
 <hr class="docutils" />
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p>Import Packages</p></li>
+<li><p>Setup location dataframe with coordinates</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>       <span class="c1"># reading in data for location information from text file</span>
@@ -625,10 +629,10 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distance_between_points_default</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">earth_radius</span> <span class="o">=</span> <span class="mi">6378137</span>  <span class="c1"># meters</span>
-    <span class="n">latA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lonA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">latB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lonB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">latA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lonA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">latB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lonB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
 
     <span class="n">distance_default</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">latA</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">latB</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latA</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latB</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lonA</span><span class="o">-</span><span class="n">lonB</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">distance_default</span> <span class="o">*</span> <span class="n">earth_radius</span>
@@ -640,10 +644,10 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distance_between_points_small</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">earth_radius</span> <span class="o">=</span> <span class="mi">6378137</span>  <span class="c1"># meters</span>
-    <span class="n">latA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lonA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">latB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lonB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">latA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lonA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">latB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lonB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
 
     <span class="n">distance_small</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">latA</span><span class="o">-</span><span class="n">latB</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latA</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latB</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">lonA</span><span class="o">-</span><span class="n">lonB</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">distance_small</span> <span class="o">*</span> <span class="n">earth_radius</span>
@@ -662,108 +666,15 @@
 <section id="determine-distance-points-via-python-package-pyproj">
 <h3>Determine Distance Points via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code><a class="headerlink" href="#determine-distance-points-via-python-package-pyproj" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pyproj</span></code> accounts for different ellipsoids like <code class="docutils literal notranslate"><span class="pre">WGS-84</span></code></p>
+<p>First, setup a ellipsoid to represent the Earth (“WGS-84”):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>cart_x</th>
-      <th>cart_y</th>
-      <th>cart_z</th>
-      <th>rho</th>
-      <th>theta</th>
-      <th>phi</th>
-      <th>polar_x</th>
-      <th>polar_y</th>
-      <th>polar_z</th>
-    </tr>
-    <tr>
-      <th>name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>boulder</th>
-      <td>boulder</td>
-      <td>40.0150</td>
-      <td>-105.2705</td>
-      <td>-1.286558e+06</td>
-      <td>-4.712394e+06</td>
-      <td>4.101066e+06</td>
-      <td>6378137.0</td>
-      <td>1.304276</td>
-      <td>0.872403</td>
-      <td>-4.712394e+06</td>
-      <td>-1.286558e+06</td>
-      <td>4.101066e+06</td>
-    </tr>
-    <tr>
-      <th>boston</th>
-      <td>boston</td>
-      <td>42.3601</td>
-      <td>-71.0589</td>
-      <td>1.529809e+06</td>
-      <td>-4.457769e+06</td>
-      <td>4.297512e+06</td>
-      <td>6378137.0</td>
-      <td>-1.240212</td>
-      <td>0.831473</td>
-      <td>-4.457769e+06</td>
-      <td>1.529809e+06</td>
-      <td>4.297512e+06</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">distance_meter</span> <span class="o">=</span>  <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                     <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                     <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                     <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Distance between Boulder and Boston</span>
+<span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">distance_meter</span> <span class="o">=</span>  <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
+                                     <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
+                                     <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
+                                     <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance between coordinates (ellipsoid)   = </span><span class="si">{</span><span class="n">distance_meter</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
 <span class="n">distance_unit_sphere_default</span> <span class="o">=</span> <span class="n">distance_between_points_default</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
@@ -781,12 +692,12 @@ Distance between coordinates (unit sphere) = 2858.5322136393447 km
 </div>
 </div>
 </div>
-<p>Compared to the distance from the associated airports in Denver and Boston (<a class="reference external" href="https://www.greatcirclemap.com/?routes=DEN-BOS">DIA to Logan</a>) which has a distance of 2823 km</p>
+<p>Compared to the distance from the associated airports in Denver and Boston (<a class="reference external" href="https://www.greatcirclemap.com/?routes=DEN-BOS">DIA to Logan</a>) which has a distance of 2823 km, using Denver instead of Boulder</p>
 </section>
 </section>
 <section id="spherical-distance-to-degrees">
-<h2>Spherical distance to degrees<a class="headerlink" href="#spherical-distance-to-degrees" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Convert a distance from meters to degrees, measured along the great circle sphere with a radius of ~6371 km (mean radius of Earth)</p>
+<h2>Spherical Distance to Degrees<a class="headerlink" href="#spherical-distance-to-degrees" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Convert a distance from meters to degrees, measured along the great circle sphere with a constant spherical radius of ~6371 km (mean radius of Earth)</p>
 <ul class="simple">
 <li><p>See also: <a class="reference external" href="https://docs.obspy.org/packages/autogen/obspy.geodetics.base.kilometer2degrees.html">ObsPy <code class="docutils literal notranslate"><span class="pre">kilometer2degrees()</span></code></a></p></li>
 </ul>
@@ -835,11 +746,11 @@ Distance between coordinates (unit sphere) = 2858.5322136393447 km
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bearing_between_points</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">latA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lonA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">latB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lonB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bearing_between_points_unit_sphere</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">latA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lonA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">latB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lonB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latA</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">latB</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">latA</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latB</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lonB</span> <span class="o">-</span> <span class="n">lonA</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lonB</span> <span class="o">-</span> <span class="n">lonA</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latB</span><span class="p">)</span>
@@ -855,19 +766,29 @@ Distance between coordinates (unit sphere) = 2858.5322136393447 km
 <p><code class="docutils literal notranslate"><span class="pre">pyproj</span></code> accounts for different ellipsoids like <code class="docutils literal notranslate"><span class="pre">WGS-84</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fwd_bearing</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span>  <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                     <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                     <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                     <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;forward bearing between coordinates               = </span><span class="si">{</span><span class="n">fwd_bearing</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
-<span class="n">bearing_math</span> <span class="o">=</span> <span class="n">bearing_between_points</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;forward bearing between coordinates (unit sphere) = </span><span class="si">{</span><span class="n">bearing_math</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bearing_between_points_ellps</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
+    <span class="n">fwd_bearing</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span>  <span class="n">geodesic</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
+                                        <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
+                                        <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
+                                        <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">fwd_bearing</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Compare Unit Sphere and Ellipsoid</span>
+<span class="n">beaing_ellps</span> <span class="o">=</span> <span class="n">bearing_between_points_ellps</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;forward bearing between coordinates (ellipsoid)   = </span><span class="si">{</span><span class="n">beaing_ellps</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
+<span class="n">bearing_us</span> <span class="o">=</span> <span class="n">bearing_between_points_unit_sphere</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;forward bearing between coordinates (unit sphere) = </span><span class="si">{</span><span class="n">bearing_us</span><span class="si">}</span><span class="s2"> Degrees&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>forward bearing between coordinates               = 73.51048829569022 Degrees
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>forward bearing between coordinates (ellipsoid)   = 73.51048829569022 Degrees
 forward bearing between coordinates (unit sphere) = 73.49180375272644 Degrees
 </pre></div>
 </div>
@@ -914,10 +835,10 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
                         <span class="n">fraction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">earth_radius</span> <span class="o">=</span> <span class="mi">6378137</span>  <span class="c1"># meters</span>
     <span class="n">total_distance</span> <span class="o">=</span> <span class="n">distance</span> <span class="o">/</span> <span class="n">earth_radius</span>
-    <span class="n">latA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lonA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">latB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lonB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">latA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lonA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">latB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lonB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
 
     <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">fraction</span><span class="p">)</span> <span class="o">*</span> <span class="n">total_distance</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">total_distance</span><span class="p">)</span>
     <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">fraction</span> <span class="o">*</span> <span class="n">total_distance</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">total_distance</span><span class="p">)</span>
@@ -1095,8 +1016,8 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">lat_end</span><span class="p">,</span> <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+<span class="n">lat_end</span><span class="p">,</span> <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
 
 <span class="n">intermediate_geodesic</span> <span class="o">=</span> <span class="n">interpolate_points_along_gc</span><span class="p">(</span><span class="n">lat_start</span><span class="p">,</span>
                                           <span class="n">lon_start</span><span class="p">,</span>
@@ -1179,8 +1100,8 @@ $<span class="math notranslate nohighlight">\(latA + latB = 0\)</span><span clas
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">lat_end</span><span class="p">,</span> <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+<span class="n">lat_end</span><span class="p">,</span> <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
 
 <span class="n">intermediate_ellipsoid</span> <span class="o">=</span> <span class="n">interpolate_points_along_gc</span><span class="p">(</span><span class="n">lat_start</span><span class="p">,</span>
                                           <span class="n">lon_start</span><span class="p">,</span>
@@ -1298,8 +1219,8 @@ Distance between ellipsoid/unit sphere defined point 10: 0.0 meters
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">midpoint</span> <span class="o">=</span> <span class="n">distance_meter</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boulder&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">lat_end</span><span class="p">,</span> <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;boston&quot;</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lat_start</span><span class="p">,</span> <span class="n">lon_start</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+<span class="n">lat_end</span><span class="p">,</span> <span class="n">lon_end</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;boston&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
 
 <span class="n">intermediate_geodesic</span> <span class="o">=</span> <span class="n">interpolate_points_along_gc</span><span class="p">(</span><span class="n">lat_start</span><span class="p">,</span>
                                           <span class="n">lon_start</span><span class="p">,</span>
@@ -1362,10 +1283,10 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
 <span class="k">def</span> <span class="nf">generate_latitude_along_gc</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="mi">360</span><span class="p">):</span>
-    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
 
     <span class="c1"># Verify not meridian (longitude passes through the poles)</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lon1</span> <span class="o">-</span> <span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1450,10 +1371,10 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;cornflowerblue&quot;</span><span class="p">)</span>
 
     <span class="c1"># Overly great circle with arc rom start/end point</span>
-    <span class="n">start_end_lat_lon</span> <span class="o">=</span> <span class="n">arc_points</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                   <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                  <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                   <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">start_end_lat_lon</span> <span class="o">=</span> <span class="n">arc_points</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
+                                   <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
+                                   <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
+                                   <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
                                    <span class="n">n_total_points</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">longitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">start_end_lat_lon</span><span class="p">]</span> <span class="c1"># longitude</span>
     <span class="n">latitudes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">start_end_lat_lon</span><span class="p">]</span> <span class="c1"># latitude</span>
@@ -1530,8 +1451,8 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">antipodal</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">anti_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">ref_lon</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">anti_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
+    <span class="n">ref_lon</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">ref_lon</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">anti_lon</span> <span class="o">=</span> <span class="n">ref_lon</span> <span class="o">-</span> <span class="mi">180</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1546,10 +1467,10 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_antipodal</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">end_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+    <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">lat1</span> <span class="o">+</span> <span class="n">lat2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lon1</span><span class="o">-</span><span class="n">lon2</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
 </pre></div>
 </div>
@@ -1569,8 +1490,8 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
     <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
         
     <span class="c1"># Plot Start point</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">start_point</span><span class="p">]][</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
+                <span class="n">location_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">start_point</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
                 <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;cornflowerblue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">start_point</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
 
     <span class="c1"># Plot Antipodal Point</span>
@@ -1587,34 +1508,43 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">))</span>
 <span class="n">plot_antipodal</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-40.015), np.float64(74.7295))
+</pre></div>
+</div>
 <img alt="../../_images/fd9d865ed3b9037c3c59f0013640c91943adba6be65e525d6c1dbc4a71bcc11a.png" src="../../_images/fd9d865ed3b9037c3c59f0013640c91943adba6be65e525d6c1dbc4a71bcc11a.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;svalbard&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;svalbard&quot;</span><span class="p">))</span>
 <span class="n">plot_antipodal</span><span class="p">(</span><span class="s2">&quot;svalbard&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-77.875), np.float64(-159.0248))
+</pre></div>
+</div>
 <img alt="../../_images/493cb2d849699437784a317a9d39cf215925740593f7b33c0b2dc0fbe2117cf9.png" src="../../_images/493cb2d849699437784a317a9d39cf215925740593f7b33c0b2dc0fbe2117cf9.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;cairo&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">antipodal</span><span class="p">(</span><span class="s2">&quot;cairo&quot;</span><span class="p">))</span>
 <span class="n">plot_antipodal</span><span class="p">(</span><span class="s2">&quot;cairo&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-30.0444), np.float64(-148.7643))
+</pre></div>
+</div>
 <img alt="../../_images/ff0d5e416f1421f4bb4d07094e14fc2ee41e92c7989fb0525658cc8bc7872106.png" src="../../_images/ff0d5e416f1421f4bb4d07094e14fc2ee41e92c7989fb0525658cc8bc7872106.png" />
 </div>
 </div>
@@ -1630,6 +1560,10 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 </section>
 <section id="resources-and-references">
 <h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://edwilliams.org/avform147.htm">Ed Williams “Avitation Formulary”</a></p></li>
+<li><p><a class="reference external" href="https://www.movable-type.co.uk/scripts/latlong.html">Movable Type Scripts</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -1706,7 +1640,7 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-points-via-python-package-pyproj">Determine Distance Points via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-distance-to-degrees">Spherical distance to degrees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-distance-to-degrees">Spherical Distance to Degrees</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-of-a-great-circle-arc">Determine the Bearing of a Great Circle Arc</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-mathematically-via-unit-sphere">Determine the Bearing Mathematically via Unit Sphere</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-bearing-via-python-package-pyproj">Determine the Bearing via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code></a></li>
@@ -1973,7 +1907,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 10 October 2024.
+  Last updated on 15 October 2024.
   <br/>
 </p>
   </div>
@@ -2027,7 +1961,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 10 October 2024.
+          Last updated on 15 October 2024.
         </p>
       </div>
     </div>
