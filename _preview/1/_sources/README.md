@@ -2,9 +2,9 @@
 
 # Great Circle Cookbook
 
-[![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
-[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
-[![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
+[![nightly-build](https://github.com/ProjectPythia/great-circle-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/great-circle-cookbook/actions/workflows/nightly-build.yaml)
+[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/great-circle-cookbook/main?labpath=notebooks)
+[![DOI](https://zenodo.org/badge/860220270.svg)](https://zenodo.org/badge/latestdoi/860220270)
 
 This Project Pythia Cookbook covers the mathematics of working with Great Circles
 
