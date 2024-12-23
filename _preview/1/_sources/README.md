@@ -14,7 +14,7 @@ This Project Pythia Cookbook covers the background and mathematics of working wi
 A great circle is the largest circle that can be drawn onto a sphere (like the Earth) that is the same diameter of the sphere. Great Circle arcs connect two positions on the curved surface of a planet like Earth and are commonly used for navigation that relies on "as-the crow flies" directions like planes, ships, and satellites
 
 <p align="center">
-<img src="https://mathworld.wolfram.com/images/eps-svg/SmallGreatCircles_700.svg"/>
+<img src="https://github.com/user-attachments/assets/5ffe9566-d869-4e20-bef0-f5864502b2df" width="400"/>
 </p>
 
 _Image Source: [Wolfram MathWorld](https://mathworld.wolfram.com/GreatCircle.html)_
