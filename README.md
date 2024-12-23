@@ -6,7 +6,8 @@
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/great-circle-cookbook/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/860220270.svg)](https://zenodo.org/badge/latestdoi/860220270)
 
-This Project Pythia Cookbook covers the mathematics of working with Great Circles
+This Project Pythia Cookbook covers the background and mathematics of working with great circles and, where available, this cookbook will demonstrate how to determine the features of a great circle with both existing open-source Python packages and through spherical trigonometry
+
 
 ## Motivation
 
@@ -17,6 +18,8 @@ A great circle is the largest circle that can be drawn onto a sphere (like the E
 </p>
 
 _Image Source: [Wolfram MathWorld](https://mathworld.wolfram.com/GreatCircle.html)_
+
+Great circles are commonly used in navigation, satellites in remote sensing, and working with coordinates on planets, but can be difficult to find resources to fully explain how to use them.
 
 ## Authors
 
@@ -34,16 +37,16 @@ This cookbook is broken into two main sections:
 - Foundations and Terminology
 - Working with Great Circles
 
-Where available, this cookbook will demonstrate how to determine the features of a great circle with both existing open-source Python packages and through spherical trigonometry and mathematics
-
 ### Foundations and Terminology
 
-- "Great Circle Terminology": Breakdown of terminology important for working with and understanding great circles
-- "Coordinate Systems": Understanding and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Latitude/Longitude
+- "Great Circle Terminology": Covers the important terminology for working with and understanding great circles
+- "Coordinate Systems": Covers important terminology and functions required to understand and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Latitude/Longitude
 
 Each section will make use of plotting to visually demonstrate concepts with `matplotlib` and `cartopy`
 
 ### Working with Great Circles
+
+This is the main section of this notebook and will cover specific details about how to understand and calculate important features in great circles.
 
 #### 1. **Great Circle Arcs and Paths**
 - Distance between Points on a Great Circle Arc

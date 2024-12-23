@@ -1,6 +1,14 @@
 thumbnail: thumbnail.png
 tags:
   domains:
-    - sampledomain
+    - great circle
+    - geodesic
+    - spherical trigonometry
+    - remote sensing
   packages:
-    - samplepackage
+    - numpy
+    - uxarray
+    - geopy
+    - pyproj
+    - matplotlib
+    - cartopy
