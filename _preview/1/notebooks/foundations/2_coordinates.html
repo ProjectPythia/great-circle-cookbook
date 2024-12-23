@@ -426,7 +426,7 @@
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Understanding different types of coordinates for working with unit spheres and ellipsoids</p>
+<p>Understanding different types of coordinates for working with unit spheres and ellipsoids.</p>
 <ol class="arabic simple">
 <li><p>Types of Coordinates</p></li>
 <li><p>Convert Coordinates to All Coordinate Types</p></li>
@@ -484,22 +484,19 @@
 <h2>Types of Coordinates<a class="headerlink" href="#types-of-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="geodesic-coordinates">
 <h3>Geodesic Coordinates<a class="headerlink" href="#geodesic-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<blockquote>
-<div><p>A geographic coordinate system (GCS) is a spherical or geodetic coordinate system for measuring and communicating positions directly on Earth as latitude and longitude <a class="reference external" href="https://en.wikipedia.org/wiki/Geographic_coordinate_system">(Wikipedia)</a></p>
-</div></blockquote>
-<p>Geodesic coordinates are latitude and longtiude, from -90° South to 90° North and -180° East to 180° West measured from Greenwich</p>
+<p>Geodesic coordinates are latitude and longtiude, from -90° South to 90° North and -180° East to 180° West measured from Greenwich.</p>
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/FedStats_Lat_long.svg/1024px-FedStats_Lat_long.svg.png" alt="Longitude lines are perpendicular to and latitude lines are parallel to the Equator from Wikipedia" width=400 />
 </p></section>
 <section id="cartesian-coordinates">
 <h3>Cartesian Coordinates<a class="headerlink" href="#cartesian-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Cartesian coordinates describe points in space based on perpendicular axis lines that meet at a singlle point of origin, where any point’s position is described based on the distance to the origin along xyz axis</p>
+<p>Cartesian coordinates describe points in space based on perpendicular axis lines that meet at a single point of origin, where any point’s position is described based on the distance to the origin along xyz axis.</p>
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Coord_system_CA_0.svg/1024px-Coord_system_CA_0.svg.png" alt="A three dimensional Cartesian coordinate system, with origin O and axis lines X, Y and Z, oriented as shown by the arrows. The tick marks on the axes are one length unit apart. The black dot shows the point with coordinates x = 2, y = 3, and z = 4, or (2, 3, 4) from Wikipedia" width=400 />
 </p>
 <p>Image Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Three Dimensional Cartesian Coordinate System</a></p>
 <p><strong>Geodesic to Cartesian Coordinates</strong></p>
-<p>Assuming the earth’s radius is 6378137 meters</p>
+<p>Assuming the earth’s radius is 6378137 meters:</p>
 <div class="math notranslate nohighlight">
 \[x = radius * cos(latitude) * cos(longitude)\]</div>
 <div class="math notranslate nohighlight">
@@ -523,7 +520,7 @@
 </section>
 <section id="spherical-coordinates">
 <h3>Spherical Coordinates<a class="headerlink" href="#spherical-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Spherical coordinates describe points in space based on three values: radial distance (rho, r) along the radial line between point and the origin, polar angle (theta, θ) between the radial line and the polar axis, and azimuth angle (phi, φ) which is the angle of rotation of the radial line around the polar axis. With a fixed radius, the 3-point coordinates (r, θ, φ) provide a coordinate along a sphere</p>
+<p>Spherical coordinates describe points in space based on three values: radial distance (rho, r) along the radial line between point and the origin, polar angle (theta, θ) between the radial line and the polar axis, and azimuth angle (phi, φ) which is the angle of rotation of the radial line around the polar axis. With a fixed radius, the 3-point coordinates (r, θ, φ) provide a coordinate along a sphere.</p>
 <ul class="simple">
 <li><p>Radial distance: distance from center to surface of sphere</p></li>
 <li><p>Polar angle: angle between radial line and polar axis</p></li>
@@ -561,8 +558,8 @@
 </section>
 <section id="polar-coordinates">
 <h3>Polar Coordinates<a class="headerlink" href="#polar-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Polar coordinates are a combination of latitude, longitude, and altitude from the center of the sphere (based on the radius)</p>
-<p>Assuming the earth’s radius is 6378137 meters</p>
+<p>Polar coordinates are a combination of latitude, longitude, and altitude from the center of the sphere (based on the radius).</p>
+<p>Assuming the earth’s radius is 6378137 meters:</p>
 <div class="math notranslate nohighlight">
 \[x = cos(latitude) * cos(longitude) * radius\]</div>
 <div class="math notranslate nohighlight">
@@ -589,7 +586,7 @@
 <h2>Convert City Coordinates to All Coordinate Types<a class="headerlink" href="#convert-city-coordinates-to-all-coordinate-types" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="display-coordinates-of-cities">
 <h3>Display Coordinates of Cities<a class="headerlink" href="#display-coordinates-of-cities" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Read in latitude and longitude coordinates from locations</p>
+<p>First we will read in the latitude and longitude coordinates from locations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1243,8 +1240,8 @@
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Coordinates on the Earth are measured in many different types of coordinate systems: Geodesic (latitude/longitude), cartesian, spherical, and polar. These coordinates will make future calculations simpler by converting a 2D coordinate like latitude/longitude into a 3D space that can be used for vector calculations</p>
-<p>In Python, coordinates can be mapped on to a world map via Matploblib and Cartopy</p>
+<p>Coordinates on the Earth are measured in many different types of coordinate systems: Geodesic (latitude/longitude), cartesian, spherical, and polar. These coordinates will make future calculations simpler by converting a 2D coordinate like latitude/longitude into a 3D space that can be used for vector calculations.</p>
+<p>In Python, coordinates can be mapped on to a world map via <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>.</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Great Circle arcs and paths</p>

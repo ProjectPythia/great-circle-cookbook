@@ -426,7 +426,7 @@
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>A valid great circle path (that is not a path around the equator) will cross a maximum and minimum latitude</p>
+<p>A valid great circle path (that is not a path around the equator) will cross a maximum and minimum latitude.</p>
 <ul class="simple">
 <li><p>Determine the maximum latitude on a Great Circle Path</p></li>
 <li><p>Determine the minimum latitude on a Great Great path</p></li>
@@ -618,8 +618,8 @@
 </section>
 <section id="maximum-latitude-on-a-great-circle-path">
 <h2>Maximum Latitude on a Great Circle Path<a class="headerlink" href="#maximum-latitude-on-a-great-circle-path" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>We have previous determined an equation to derive a great circle path from intermediate points from two points on a great circle arc</p>
-<p>Without additional calculations, finding the maximum location of the maximum and minimum from the list of points along the great circle path. By default, the function uses 360 points along longitude, so the output will only have a resolution of 1 degree. However, by defining the longitude with more points, the resolution increases</p>
+<p>We have previous determined an equation to derive a great circle path from intermediate points from two points on a great circle arc.</p>
+<p>Without additional calculations, finding the maximum location of the maximum and minimum from the list of points along the great circle path. By default, the function uses 360 points along longitude, so the output will only have a resolution of 1 degree. However, by defining the longitude with more points, the resolution increases.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
@@ -778,9 +778,9 @@
 <p>So, to solve for the maximum latitude the true course should be when 90 and 270 degrees on the unit sphere where for <em>any</em> bearing/latitude along the great circle:</p>
 <div class="math notranslate nohighlight">
 \[\text{max latitude} = acos(|sin(θ) * cos(φ)|)\]</div>
-<p>For the purpose of this example, we will use <code class="docutils literal notranslate"><span class="pre">pyproj</span></code> geodesic to determine the bearing based on a great circle arc, but consult previous chapters if you want to determine bearing mathetically based on the unit sphere instead of the ellipsoid</p>
+<p>For the purpose of this example, we will use <code class="docutils literal notranslate"><span class="pre">pyproj</span></code> geodesic to determine the bearing based on a great circle arc, but consult previous chapters if you want to determine bearing mathetically based on the unit sphere instead of the ellipsoid.</p>
 <p><strong>Important Note</strong></p>
-<p>Clairaut’s Formula works from unit sphere, and as a result, is subject to errors (about 3%, about +/- 11 degrees)</p>
+<p>Clairaut’s Formula works from unit sphere, and as a result, is subject to errors (about 3%, about +/- 11 degrees).</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://edwilliams.org/avform147.htm#Clairaut">Ed Williams: Clairaut’s Formula</a></p></li>
 </ul>
@@ -832,7 +832,7 @@
 </div>
 </div>
 </div>
-<p>Like finding maximum, from a list of great circle path, the smallest latitude can be found by analysing the list for the smallest latitude point</p>
+<p>Like finding maximum, from a list of great circle path, the smallest latitude can be found by analysing the list for the smallest latitude point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gc_lat_lon</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="mi">360</span><span class="p">)</span>
@@ -908,12 +908,12 @@
 </div>
 </div>
 </section>
-<section id="maximumn-latitude-from-clairauts-formula-todo">
-<h3>Maximumn Latitude from Clairaut’s Formula (TODO)<a class="headerlink" href="#maximumn-latitude-from-clairauts-formula-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="id1">
+<h3>Maximumn Latitude from Clairaut’s Formula<a class="headerlink" href="#id1" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>To solve for the minimum, the true course should be when 0 and 180 degrees on the unit sphere where for <em>any</em> bearing/latitude along the great circle:</p>
 <div class="math notranslate nohighlight">
 \[\text{min latitude} = asin(|sin(θ) * cos(φ)|)\]</div>
-<p>The southernmost point is the antipode to the northernmost (max) latitude</p>
+<p>The southernmost point is the antipode to the northernmost (max) latitude.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clairaut_formula_min</span><span class="p">(</span><span class="n">start_point</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_point</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -947,15 +947,15 @@
 </section>
 <section id="determine-when-great-circle-path-cross-parallels-todo">
 <h2>Determine when great circle path cross parallels (TODO)<a class="headerlink" href="#determine-when-great-circle-path-cross-parallels-todo" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Determine the longitude when a great circle crosses a given latitude parrellel</p>
+<p>Determine the longitude when a great circle crosses a given latitude parrellel.</p>
 </section>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Determine the coordinates when a great circle path crosses a specific parallel as well as the maximumn and minimum latitude coordinates</p>
+<p>Determine the coordinates when a great circle path crosses a specific parallel as well as the maximumn and minimum latitude coordinates.</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Intersections of Great Circles</p>
+<p>Intersections of Great Circles.</p>
 </section>
 </section>
 <section id="resources-and-references">
@@ -1043,7 +1043,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-latitude-on-a-great-circle-path">Minimum Latitude on a Great Circle Path</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#antipodal-point-of-max-todo">Antipodal Point of Max (TODO)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-latitude-along-great-circle-path">Minimum Latitude along Great Circle Path</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximumn-latitude-from-clairauts-formula-todo">Maximumn Latitude from Clairaut’s Formula (TODO)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Maximumn Latitude from Clairaut’s Formula</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-when-great-circle-path-cross-parallels-todo">Determine when great circle path cross parallels (TODO)</a></li>
