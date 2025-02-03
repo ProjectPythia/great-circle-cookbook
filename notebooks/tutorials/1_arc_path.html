@@ -85,7 +85,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="30 January 2025"/>
+    <meta name="docbuild:last-update" content="3 February 2025"/>
   </head>
   
   
@@ -426,9 +426,9 @@
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Imagine a plane flying from Cario to Hong Kong. To a passenger, the plane appears to travel a straight path, but the plane actually curves around the surface, held down by the gravity of the planet.</p>
+<p>Imagine a plane flying from Cario to Hong Kong. To a passenger, the plane appears to travel a straight path, but the plane actually curves around the surface of the Earth held down by the gravity of the planet.</p>
 <p>Great circles are circles that circumnavigate the globe.</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>Distance between Points on a Great Circle Arc</p></li>
 <li><p>Spherical Distance to Degrees</p></li>
 <li><p>Determine the Bearing of a Great Circle Arc</p></li>
@@ -436,8 +436,8 @@
 <li><p>Determine the Midpoint of a Great Circle Arc</p></li>
 <li><p>Generate a Great Circle Path</p></li>
 <li><p>Determine an Antipodal Point</p></li>
-<li><p>Compare Great Circle Arc to Rhumb Line (TODO)</p></li>
-</ul>
+<li><p><em>Compare Great Circle Arc to Rhumb Line (TODO)</em></p></li>
+</ol>
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -451,15 +451,15 @@
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Numpy</a></p></td>
 <td><p>Necessary</p></td>
-<td><p></p></td>
+<td><p>Used to work with large arrays</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Pandas</a></p></td>
 <td><p>Necessary</p></td>
-<td><p></p></td>
+<td><p>Used to read in and organize data (in particular dataframes)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
 <td><p>Helpful</p></td>
-<td><p>Will be used for plotting</p></td>
+<td><p>Will be used for adding maps to plotting</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
 <td><p>Helpful</p></td>
@@ -622,8 +622,8 @@
 </section>
 <section id="distance-between-points-on-a-great-circle-arc">
 <h2>Distance Between Points on a Great Circle Arc<a class="headerlink" href="#distance-between-points-on-a-great-circle-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<section id="determine-distance-mathematically-via-unit-sphere">
-<h3>Determine Distance Mathematically via Unit Sphere<a class="headerlink" href="#determine-distance-mathematically-via-unit-sphere" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="determine-distance-between-points-mathematically-via-unit-sphere">
+<h3>Determine Distance Between Points Mathematically via Unit Sphere<a class="headerlink" href="#determine-distance-between-points-mathematically-via-unit-sphere" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Distance between point A (latA, lonA) and point B (latB, lonB):</p>
 <div class="math notranslate nohighlight">
 \[d=acos(sin(latA)*sin(latB)+cos(latA)*cos(latB)*cos(lonA-lonB))\]</div>
@@ -1286,7 +1286,7 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 </section>
 <section id="generate-a-great-circle-path">
 <h2>Generate a Great Circle Path<a class="headerlink" href="#generate-a-great-circle-path" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Get points on the Great Cricle defined by two points.</p>
+<p>Generate points along a great circle path bewtween two points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
@@ -1644,7 +1644,7 @@ Midpoint = (np.float64(42.475261312703864), np.float64(-88.48050569778584))
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-between-points-on-a-great-circle-arc">Distance Between Points on a Great Circle Arc</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-mathematically-via-unit-sphere">Determine Distance Mathematically via Unit Sphere</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-between-points-mathematically-via-unit-sphere">Determine Distance Between Points Mathematically via Unit Sphere</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-distance-points-via-python-package-pyproj">Determine Distance Points via Python Package <code class="docutils literal notranslate"><span class="pre">pyproj</span></code></a></li>
 </ul>
 </li>
@@ -1907,7 +1907,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 30 January 2025.
+  Last updated on 3 February 2025.
   <br/>
 </p>
   </div>
@@ -1961,7 +1961,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 30 January 2025.
+          Last updated on 3 February 2025.
         </p>
       </div>
     </div>

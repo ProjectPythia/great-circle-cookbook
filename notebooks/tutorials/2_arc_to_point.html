@@ -85,7 +85,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="30 January 2025"/>
+    <meta name="docbuild:last-update" content="3 February 2025"/>
   </head>
   
   
@@ -426,12 +426,12 @@
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>A plane traveling across the country suddenly discovers it is low on fuel! It can no longer make it to the distant planned airport, instead it has to find the closest airport to its current position that it can make it with its remaining fuel.</p>
-<ul class="simple">
+<p>A plane traveling across the country suddenly discovers it is low on fuel! It can no longer make it to the planned airport, instead it has to find the closest airport to its current position that it can make it with its remaining fuel.</p>
+<ol class="arabic simple">
 <li><p>Determine the distance of a point to a great circle arc (cross-track and along-track distance)</p></li>
 <li><p>Determine if a point lies on a great circle arc and path (with and without tolerances)</p></li>
-<li><p>Determine the distance of a point to a great circle path (TODO)</p></li>
-</ul>
+<li><p><em>Determine the distance of a point to a great circle path (TODO)</em></p></li>
+</ol>
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -445,15 +445,15 @@
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Numpy</a></p></td>
 <td><p>Necessary</p></td>
-<td><p></p></td>
+<td><p>Used to work with large arrays</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Pandas</a></p></td>
 <td><p>Necessary</p></td>
-<td><p></p></td>
+<td><p>Used to read in and organize data (in particular dataframes)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
 <td><p>Helpful</p></td>
-<td><p>Will be used for plotting</p></td>
+<td><p>Will be used for adding maps to plotting</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
 <td><p>Helpful</p></td>
@@ -628,6 +628,7 @@
 </section>
 <section id="determine-the-distance-of-a-point-to-a-great-circle-arc">
 <h2>Determine the distance of a point to a great circle arc<a class="headerlink" href="#determine-the-distance-of-a-point-to-a-great-circle-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>The cross-track distance, sometimes known as cross track error, determines the distance from a point to a great circle arc and can be determined with vectors (typically simpler too).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geodesic</span> <span class="o">=</span> <span class="n">Geod</span><span class="p">(</span><span class="n">ellps</span><span class="o">=</span><span class="s2">&quot;WGS84&quot;</span><span class="p">)</span>
@@ -640,10 +641,9 @@
 <li><p>Cross track distance: angular distance from point P to great circle path</p></li>
 <li><p>Along track distance: angular distance along the great circle path from A to B before hitting a point that is closest to point P</p></li>
 </ul>
-<p>Cross-Track Distance, sometimes known as cross track error, can also be determined with vectors (typically simpler too).</p>
 <section id="cross-track-distance">
 <h3>Cross Track Distance<a class="headerlink" href="#cross-track-distance" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Distance of a point to a great circle arc</p>
+<p>Distance of a point to a great circle arc is defined as:</p>
 <div class="math notranslate nohighlight">
 \[dxt = asin( sin(δ13) ⋅ sin(θ13 − θ12) ) * R\]</div>
 <ul class="simple">
@@ -657,7 +657,7 @@
 <div class="math notranslate nohighlight">
 \[XTD =asin(sin(dist_AD)*sin(crs_AD-crs_AB))\]</div>
 <ul class="simple">
-<li><p>Positive Cross-Track Distance: Point lies in the hemisphere t0 the left of the great circle</p></li>
+<li><p>Positive Cross-Track Distance: Point lies in the hemisphere to the left of the great circle</p></li>
 <li><p>Negative Cross-Track Distance: Point lies in the hemiphere to the right of the great circle</p></li>
 </ul>
 <blockquote>
@@ -686,6 +686,7 @@ lon_D-lon_B or lon_B-lon_D, respectively</p>
 </section>
 <section id="along-track-distance">
 <h3>Along Track Distance<a class="headerlink" href="#along-track-distance" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Distance along a great circle arc, closest to a point is defined as:</p>
 <div class="math notranslate nohighlight">
 \[dat = acos(\frac{cos(δ13)}{cos(δxt)}) * R\]</div>
 <ul class="simple">
@@ -1425,7 +1426,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 30 January 2025.
+  Last updated on 3 February 2025.
   <br/>
 </p>
   </div>
@@ -1479,7 +1480,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 30 January 2025.
+          Last updated on 3 February 2025.
         </p>
       </div>
     </div>

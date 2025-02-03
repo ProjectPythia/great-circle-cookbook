@@ -85,7 +85,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="30 January 2025"/>
+    <meta name="docbuild:last-update" content="3 February 2025"/>
   </head>
   
   
@@ -426,9 +426,9 @@
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Great Circles are powerful tools used in the navigation like ships and planes as well as in geoscience for working with and understanding remote sensing via satellites. Great Circle mathematics make use of spherical geometry, where, rather than lines, shapes on a sphere are formed by the intersection of arcs along the curved surface.</p>
+<p>Great circles are powerful tools used in the navigation of ships and planes as well as in geoscience for working with remote sensing via satellites. Great circle mathematics make use of spherical geometry, where, rather than lines, shapes on a sphere are formed by the intersection of arcs along the curved surface.</p>
 <p>While spherical geometry played an important role historically in the fields of astronomy and navigation, its teaching has largely fallen out of favor since the 1950’s making finding comphrenshive resources difficult.</p>
-<p>This notebook will cover some of the important and unique terminology used when working with Great Circles and spherical geometry.</p>
+<p>This notebook will cover the important and unique terminology used when working with Great Circles and spherical geometry.</p>
 <ol class="arabic simple">
 <li><p>Spherical Geometry</p></li>
 <li><p>Great Circles</p></li>
@@ -448,7 +448,7 @@
 <h2>Spherical Geometry<a class="headerlink" href="#spherical-geometry" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="spherical-trigonometry">
 <h3>Spherical Trigonometry<a class="headerlink" href="#spherical-trigonometry" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Spherical geometry (and one of it important branches: spherical trigonometry) provide for solutions for relationshsips between sides and angles that are commonly solved for with trigonometric functions for right-angled triangles. Spherical trigonometry is unique from traidtional right-angle triangles in many ways, but for example, a triangle on a sphere can easily have internal angles that add up to more than 180 degrees.</p>
+<p>Spherical geometry (and one of it important branches: spherical trigonometry) provide solutions for relationshsips between the sides and angles on a sphere that are commonly used in right-angled triangles. Spheres are unique since unlike triangles, spheres have internal angles that add up to more than 180 degrees.</p>
 <blockquote>
 <div><p>The sum of the angles of a spherical triangle is not equal to 180°. A sphere is a curved surface, but locally the laws of the flat (planar) Euclidean geometry are good approximations. In a small triangle on the face of the earth, the sum of the angles is only slightly more than 180 degrees</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_geometry">Wikipedia: Spherical geometry</a></p>
@@ -460,7 +460,7 @@
 <blockquote>
 <div><p>“The cosine rule is the fundamental identity of spherical trigonometry: all other identities, including the sine rule, may be derived from the cosine rule” <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_trigonometry">(Wikiepedia)</a></p>
 </div></blockquote>
-<p>Where the angles A, B, C are opposite of sides a, b, c, where:</p>
+<p>The law of cosines states that for the angles A, B, C and opposite sides a, b, c:</p>
 <div class="math notranslate nohighlight">
 \[cos(a) = cos(b)cos(c) + sin(b)sin(c)cos(A)\]</div>
 <div class="math notranslate nohighlight">
@@ -470,25 +470,24 @@
 </section>
 <section id="law-of-sines">
 <h3>Law of Sines<a class="headerlink" href="#law-of-sines" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>The spherical law of sines states that angles A, B, and C be the angles opposite of the sides a, b, c, where:</p>
+<p>The spherical law of sines states that for the angles A, B, and C and the opposite of the sides a, b, c:</p>
 <div class="math notranslate nohighlight">
 \[\frac{sin(A)}{sin(a)} = \frac{sin(B)}{sin(b)} = \frac{sin(C)}{sin(c)}\]</div>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_sines#The_spherical_law_of_sines">Proof of Spherical Law of Sines</a></p>
 </section>
 </section>
 <section id="great-circles">
 <h2>Great Circles<a class="headerlink" href="#great-circles" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <section id="great-circle-path-vs-great-circle-arc">
 <h3>Great Circle Path vs. Great Circle Arc<a class="headerlink" href="#great-circle-path-vs-great-circle-arc" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>A great circle is the largest circle that can be formed on the surface of a sphere created by the intersection of a plane that also passes through the center of the sphere.</p>
-<p>All Great Circles:</p>
+<p>A great circle is the largest circle that can be formed on the surface of a sphere. A great circle is created by the intersection of a plane that also passes through the center of the sphere.</p>
+<p>All great circles:</p>
 <ul class="simple">
 <li><p>Intersect the center of the Earth</p></li>
 <li><p>Divide the Earth in half</p></li>
 <li><p>Represent the shortest distance between any two points on the surface of the Earth</p></li>
 </ul>
-<p>For example, the equator is an example of a great circle, which can be imaged as a plane cutting directly through the center of the planet and intersecting the center.</p>
-<p>A great circle path is a closed  path (-180 to 180 degrees longitude) that a great circle formed around the entire planet. A great circle path can be defined by a shorter great circle arc which can be formed by:</p>
+<p>For example, the equator is an example of a great circle. The equator can be imagined as the path formed by a plane cutting through the center of the planet and intersecting the center.</p>
+<p>A great circle path is a closed path (-180 to 180 degrees longitude) that forms around the entire planet. A great circle path can be defined by a shorter great circle arc which can be formed by:</p>
 <ul class="simple">
 <li><p>At least two points</p></li>
 <li><p>One point, a bearing, and a distance</p></li>
@@ -497,8 +496,8 @@
 </section>
 <section id="ellipsoids-vs-spheres">
 <h2>Ellipsoids vs. Spheres<a class="headerlink" href="#ellipsoids-vs-spheres" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The earth is not round, instead it is an irregular ellipsoid known as a an oblate spheroid where the poles are slightly flatter. Spherical trigonomeyry assumes a unit sphere, so working on Earth, without additional corrections, spherical measurements will contain up to 0.3% (22 km) when assuming the Earth is a perfect sphere (<a class="reference external" href="https://gis.stackexchange.com/questions/25494/how-accurate-is-approximating-earth-as-sphere">see more</a>).</p>
-<p>To account for the error when assuming the Earth is a sphere, there are various geodetic systems and ellipsoids to include in calculations.</p>
+<p>The earth is not round, instead it is an irregular ellipsoid known as a an oblate spheroid where the poles are slightly flatter. Spherical trigonometry uses a unit sphere, so working on Earth and without additional corrections, the measurements will contain up to 0.3% (22 km) when assuming the Earth is a perfect sphere (<a class="reference external" href="https://gis.stackexchange.com/questions/25494/how-accurate-is-approximating-earth-as-sphere">see more</a>).</p>
+<p>To account for the errors when assuming the Earth is a sphere, there are various geodetic systems and ellipsoids to include in calculations.</p>
 </section>
 <section id="geodesic-and-python">
 <h2>Geodesic and Python<a class="headerlink" href="#geodesic-and-python" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -507,7 +506,7 @@
 <li><p><a class="reference external" href="https://pyproj4.github.io/pyproj/stable/"><code class="docutils literal notranslate"><span class="pre">pyproj</span></code>: Python interface to PROJ (catographic projections and coordinate transformations library)</a></p></li>
 <li><p><a class="reference external" href="https://geopy.readthedocs.io/en/stable/#"><code class="docutils literal notranslate"><span class="pre">geopy</span></code>:  Python client for several popular geocoding web services</a></p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">pyproj</span></code> and <code class="docutils literal notranslate"><span class="pre">geopy</span></code> both take advantage of different types of (optional) ellipsoids.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pyproj</span></code> and <code class="docutils literal notranslate"><span class="pre">geopy</span></code> both take advantage of different types of (optional) ellipsoids:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyproj</span>
@@ -588,8 +587,7 @@ GRS-67 = (6378.16, 6356.774719, 0.003352891869237217)
 </div>
 <section id="the-standard-reference-ellipsoid-for-working-with-earth-is-wgs-84">
 <h3><strong>The standard reference ellipsoid for working with Earth is WGS-84</strong><a class="headerlink" href="#the-standard-reference-ellipsoid-for-working-with-earth-is-wgs-84" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">geopy</span></code> by default makes use of WGS-84 where “the mean earth radius as defined by the International Union of Geodesy and Geophysics, (2a + b)/3 = 6371.0087714150598 kilometers approx 6371.009 km (for WGS-84), resulting in an error of up to about 0.5%” (<a class="reference external" href="https://geopy.readthedocs.io/en/stable/">geopy</a>).</p>
-<p>WGS-84 is a unified global ellipsoid model that is used for GPS collected from GPS satellites to calculate extremely preise measurements of the Earth. For the purpose of this notebook, this is the ellipsoid model we will be working with.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geopy</span></code> by default makes use of WGS-84  which is a a unified global ellipsoid model that is used for GPS collected from satellites to calculate extremely preise measurements of the Earth. For the purpose of this notebook, this is the ellipsoid model we will be working with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pyproj</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">get_ellps_map</span><span class="p">()[</span><span class="s2">&quot;WGS84&quot;</span><span class="p">])</span>
@@ -610,7 +608,7 @@ GRS-67 = (6378.16, 6356.774719, 0.003352891869237217)
 </section>
 <section id="geodesy">
 <h2>Geodesy<a class="headerlink" href="#geodesy" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Geodesy is the complex science of measuring the Earth’s “geometric shape, orientation in space, and gravity field”.</p>
+<p>Geodesy is the complex science of measuring the Earth’s geometric shape.</p>
 <p><a class="reference external" href="https://oceanservice.noaa.gov/facts/geodesy.html">Learn more!</a></p>
 <section id="geodesic">
 <h3>Geodesic<a class="headerlink" href="#geodesic" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
@@ -620,7 +618,7 @@ GRS-67 = (6378.16, 6356.774719, 0.003352891869237217)
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Geodesic">Wikipedia - Geodesic</a></p>
 </div></blockquote>
 <p><a class="reference internal" href="https://upload.wikimedia.org/wikipedia/commons/6/6a/Insect_on_a_torus_tracing_out_a_non-trivial_geodesic.gif"><img alt="Straight Line on a curved surface" src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Insect_on_a_torus_tracing_out_a_non-trivial_geodesic.gif" style="width: 400px;" /></a></img></p>
-<p>This is especially apparent when working with satellite data where the apparent “straight path” that a satellite will trace across the the surface of a planet</p>
+<p>This is especially apparent when working with satellite data where the apparent “straight path” that a satellite will trace across the the surface of a planet.</p>
 </section>
 </section>
 <section id="an-important-note-on-resources">
@@ -638,7 +636,7 @@ GRS-67 = (6378.16, 6356.774719, 0.003352891869237217)
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>A great circle is formed by a plane intersecting a sphere and the center, like the equator.</p>
-<p>Great Circles make use of spherical geometry to measure features on the curved surface of a unit sphere. However, planets like Earth are not perfect spheres and to account for the error are combined with geodesic calculations to reduce the error in final calculations.</p>
+<p>Great circles make use of spherical geometry to measure features on the curved surface of a unit sphere. However, planets like Earth are not perfect spheres and to account for the error are combined with geodesic calculations to reduce the error in final calculations.</p>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>Coordinates and Great Circles</p>
@@ -971,7 +969,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 30 January 2025.
+  Last updated on 3 February 2025.
   <br/>
 </p>
   </div>
@@ -1025,7 +1023,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 30 January 2025.
+          Last updated on 3 February 2025.
         </p>
       </div>
     </div>

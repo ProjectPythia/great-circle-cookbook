@@ -85,7 +85,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="30 January 2025"/>
+    <meta name="docbuild:last-update" content="3 February 2025"/>
   </head>
   
   
@@ -427,11 +427,11 @@
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>A valid great circle path (that is not a path around the equator) will cross a maximum and minimum latitude.</p>
-<ul class="simple">
+<ol class="arabic simple">
 <li><p>Determine the maximum latitude on a Great Circle Path</p></li>
 <li><p>Determine the minimum latitude on a Great Great path</p></li>
-<li><p>Determine when a great circle path crosses parallels (TODO)</p></li>
-</ul>
+<li><p><em>Determine when a great circle path crosses parallels (TODO)</em></p></li>
+</ol>
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -445,15 +445,15 @@
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Numpy</a></p></td>
 <td><p>Necessary</p></td>
-<td><p></p></td>
+<td><p>Used to work with large arrays</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Pandas</a></p></td>
 <td><p>Necessary</p></td>
-<td><p></p></td>
+<td><p>Used to read in and organize data (in particular dataframes)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
 <td><p>Helpful</p></td>
-<td><p>Will be used for plotting</p></td>
+<td><p>Will be used for adding maps to plotting</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
 <td><p>Helpful</p></td>
@@ -618,8 +618,9 @@
 </section>
 <section id="maximum-latitude-on-a-great-circle-path">
 <h2>Maximum Latitude on a Great Circle Path<a class="headerlink" href="#maximum-latitude-on-a-great-circle-path" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>We have previous determined an equation to derive a great circle path from intermediate points from two points on a great circle arc.</p>
-<p>Without additional calculations, finding the maximum location of the maximum and minimum from the list of points along the great circle path. By default, the function uses 360 points along longitude, so the output will only have a resolution of 1 degree. However, by defining the longitude with more points, the resolution increases.</p>
+<p>We have previously determined an equation to derive a great circle path from intermediate points from two points on a great circle arc.</p>
+<p>Without additional calculations, we can use a list of points along the great circle path to find the maximum location of the maximum and minimum.</p>
+<p>By default, the equation below will determine 360 points along longitude, so the output will only have a resolution of 1 degree. However, by defining the longitude with more points, the resolution increases.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate Latitude Coordinates based on Longitude Coordinates</span>
@@ -778,7 +779,7 @@
 <p>So, to solve for the maximum latitude the true course should be when 90 and 270 degrees on the unit sphere where for <em>any</em> bearing/latitude along the great circle:</p>
 <div class="math notranslate nohighlight">
 \[\text{max latitude} = acos(|sin(θ) * cos(φ)|)\]</div>
-<p>For the purpose of this example, we will use <code class="docutils literal notranslate"><span class="pre">pyproj</span></code> geodesic to determine the bearing based on a great circle arc, but consult previous chapters if you want to determine bearing mathetically based on the unit sphere instead of the ellipsoid.</p>
+<p>For the purpose of this example, we will use <code class="docutils literal notranslate"><span class="pre">pyproj</span></code> geodesic to determine the bearing based on a great circle arc, but consult previous sections if you want to determine bearing mathetically based on the unit sphere instead of the ellipsoid.</p>
 <p><strong>Important Note</strong></p>
 <p>Clairaut’s Formula works from unit sphere, and as a result, is subject to errors (about 3%, about +/- 11 degrees).</p>
 <ul class="simple">
@@ -832,7 +833,7 @@
 </div>
 </div>
 </div>
-<p>Like finding maximum, from a list of great circle path, the smallest latitude can be found by analysing the list for the smallest latitude point.</p>
+<p>Like finding maximum from a list of great circle path, the smallest latitude can be found by analysing the list for the smallest latitude point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gc_lat_lon</span> <span class="o">=</span> <span class="n">generate_latitude_along_gc</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;houston&quot;</span><span class="p">,</span> <span class="n">number_of_lon_pts</span><span class="o">=</span><span class="mi">360</span><span class="p">)</span>
@@ -933,12 +934,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_lat</span> <span class="o">=</span> <span class="n">clairaut_formula_min</span><span class="p">(</span><span class="s2">&quot;boulder&quot;</span><span class="p">,</span> <span class="s2">&quot;boston&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min latitude from Boulder to Boston: </span><span class="si">{</span><span class="n">min_lat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min latitude along great circle path from Boulder to Boston: </span><span class="si">{</span><span class="n">min_lat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Min latitude from Boulder to Boston: 17.49699780715814
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Min latitude along great circle path from Boulder to Boston: 17.49699780715814
 </pre></div>
 </div>
 </div>
@@ -1286,7 +1287,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 30 January 2025.
+  Last updated on 3 February 2025.
   <br/>
 </p>
   </div>
@@ -1340,7 +1341,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 30 January 2025.
+          Last updated on 3 February 2025.
         </p>
       </div>
     </div>
