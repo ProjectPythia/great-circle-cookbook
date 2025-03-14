@@ -16,19 +16,17 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -81,8 +78,7 @@
     <link rel="prev" title="Angles and Great Circles" href="5_angles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="3 February 2025"/>
+    <meta name="docbuild:last-update" content="14 March 2025"/>
   </head>
   
   
@@ -121,7 +117,7 @@
     
     
     <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Project Pythia Cookbook Template - Home"/>
-    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark pst-js-only" alt="Project Pythia Cookbook Template - Home"/>
+    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Project Pythia Cookbook Template - Home"/>`);</script>
   
   
 </a></div>
@@ -348,6 +344,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -391,14 +388,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
         </div>
@@ -710,7 +702,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>clockwise -&gt; negative
 </pre></div>
 </div>
-<img alt="../../_images/9eacf3b4ca1304fa446fb40181fe8e4f997d77461885937fd128820644056761.png" src="../../_images/9eacf3b4ca1304fa446fb40181fe8e4f997d77461885937fd128820644056761.png" />
+<img alt="../../_images/19d4dc5a2c4b4298b5cad9a1d53bb61b2bb4543ea0cd350425cf71008f5cecb4.png" src="../../_images/19d4dc5a2c4b4298b5cad9a1d53bb61b2bb4543ea0cd350425cf71008f5cecb4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -723,7 +715,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>counterclockwise -&gt; positive
 </pre></div>
 </div>
-<img alt="../../_images/a2d527d661a33f709f535631c7c2ae41c2c93bd777f943d6c0972136f1bf4e8f.png" src="../../_images/a2d527d661a33f709f535631c7c2ae41c2c93bd777f943d6c0972136f1bf4e8f.png" />
+<img alt="../../_images/8a055dabbc2e7f6e04a1ce8e5bb8f627213ee01a25eeb486f226b503e3459b7b.png" src="../../_images/8a055dabbc2e7f6e04a1ce8e5bb8f627213ee01a25eeb486f226b503e3459b7b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -736,7 +728,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>counterclockwise -&gt; positive
 </pre></div>
 </div>
-<img alt="../../_images/f5cb86663ef3e760f68be8ab638d96fda5fb4ea800b231475d34fbe97e470500.png" src="../../_images/f5cb86663ef3e760f68be8ab638d96fda5fb4ea800b231475d34fbe97e470500.png" />
+<img alt="../../_images/ea84b722a1b40a826415ba03d30cd0a420a76bc652af272cdee5cbe0aa3e1d42.png" src="../../_images/ea84b722a1b40a826415ba03d30cd0a420a76bc652af272cdee5cbe0aa3e1d42.png" />
 </div>
 </div>
 </section>
@@ -828,7 +820,7 @@ Roughly 1.05% of the Earth&#39;s Surface
 Unit Sphere Area = 21896220.663299154 km^2
 </pre></div>
 </div>
-<img alt="../../_images/9706956ae37b61a0a9a220ca69f50b49c42848168d5d90019842afa42284c774.png" src="../../_images/9706956ae37b61a0a9a220ca69f50b49c42848168d5d90019842afa42284c774.png" />
+<img alt="../../_images/21d5d2c35d882bd26efa243d2234bd46f0564d5a0b831885cf3d5d8d4e11ba06.png" src="../../_images/21d5d2c35d882bd26efa243d2234bd46f0564d5a0b831885cf3d5d8d4e11ba06.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -842,7 +834,7 @@ Unit Sphere Area = 21896220.663299154 km^2
 Unit Sphere Area = 3149017.3086414044 km^2
 </pre></div>
 </div>
-<img alt="../../_images/d2ebcd789651a0f3fa6ee6ffb2da34a9597ce8b748c5abb40fffb6cbe000e639.png" src="../../_images/d2ebcd789651a0f3fa6ee6ffb2da34a9597ce8b748c5abb40fffb6cbe000e639.png" />
+<img alt="../../_images/5bfd6413a761b8ce4049f52deed4dc0873b03f5ca9c262556dcf92b76142f1ce.png" src="../../_images/5bfd6413a761b8ce4049f52deed4dc0873b03f5ca9c262556dcf92b76142f1ce.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -856,7 +848,7 @@ Unit Sphere Area = 3149017.3086414044 km^2
 Unit Sphere Area = 3782548.632737316 km^2
 </pre></div>
 </div>
-<img alt="../../_images/d9d4480ef83182af932e92030a964a94d86ade3f6df90b728fd17344def0c637.png" src="../../_images/d9d4480ef83182af932e92030a964a94d86ade3f6df90b728fd17344def0c637.png" />
+<img alt="../../_images/fef12f28b78d83768d08784025e6e99fd7a5157013b1fc0dccfac9b9a0bb516c.png" src="../../_images/fef12f28b78d83768d08784025e6e99fd7a5157013b1fc0dccfac9b9a0bb516c.png" />
 </div>
 </div>
 <section id="todo">
@@ -873,7 +865,7 @@ Unit Sphere Area = 3782548.632737316 km^2
 Unit Sphere Area = 954445.989927043 km^2
 </pre></div>
 </div>
-<img alt="../../_images/a4cd38eade5bb67113b7219f5e287d1cd3f27c1b6a50533d46fe535b9ca42c91.png" src="../../_images/a4cd38eade5bb67113b7219f5e287d1cd3f27c1b6a50533d46fe535b9ca42c91.png" />
+<img alt="../../_images/9907c605b1134c20f0beaff8c613fab858591f8f61fb11e403c4447ba26dd491.png" src="../../_images/9907c605b1134c20f0beaff8c613fab858591f8f61fb11e403c4447ba26dd491.png" />
 </div>
 </div>
 </section>
@@ -953,7 +945,7 @@ Unit Sphere Area = 954445.989927043 km^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0c55b27553f1948467c2dbbdf9692e64db68f475369d3d5af11ab95e4154d0a6.png" src="../../_images/0c55b27553f1948467c2dbbdf9692e64db68f475369d3d5af11ab95e4154d0a6.png" />
+<img alt="../../_images/138c8a5fc19a43a2e247575a3f9ca3c378b8a61bf5b888f9be3be6210631c9c4.png" src="../../_images/138c8a5fc19a43a2e247575a3f9ca3c378b8a61bf5b888f9be3be6210631c9c4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -976,7 +968,7 @@ Unit Sphere Area = 954445.989927043 km^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/06b13f22cb4bb35659209c8127dd9c6c60e3708ec04c3f1d420c0fdd17733310.png" src="../../_images/06b13f22cb4bb35659209c8127dd9c6c60e3708ec04c3f1d420c0fdd17733310.png" />
+<img alt="../../_images/d8c5050166af6f8cce3d178d1f5bba28e4284d4df7d7eccc1476d545948e501e.png" src="../../_images/d8c5050166af6f8cce3d178d1f5bba28e4284d4df7d7eccc1476d545948e501e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -987,7 +979,7 @@ Unit Sphere Area = 954445.989927043 km^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0700e0c3c455d1f02f821ed2bc669839a864e3104de0049a3cfda2f5860915a6.png" src="../../_images/0700e0c3c455d1f02f821ed2bc669839a864e3104de0049a3cfda2f5860915a6.png" />
+<img alt="../../_images/282d636959f99f917e17ee978fd5a024b8e307c389ba3320cbc7a03fb24b7b78.png" src="../../_images/282d636959f99f917e17ee978fd5a024b8e307c389ba3320cbc7a03fb24b7b78.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -998,7 +990,7 @@ Unit Sphere Area = 954445.989927043 km^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/52706b40b9b10a34743c22f73c535a4628c8c6bb9173d750f603790abe7302fd.png" src="../../_images/52706b40b9b10a34743c22f73c535a4628c8c6bb9173d750f603790abe7302fd.png" />
+<img alt="../../_images/9af24fa50a5676970b66820fa933f9f3d57380141a2f4c59444067ebac73068a.png" src="../../_images/9af24fa50a5676970b66820fa933f9f3d57380141a2f4c59444067ebac73068a.png" />
 </div>
 </div>
 </section>
@@ -1064,7 +1056,7 @@ Unit Sphere Area = 954445.989927043 km^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9ac4b8c71ac9c83532d6d127b5d23d6f764314d0f5e71584197434ede157940f.png" src="../../_images/9ac4b8c71ac9c83532d6d127b5d23d6f764314d0f5e71584197434ede157940f.png" />
+<img alt="../../_images/9bd2b7f409c2d0e8b35443d25ee0810762abce7ae5dd62b8fa63e215ed53add3.png" src="../../_images/9bd2b7f409c2d0e8b35443d25ee0810762abce7ae5dd62b8fa63e215ed53add3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1075,7 +1067,7 @@ Unit Sphere Area = 954445.989927043 km^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e6ed692b989007744a9c18d7d5712d291d5a0f5afc8775fe301d11764c63049e.png" src="../../_images/e6ed692b989007744a9c18d7d5712d291d5a0f5afc8775fe301d11764c63049e.png" />
+<img alt="../../_images/2c0586ef21ed1d56da0dfed16654feec66d238b0303f136571b9dfd52db22379.png" src="../../_images/2c0586ef21ed1d56da0dfed16654feec66d238b0303f136571b9dfd52db22379.png" />
 </div>
 </div>
 </section>
@@ -1347,16 +1339,24 @@ Unit Sphere Area = 954445.989927043 km^2
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -1394,7 +1394,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 3 February 2025.
+  Last updated on 14 March 2025.
   <br/>
 </p>
   </div>
@@ -1411,8 +1411,8 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   </div>
     
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
      
@@ -1448,7 +1448,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 3 February 2025.
+          Last updated on 14 March 2025.
         </p>
       </div>
     </div>
