@@ -1,0 +1,1677 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Coordinate Types &#8212; Project Pythia Cookbook Template</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/foundations/2_coordinates';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Great Circle Arcs and Path" href="../tutorials/1_arc_path.html" />
+    <link rel="prev" title="Great Circle Terminology" href="1_terminology.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="16 June 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="https://projectpythia.org">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Project Pythia Cookbook Template - Home"/>
+    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Project Pythia Cookbook Template - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+        
+        
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Great Circle Cookbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_terminology.html">Great Circle Terminology</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Coordinate Types</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/1_arc_path.html">Great Circle Arcs and Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/2_arc_to_point.html">Great Circles and a Point</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/3_parallels_max_min.html">Great Circles and Parallels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/4_path_intersection.html">Intersections of Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/5_angles.html">Angles and Great Circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/6_polygon_area.html">Spherical Polygons and Areas</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+        </div>
+
+        
+        <main id="main-content" class="bd-main" role="main">
+          
+
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
+                
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <p><img alt="From Earth, a geostationary satellite looks like it is always in the same place, because it moves in the same direction and at the same rate the Earth spins. Image credit: NASA Solar System Exploration" src="https://spaceplace.nasa.gov/satellite/en/geostationary-orbit.en.gif" /></img></p>
+<section class="tex2jax_ignore mathjax_ignore" id="coordinate-types">
+<h1>Coordinate Types<a class="headerlink" href="#coordinate-types" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Great circles use different types of coordinates when working with unit spheres and ellipsoids. This notebook will cover the different types of coordinates and how to convert between them.</p>
+<ol class="arabic simple">
+<li><p>Types of Coordinates</p></li>
+<li><p>Convert Coordinates to All Coordinate Types</p></li>
+<li><p>Plot Coordinates on a World Map</p></li>
+</ol>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Numpy</a></p></td>
+<td><p>Necessary</p></td>
+<td><p>Used to work with large arrays</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/numpy.html">Pandas</a></p></td>
+<td><p>Necessary</p></td>
+<td><p>Used to read in and organize data (in particular dataframes)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Will be used for adding maps to plotting</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib.html">Matplotlib</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Will be used for plotting</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Time to learn</strong>: 20 minutes</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>                                     <span class="c1"># working with degrees and radians</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>                        <span class="c1"># plotting a graph</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartopy</span><span class="w"> </span><span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span><span class="p">,</span> <span class="n">feature</span> <span class="k">as</span> <span class="n">cfeature</span>   <span class="c1"># plotting a world map</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="types-of-coordinates">
+<h2>Types of Coordinates<a class="headerlink" href="#types-of-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<section id="geodesic-coordinates">
+<h3>Geodesic Coordinates<a class="headerlink" href="#geodesic-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Geodesic coordinates are latitude and longtiude and are measured from -90° South to 90° North and -180° East to 180° West measured from Greenwich.</p>
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/FedStats_Lat_long.svg/1024px-FedStats_Lat_long.svg.png" alt="Longitude lines are perpendicular to and latitude lines are parallel to the Equator from Wikipedia" width=400 />
+</p></section>
+<section id="cartesian-coordinates">
+<h3>Cartesian Coordinates<a class="headerlink" href="#cartesian-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Cartesian coordinates describe points in space based on perpendicular axis lines that meet at a single point of origin, where any point’s position is described based on the distance to the origin along xyz axis.</p>
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Coord_system_CA_0.svg/1024px-Coord_system_CA_0.svg.png" alt="A three dimensional Cartesian coordinate system, with origin O and axis lines X, Y and Z, oriented as shown by the arrows. The tick marks on the axes are one length unit apart. The black dot shows the point with coordinates x = 2, y = 3, and z = 4, or (2, 3, 4) from Wikipedia" width=400 />
+</p>
+<p>Image Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Three Dimensional Cartesian Coordinate System</a></p>
+<p><strong>Geodesic to Cartesian Coordinates</strong></p>
+<p>Assuming the Earth’s radius is 6378137 meters then:</p>
+<div class="math notranslate nohighlight">
+\[x = radius * cos(latitude) * cos(longitude)\]</div>
+<div class="math notranslate nohighlight">
+\[y = radius * cos(latitude) * sin(longitude)\]</div>
+<div class="math notranslate nohighlight">
+\[z = radius * sin(latitude)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cartesian_coordinates</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">earth_radius</span> <span class="o">=</span> <span class="mi">6378137</span>  <span class="c1"># meters</span>
+    <span class="n">latitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span>
+    <span class="n">longitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
+    <span class="n">cart_x</span> <span class="o">=</span> <span class="n">earth_radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
+    <span class="n">cart_y</span> <span class="o">=</span> <span class="n">earth_radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
+    <span class="n">cart_z</span> <span class="o">=</span> <span class="n">earth_radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cart_x</span><span class="p">,</span> <span class="n">cart_y</span><span class="p">,</span> <span class="n">cart_z</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="spherical-coordinates">
+<h3>Spherical Coordinates<a class="headerlink" href="#spherical-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Spherical coordinates describe points in space based on three values: radial distance (rho, r) along the radial line between point and the origin, polar angle (theta, θ) between the radial line and the polar axis, and azimuth angle (phi, φ) which is the angle of rotation of the radial line around the polar axis. With a fixed radius, the 3-point coordinates (r, θ, φ) provide a coordinate along a sphere.</p>
+<ul class="simple">
+<li><p>Radial distance: distance from center to surface of sphere</p></li>
+<li><p>Polar angle: angle between radial line and polar axis</p></li>
+<li><p>Azimuth angle: angle around polar axis</p></li>
+</ul>
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Sphericalcoordinates.svg/1024px-Sphericalcoordinates.svg.png" alt="Spherical Coordinate Description from Wikipedia" width=400 />
+</p>
+<p>Image Source: <a class="reference external" href="https://simple.wikipedia.org/wiki/Spherical_coordinate_system">Wikipedia - Spherical Coordinate System</a></p>
+<p>Convert from cartesian (rectangular) coordinates spherical coordinates</p>
+<div class="math notranslate nohighlight">
+\[ρ^2 = x^2 + y^2 + z^2\]</div>
+<div class="math notranslate nohighlight">
+\[tan(θ) = \frac{y}{x}\]</div>
+<div class="math notranslate nohighlight">
+\[φ = arccos(\frac{x}{\sqrt{x^2 + y^2 + z^2}})\]</div>
+<p>Where, rho (ρ), theta (θ), phi (φ):</p>
+<div class="math notranslate nohighlight">
+\[ρ = \sqrt{x^2 + y^2 + z^2}\]</div>
+<div class="math notranslate nohighlight">
+\[θ = arctan(\frac{y}{x})\]</div>
+<div class="math notranslate nohighlight">
+\[φ = arccos(\frac{x}{ρ})\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cartesian_to_spherical_coordinates</span><span class="p">(</span><span class="n">cart_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cart_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cart_z</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cart_x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cart_y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cart_z</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">cart_y</span><span class="o">/</span><span class="n">cart_x</span><span class="p">)</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">cart_z</span> <span class="o">/</span> <span class="n">rho</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rho</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="polar-coordinates">
+<h3>Polar Coordinates<a class="headerlink" href="#polar-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Polar coordinates are a combination of latitude, longitude, and altitude from the center of the sphere (based on the radius).</p>
+<p>Assuming the Earth’s radius is 6378137 meters then:</p>
+<div class="math notranslate nohighlight">
+\[x = cos(latitude) * cos(longitude) * radius\]</div>
+<div class="math notranslate nohighlight">
+\[y = cos(latitude) * sin(longitude) * radius\]</div>
+<div class="math notranslate nohighlight">
+\[z = sin(latitude) * radius\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">polar_coordinates</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">earth_radius</span> <span class="o">=</span> <span class="mi">6378137</span>  <span class="c1"># meters</span>
+    <span class="n">latitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span>
+    <span class="n">longitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
+    <span class="n">polar_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">earth_radius</span>
+    <span class="n">polar_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">earth_radius</span>
+    <span class="n">polar_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">earth_radius</span>
+    <span class="k">return</span> <span class="n">polar_x</span><span class="p">,</span> <span class="n">polar_y</span><span class="p">,</span> <span class="n">polar_z</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="convert-city-coordinates-to-all-coordinate-types">
+<h2>Convert City Coordinates to All Coordinate Types<a class="headerlink" href="#convert-city-coordinates-to-all-coordinate-types" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<section id="display-coordinates-of-cities">
+<h3>Display Coordinates of Cities<a class="headerlink" href="#display-coordinates-of-cities" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>First, we will read in the latitude and longitude coordinates from locations csv:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">location_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../location_coords.txt&quot;</span><span class="p">)</span>
+<span class="n">location_df</span> <span class="o">=</span> <span class="n">location_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="c1"># strip excess white space from column names and values</span>
+<span class="n">location_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>latitude</th>
+      <th>longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>arecibo</td>
+      <td>18.3441</td>
+      <td>-66.7527</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>boulder</td>
+      <td>40.0150</td>
+      <td>-105.2705</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>boston</td>
+      <td>42.3601</td>
+      <td>-71.0589</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>redwoods</td>
+      <td>41.4017</td>
+      <td>-124.0417</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>houston</td>
+      <td>29.5518</td>
+      <td>-95.0982</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>greenwich</td>
+      <td>51.4934</td>
+      <td>0.0098</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>svalbard</td>
+      <td>77.8750</td>
+      <td>20.9752</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>mcmurdo</td>
+      <td>-77.5000</td>
+      <td>165.0000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>cairo</td>
+      <td>30.0444</td>
+      <td>31.2357</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>johannesburg</td>
+      <td>-26.2056</td>
+      <td>28.0337</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>stonehedge</td>
+      <td>51.1789</td>
+      <td>-1.8262</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>machu picchu</td>
+      <td>-13.1632</td>
+      <td>-72.5453</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>cape canaveral</td>
+      <td>28.3922</td>
+      <td>-80.6077</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>uluru</td>
+      <td>-25.3444</td>
+      <td>131.0369</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>tunguska event</td>
+      <td>60.5411</td>
+      <td>101.5435</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>hanle</td>
+      <td>32.7908</td>
+      <td>79.0002</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>reykjavík</td>
+      <td>64.1470</td>
+      <td>-21.9408</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>al-qarawiyyin</td>
+      <td>34.0649</td>
+      <td>-4.9734</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>zambezi</td>
+      <td>-18.3414</td>
+      <td>36.2813</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>timbuktu</td>
+      <td>16.7666</td>
+      <td>-3.0026</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>rockford</td>
+      <td>42.2711</td>
+      <td>-89.0940</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="add-columns-for-additional-coordinate-types">
+<h3>Add Columns for Additional Coordinate Types<a class="headerlink" href="#add-columns-for-additional-coordinate-types" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;cart_x&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;cart_y&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;cart_z&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cartesian_coordinates</span><span class="p">(</span><span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
+                                                                                            <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+<span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;theta&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;phi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cartesian_to_spherical_coordinates</span><span class="p">(</span><span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;cart_x&quot;</span><span class="p">],</span>
+                                                                                                  <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;cart_y&quot;</span><span class="p">],</span>
+                                                                                                  <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;cart_z&quot;</span><span class="p">])</span>
+<span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;polar_x&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;polar_y&quot;</span><span class="p">],</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;polar_z&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">polar_coordinates</span><span class="p">(</span><span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
+                                                                                           <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">])</span>
+
+<span class="n">location_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>cart_x</th>
+      <th>cart_y</th>
+      <th>cart_z</th>
+      <th>rho</th>
+      <th>theta</th>
+      <th>phi</th>
+      <th>polar_x</th>
+      <th>polar_y</th>
+      <th>polar_z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>arecibo</td>
+      <td>18.3441</td>
+      <td>-66.7527</td>
+      <td>2.389526e+06</td>
+      <td>-5.562495e+06</td>
+      <td>2.007347e+06</td>
+      <td>6378137.0</td>
+      <td>-1.165054</td>
+      <td>1.250631</td>
+      <td>-5.562495e+06</td>
+      <td>2.389526e+06</td>
+      <td>2.007347e+06</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>boulder</td>
+      <td>40.0150</td>
+      <td>-105.2705</td>
+      <td>-1.286558e+06</td>
+      <td>-4.712394e+06</td>
+      <td>4.101066e+06</td>
+      <td>6378137.0</td>
+      <td>1.304276</td>
+      <td>0.872403</td>
+      <td>-4.712394e+06</td>
+      <td>-1.286558e+06</td>
+      <td>4.101066e+06</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>boston</td>
+      <td>42.3601</td>
+      <td>-71.0589</td>
+      <td>1.529809e+06</td>
+      <td>-4.457769e+06</td>
+      <td>4.297512e+06</td>
+      <td>6378137.0</td>
+      <td>-1.240212</td>
+      <td>0.831473</td>
+      <td>-4.457769e+06</td>
+      <td>1.529809e+06</td>
+      <td>4.297512e+06</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>redwoods</td>
+      <td>41.4017</td>
+      <td>-124.0417</td>
+      <td>-2.678169e+06</td>
+      <td>-3.964322e+06</td>
+      <td>4.218080e+06</td>
+      <td>6378137.0</td>
+      <td>0.976657</td>
+      <td>0.848200</td>
+      <td>-3.964322e+06</td>
+      <td>-2.678169e+06</td>
+      <td>4.218080e+06</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>houston</td>
+      <td>29.5518</td>
+      <td>-95.0982</td>
+      <td>-4.930480e+05</td>
+      <td>-5.526456e+06</td>
+      <td>3.145762e+06</td>
+      <td>6378137.0</td>
+      <td>1.481816</td>
+      <td>1.055020</td>
+      <td>-5.526456e+06</td>
+      <td>-4.930480e+05</td>
+      <td>3.145762e+06</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>greenwich</td>
+      <td>51.4934</td>
+      <td>0.0098</td>
+      <td>3.971059e+06</td>
+      <td>6.792189e+02</td>
+      <td>4.991125e+06</td>
+      <td>6378137.0</td>
+      <td>0.000171</td>
+      <td>0.672067</td>
+      <td>6.792189e+02</td>
+      <td>3.971059e+06</td>
+      <td>4.991125e+06</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>svalbard</td>
+      <td>77.8750</td>
+      <td>20.9752</td>
+      <td>1.250923e+06</td>
+      <td>4.795630e+05</td>
+      <td>6.235851e+06</td>
+      <td>6378137.0</td>
+      <td>0.366086</td>
+      <td>0.211621</td>
+      <td>4.795630e+05</td>
+      <td>1.250923e+06</td>
+      <td>6.235851e+06</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>mcmurdo</td>
+      <td>-77.5000</td>
+      <td>165.0000</td>
+      <td>-1.333443e+06</td>
+      <td>3.572949e+05</td>
+      <td>-6.226950e+06</td>
+      <td>6378137.0</td>
+      <td>-0.261799</td>
+      <td>2.923426</td>
+      <td>3.572949e+05</td>
+      <td>-1.333443e+06</td>
+      <td>-6.226950e+06</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>cairo</td>
+      <td>30.0444</td>
+      <td>31.2357</td>
+      <td>4.720816e+06</td>
+      <td>2.863050e+06</td>
+      <td>3.193348e+06</td>
+      <td>6378137.0</td>
+      <td>0.545166</td>
+      <td>1.046423</td>
+      <td>2.863050e+06</td>
+      <td>4.720816e+06</td>
+      <td>3.193348e+06</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>johannesburg</td>
+      <td>-26.2056</td>
+      <td>28.0337</td>
+      <td>5.051141e+06</td>
+      <td>2.689551e+06</td>
+      <td>-2.816544e+06</td>
+      <td>6378137.0</td>
+      <td>0.489280</td>
+      <td>2.028170</td>
+      <td>2.689551e+06</td>
+      <td>5.051141e+06</td>
+      <td>-2.816544e+06</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>stonehedge</td>
+      <td>51.1789</td>
+      <td>-1.8262</td>
+      <td>3.996364e+06</td>
+      <td>-1.274201e+05</td>
+      <td>4.969252e+06</td>
+      <td>6378137.0</td>
+      <td>-0.031873</td>
+      <td>0.677556</td>
+      <td>-1.274201e+05</td>
+      <td>3.996364e+06</td>
+      <td>4.969252e+06</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>machu picchu</td>
+      <td>-13.1632</td>
+      <td>-72.5453</td>
+      <td>1.862866e+06</td>
+      <td>-5.924585e+06</td>
+      <td>-1.452465e+06</td>
+      <td>6378137.0</td>
+      <td>-1.266154</td>
+      <td>1.800538</td>
+      <td>-5.924585e+06</td>
+      <td>1.862866e+06</td>
+      <td>-1.452465e+06</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>cape canaveral</td>
+      <td>28.3922</td>
+      <td>-80.6077</td>
+      <td>9.156669e+05</td>
+      <td>-5.535712e+06</td>
+      <td>3.032833e+06</td>
+      <td>6378137.0</td>
+      <td>-1.406870</td>
+      <td>1.075259</td>
+      <td>-5.535712e+06</td>
+      <td>9.156669e+05</td>
+      <td>3.032833e+06</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>uluru</td>
+      <td>-25.3444</td>
+      <td>131.0369</td>
+      <td>-3.784488e+06</td>
+      <td>4.347897e+06</td>
+      <td>-2.730215e+06</td>
+      <td>6378137.0</td>
+      <td>-0.854567</td>
+      <td>2.013140</td>
+      <td>4.347897e+06</td>
+      <td>-3.784488e+06</td>
+      <td>-2.730215e+06</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>tunguska event</td>
+      <td>60.5411</td>
+      <td>101.5435</td>
+      <td>-6.277033e+05</td>
+      <td>3.073315e+06</td>
+      <td>5.553499e+06</td>
+      <td>6378137.0</td>
+      <td>-1.369324</td>
+      <td>0.514155</td>
+      <td>3.073315e+06</td>
+      <td>-6.277033e+05</td>
+      <td>5.553499e+06</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>hanle</td>
+      <td>32.7908</td>
+      <td>79.0002</td>
+      <td>1.023062e+06</td>
+      <td>5.263296e+06</td>
+      <td>3.454228e+06</td>
+      <td>6378137.0</td>
+      <td>1.378814</td>
+      <td>0.998489</td>
+      <td>5.263296e+06</td>
+      <td>1.023062e+06</td>
+      <td>3.454228e+06</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>reykjavík</td>
+      <td>64.1470</td>
+      <td>-21.9408</td>
+      <td>2.579828e+06</td>
+      <td>-1.039219e+06</td>
+      <td>5.739786e+06</td>
+      <td>6378137.0</td>
+      <td>-0.382939</td>
+      <td>0.451220</td>
+      <td>-1.039219e+06</td>
+      <td>2.579828e+06</td>
+      <td>5.739786e+06</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>al-qarawiyyin</td>
+      <td>34.0649</td>
+      <td>-4.9734</td>
+      <td>5.263779e+06</td>
+      <td>-4.580586e+05</td>
+      <td>3.572596e+06</td>
+      <td>6378137.0</td>
+      <td>-0.086802</td>
+      <td>0.976252</td>
+      <td>-4.580586e+05</td>
+      <td>5.263779e+06</td>
+      <td>3.572596e+06</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>zambezi</td>
+      <td>-18.3414</td>
+      <td>36.2813</td>
+      <td>4.880354e+06</td>
+      <td>3.582524e+06</td>
+      <td>-2.007062e+06</td>
+      <td>6378137.0</td>
+      <td>0.633228</td>
+      <td>1.890914</td>
+      <td>3.582524e+06</td>
+      <td>4.880354e+06</td>
+      <td>-2.007062e+06</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>timbuktu</td>
+      <td>16.7666</td>
+      <td>-3.0026</td>
+      <td>6.098605e+06</td>
+      <td>-3.198918e+05</td>
+      <td>1.839925e+06</td>
+      <td>6378137.0</td>
+      <td>-0.052405</td>
+      <td>1.278164</td>
+      <td>-3.198918e+05</td>
+      <td>6.098605e+06</td>
+      <td>1.839925e+06</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>rockford</td>
+      <td>42.2711</td>
+      <td>-89.0940</td>
+      <td>7.462695e+04</td>
+      <td>-4.719043e+06</td>
+      <td>4.290186e+06</td>
+      <td>6378137.0</td>
+      <td>-1.554984</td>
+      <td>0.833026</td>
+      <td>-4.719043e+06</td>
+      <td>7.462695e+04</td>
+      <td>4.290186e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save Output to a New Text File</span>
+<span class="n">location_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../location_full_coords.txt&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plot-coordinates">
+<h2>Plot Coordinates<a class="headerlink" href="#plot-coordinates" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<section id="world-map">
+<h3>World Map<a class="headerlink" href="#world-map" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Full world map from -180-180 and -90-90:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">longitude</span> <span class="n">east</span> <span class="o">=</span> <span class="mi">180</span>
+
+<span class="n">longitude</span> <span class="n">west</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span>
+
+<span class="n">latitude</span> <span class="n">north</span> <span class="o">=</span> <span class="mi">90</span>
+
+<span class="n">latitude</span> <span class="n">south</span> <span class="o">=</span> <span class="o">-</span><span class="mi">90</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up world map plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">projection_map</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+<span class="n">lon_west</span><span class="p">,</span> <span class="n">lon_east</span><span class="p">,</span> <span class="n">lat_south</span><span class="p">,</span> <span class="n">lat_north</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">lon_west</span><span class="p">,</span> <span class="n">lon_east</span><span class="p">,</span> <span class="n">lat_south</span><span class="p">,</span> <span class="n">lat_north</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+    
+<span class="c1"># Plot Latitude/Longitude Location</span>
+<span class="n">longitudes</span> <span class="o">=</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span> <span class="c1"># longitude</span>
+<span class="n">latitudes</span> <span class="o">=</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span>   <span class="c1"># latitude</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;World Map with Locations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_physical/ne_110m_coastline.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_boundary_lines_land.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_1_states_provinces_lakes.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<img alt="../../_images/2fe618c17a19e09cfe2358f7d40e992bef5299638f649ec5e547a41788bce517.png" src="../../_images/2fe618c17a19e09cfe2358f7d40e992bef5299638f649ec5e547a41788bce517.png" />
+</div>
+</div>
+</section>
+<section id="united-states-map">
+<h3>United States Map<a class="headerlink" href="#united-states-map" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Map of the United States roughly from -130 to -60 and 20 to 60:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">longitude</span> <span class="n">east</span> <span class="o">=</span> <span class="o">-</span><span class="mi">60</span>
+
+<span class="n">longitude</span> <span class="n">west</span> <span class="o">=</span> <span class="o">-</span><span class="mi">130</span>
+
+<span class="n">latitude</span> <span class="n">north</span> <span class="o">=</span> <span class="mi">60</span>
+
+<span class="n">latitude</span> <span class="n">south</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up United States map plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">projection_map</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+<span class="n">lon_west</span><span class="p">,</span> <span class="n">lon_east</span><span class="p">,</span> <span class="n">lat_south</span><span class="p">,</span> <span class="n">lat_north</span> <span class="o">=</span> <span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">lon_west</span><span class="p">,</span> <span class="n">lon_east</span><span class="p">,</span> <span class="n">lat_south</span><span class="p">,</span> <span class="n">lat_north</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">projection_map</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+    
+<span class="c1"># Plot Latitude/Longitude Location</span>
+<span class="n">longitudes</span> <span class="o">=</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">]</span> <span class="c1"># longitude</span>
+<span class="n">latitudes</span> <span class="o">=</span> <span class="n">location_df</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">]</span>   <span class="c1"># latitude</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">longitudes</span><span class="p">,</span> <span class="n">latitudes</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;United States Map with Locations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_admin_0_boundary_lines_land.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/miniconda3/envs/cookbook-dev/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_cultural/ne_50m_admin_1_states_provinces_lakes.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<img alt="../../_images/86e57d63805a19fecc24bbd034e087cd889ce8fe4d71447d521f7e74e810bb6f.png" src="../../_images/86e57d63805a19fecc24bbd034e087cd889ce8fe4d71447d521f7e74e810bb6f.png" />
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Coordinates on the Earth are measured in many different types of coordinate systems: Geodesic (latitude/longitude), cartesian, spherical, and polar. These coordinates will make future calculations simpler by converting a 2D coordinate like latitude/longitude into a 3D space that can be used for vector calculations.</p>
+<p>In Python, coordinates can be mapped on to a world map via <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>.</p>
+<section id="whats-next">
+<h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Great Circle arcs and paths</p>
+</section>
+</section>
+<section id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://edwilliams.org/avform147.htm">Ed Williams “Avitation Formulary”</a></p></li>
+<li><p><a class="reference external" href="https://www.movable-type.co.uk/scripts/latlong.html">Movable Type Scripts</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/foundations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1_terminology.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Great Circle Terminology</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tutorials/1_arc_path.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Great Circle Arcs and Path</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                  </footer>
+                
+              </div>
+
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-coordinates">Types of Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geodesic-coordinates">Geodesic Coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-coordinates">Cartesian Coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-coordinates">Spherical Coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-coordinates">Polar Coordinates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-city-coordinates-to-all-coordinate-types">Convert City Coordinates to All Coordinate Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-coordinates-of-cities">Display Coordinates of Cities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-columns-for-additional-coordinate-types">Add Columns for Additional Coordinate Types</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-coordinates">Plot Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#world-map">World Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#united-states-map">United States Map</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/great-circle-cookbook/main?urlpath=lab/tree/notebooks/foundations/2_coordinates.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/great-circle-cookbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/great-circle-cookbook/edit/main/notebooks/foundations/2_coordinates.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/great-circle-cookbook/issues/new?title=Issue%20on%20page%20%2Fnotebooks/foundations/2_coordinates.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/foundations/2_coordinates.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+            </div>
+
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the <a href="https://projectpythia.org/">Project Pythia</a> Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 16 June 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item">
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../../_images/NSF-NCAR_Lockup-UCAR-Dark_102523.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2024.
+        
+          By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
+        
+          Last updated on 16 June 2025.
+        </p>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item"><div class="container-fluid footer-extra">
+  <div class="container">
+    <center>
+      Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
+      in Pythia Cookbooks is licensed under
+      <a href="https://opensource.org/license/apache-2-0">Apache 2.0</a>. All
+      other non-code content is licensed under
+      <a href="https://creativecommons.org/licenses/by/4.0/">
+        Creative Commons BY 4.0 (CC BY 4.0)</a
+      >.
+    </center>
+    <br /><br />
+    <div class="row">
+      <p class="m-0">
+        <img
+          src="../../_static/footer-logo-nsf.png"
+          style="float: left; width: 60px; height: 60px; margin-right: 1rem"
+        />
+        This material is based upon work supported by the National Science
+        Foundation under Grant Nos. 2026863 and 2026899. Any opinions, findings,
+        and conclusions or recommendations expressed in this material are those
+        of the author(s) and do not necessarily reflect the views of the
+        National Science Foundation.
+      </p>
+    </div>
+  </div>
+</div></div>
+      
+      </div>
+    </div>
+  
+
+  </footer>
+  </body>
+</html>
