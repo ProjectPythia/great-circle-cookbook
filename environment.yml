@@ -2,16 +2,16 @@ name: cookbook-gc
 channels:
   - conda-forge
 dependencies:
+  - cartopy
+  - geopy
   - jupyter-book
   - jupyterlab
-  - sphinx-pythia-theme
-  - numpy
-  - uxarray
-  - geopy
-  - pyproj
   - matplotlib
-  - cartopy
+  - mystmd
+  - numpy
+  - pyproj
+  - sphinx-pythia-theme
+  - uxarray
   - pip
   - pip:
       - jupyterlab-myst
-  - mystmd
