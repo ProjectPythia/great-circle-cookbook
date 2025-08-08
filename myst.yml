@@ -9,6 +9,8 @@ project:
     - name: Cora Schneck
       affiliation: NSF National Center for Atmospheric Research
       orcid: https://orcid.org/0009-0009-1415-5170
+    - name: Project Pythia Community
+      url: https://projectpythia.org/
   copyright: '2025'
   toc:
     - file: README.md
