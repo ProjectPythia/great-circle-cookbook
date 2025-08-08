@@ -2,6 +2,7 @@ name: cookbook-gc
 channels:
   - conda-forge
 dependencies:
+  - astropy
   - cartopy
   - geopy
   - jupyter-book
