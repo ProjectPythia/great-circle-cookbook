@@ -3,11 +3,13 @@ extends:
   - https://raw.githubusercontent.com/projectpythia/pythia-config/main/pythia.yml
 project:
   title: Great Circle Cookbook
-  authors:
-    - name: Project Pythia Community
-      url: https://projectpythia.org/
+  description: A collection of Jupyter notebooks for working with Great Circles in Python
   github: https://github.com/projectpythia/great-circle-cookbook
-  copyright: '2024'
+  authors:
+    - name: Cora Schneck
+      affiliation: NSF National Center for Atmospheric Research
+      orcid: https://orcid.org/0009-0009-1415-5170
+  copyright: '2025'
   toc:
     - file: README.md
     - title: Preamble
