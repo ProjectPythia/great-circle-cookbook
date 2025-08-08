@@ -6,9 +6,9 @@ tags:
     - spherical trigonometry
     - remote sensing
   packages:
-    - numpy
-    - uxarray
-    - geopy
-    - pyproj
-    - matplotlib
     - cartopy
+    - geopy
+    - numpy
+    - matplotlib
+    - pyproj
+    - uxarray
