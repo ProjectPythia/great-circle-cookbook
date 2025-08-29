@@ -6,11 +6,12 @@ tags:
     - spherical trigonometry
     - remote sensing
   packages:
-    - numpy
-    - uxarray
-    - geopy
-    - pyproj
-    - matplotlib
+    - astropy
     - cartopy
+    - geopy
+    - numpy
+    - matplotlib
+    - pyproj
+    - uxarray
   events:
     - Cook-off 2025
