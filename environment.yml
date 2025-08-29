@@ -4,14 +4,13 @@ channels:
 dependencies:
   - jupyter-book
   - jupyterlab
-  - sphinx-pythia-theme
   - numpy
   - uxarray
   - geopy
   - pyproj
   - matplotlib
   - cartopy
+  - mystmd
   - pip
   - pip:
       - jupyterlab-myst
-  - mystmd
