@@ -6,6 +6,7 @@ tags:
     - spherical trigonometry
     - remote sensing
   packages:
+    - astropy
     - cartopy
     - geopy
     - numpy
