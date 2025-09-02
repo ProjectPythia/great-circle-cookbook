@@ -50,7 +50,7 @@ This is the main section of this notebook and will cover specific details about 
 
 #### 1. **Great Circle Arcs and Paths**
 - Distance between Points on a Great Circle Arc
-- Spherical Distance to Degrees
+- Convert Spherical Distance to Degrees
 - Determine the Bearing of a Great Circle Arc
 - Generate a Great Circle Arc with Intermediate Points
 - Determine the Midpoint of a Great Circle Arc
@@ -64,20 +64,16 @@ This is the main section of this notebook and will cover specific details about 
 #### 3. **Great Circles and Parallels**
 - Determine the maximum latitude on a Great Circle Path
 - Determine the minimum latitude on a Great Great path
-- Determine when a great circle path crosses parallels
 
 #### 4. **Intersections of Great Circles**
-- Find the intersection of two great circle paths (always exists)
-- Find the intersection of two great circle arcs (if it exists)
+- Find the intersection of two great circle paths
 
 #### 5. **Angles and Great Circles**
-- Calculate the acute and obtuse angle of two Great Circle paths
-- Calculate the Directed Angle of two Great Circle paths based on an intersection point
-- Working with Spherical Triangles formed by great circle arcs
+- Determine the acute and obtuse angle formed by two great circle paths
+- Determine the directed angle formed by two great circle paths based on an intersection point
 
 #### 6. **Spherical Polygons and Areas**
-- Determine clockwise/counterclockwise ordering of points on spherical polygon
-- Area and Permieter of quadrilateral patch on a unit sphere
+- Calculate area and permieter of quadrilateral patch on a unit sphere
 - Determine if a given point is within a spherical polygon
 - Mean center of spherical polygon
 
