@@ -10,6 +10,7 @@ tags:
     - cartopy
     - geopy
     - numpy
+    - numba
     - matplotlib
     - pyproj
     - uxarray
