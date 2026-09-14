@@ -1,6 +1,6 @@
 # Great Circle Cookbook
 
-![thumbnail]("thumbnail.png")
+<img src="thumbnail.png" alt="thumbnail" width="300"/>
 
 [![nightly-build](https://github.com/ProjectPythia/great-circle-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/great-circle-cookbook/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/great-circle-cookbook/main?labpath=notebooks)
@@ -13,7 +13,9 @@ This Project Pythia Cookbook covers the background and mathematics of working wi
 
 A great circle is the largest circle that can be drawn onto a sphere (like the Earth) that is the same diameter of the sphere. Great Circle arcs connect two positions on the curved surface of a planet like Earth and are commonly used for navigation that relies on "as-the crow flies" directions like planes, ships, and satellites
 
-![great_circle_wolfram]("https://github.com/user-attachments/assets/5ffe9566-d869-4e20-bef0-f5864502b2df")
+<p align="center">
+<img src="https://github.com/user-attachments/assets/5ffe9566-d869-4e20-bef0-f5864502b2df" width="400"/>
+</p>
 
 _Image Source: [Wolfram MathWorld](https://mathworld.wolfram.com/GreatCircle.html)_
 
