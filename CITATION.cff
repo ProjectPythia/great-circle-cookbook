@@ -9,4 +9,4 @@ authors:
   - name: "Great Circle Cookbook contributors" # use the 'name' field to acknowledge organizations
     website: "https://github.com/ProjectPythia/great-circle-cookbook/graphs/contributors"
 title: "Great Circle Cookbook"
-abstract: "A cookbook which covers the background and mathematics of working with great circles with plotting"
+abstract: "A cookbook which covers the background and mathematics of working with great circles"
