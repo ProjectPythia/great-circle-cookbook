@@ -40,7 +40,7 @@ This cookbook is broken into two main sections:
 ### Foundations and Terminology
 
 - "Great Circle Terminology": Covers the important terminology for working with and understanding great circles
-- "Coordinate Systems": Covers important terminology and functions required to understand and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Latitude/Longitude
+- "Coordinate Types": Covers important terminology and functions required to understand and converted to different types of coordinate systems like Cartesian, Spherical, Polar, and Latitude/Longitude
 
 Each section will make use of plotting to visually demonstrate concepts with `matplotlib` and `cartopy`
 
